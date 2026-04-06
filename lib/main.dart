@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'auth/create_login.dart';
 import 'auth/login.dart';
+import 'auth/otp_view.dart';
 
 void main() {
   runApp( MyApp());
@@ -78,7 +79,7 @@ class MyApp extends StatelessWidget {
           ),
           builder: (context, child) =>
               Directionality(textDirection: TextDirection.rtl, child: child!),
-        home: const LoginView(),
+        home: const OtpView(),
         );
 
 

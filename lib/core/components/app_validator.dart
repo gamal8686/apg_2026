@@ -1,4 +1,7 @@
 
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 class InputValidator {
   static final RegExp validatePhoneNumberWithoutCode = RegExp(
     r'^[1-9][0-9]{9}$',
@@ -10,10 +13,10 @@ class InputValidator {
   // RegExp if need regex if not need not problem
   static String?  phoneValidator(String? value) {
     if (value == null || value.isEmpty ) {
-      return 'Field is empty';
-    } 
+    return   'رمز التحقق غير صحيح .يرجى المحاولة مرة أخرى.';
+    }
 
-    return null;
+
   }
 
   static String? passwordValidator(String? value) {
