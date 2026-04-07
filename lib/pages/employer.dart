@@ -4,8 +4,24 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../core/components/app_search.dart';
 
-class EmployerView extends StatelessWidget {
+class EmployerView extends StatefulWidget {
   const EmployerView({super.key});
+
+  @override
+  State<EmployerView> createState() => _EmployerViewState();
+}
+
+class _EmployerViewState extends State<EmployerView> {
+  final List<Model> models = [
+    Model('الكل'),
+    Model('عمال'),
+    Model('سائقين'),
+    Model('مشرفين'),
+    Model('إداريين'),
+    Model('ميكانيكي'),
+  ];
+  int isSelected = 0;
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +41,66 @@ class EmployerView extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         padding: EdgeInsetsDirectional.all(15),
-        child: Column(children: [
-          AppSearch(),
-        ],),
+        child: Column(
+          children: [
+            AppSearch(),
+            SizedBox(height: 20.h),
+            SizedBox(
+              height: 60.h,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                physics: ClampingScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: models.length,
+                itemBuilder: (context, index) {
+                  bool isSelected = index == selectedIndex;
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          isSelected = !isSelected;
+                          selectedIndex = index;
+                        });
+                      },
+                      child: Container(
+                        height: 40.h,
+                        width: 80.w,
+                        decoration: BoxDecoration(
+                          color: isSelected
+                              ? Color(0xff5A3A22)
+                              : Color(0xffFFFFFF),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Center(
+                          child: Text(
+                            models[index].name,
+                            style: TextStyle(
+                              color: isSelected
+                                  ? Colors.white
+                                  : Color(0xff6B7280),
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: 'Cairo',
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                  ;
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
+}
+
+class Model {
+  String name;
+
+  Model(this.name);
 }
