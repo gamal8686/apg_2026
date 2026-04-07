@@ -13,7 +13,7 @@ class InputValidator {
   // RegExp if need regex if not need not problem
   static String?  phoneValidator(String? value) {
     if (value == null || value.isEmpty ) {
-    return   'رمز التحقق غير صحيح .يرجى المحاولة مرة أخرى.';
+    return   '';
     }
 
 

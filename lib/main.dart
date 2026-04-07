@@ -1,8 +1,10 @@
+import 'package:company_apg_2026/pages/employer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'auth/create_login.dart';
 import 'auth/login.dart';
 import 'auth/otp_view.dart';
+import 'core/logic/helper_methods.dart';
 
 void main() {
   runApp( MyApp());
@@ -11,10 +13,9 @@ void main() {
 class MyApp extends StatelessWidget {
 
 
-
   @override
   Widget build(BuildContext context) {
-    final navKey = GlobalKey<NavigatorState>();
+
     final primary = Color(0xff5A3A22);
     final primarySwatch = MaterialColor(primary.value, {
       50: primary.withValues(alpha: .1),
@@ -79,7 +80,7 @@ class MyApp extends StatelessWidget {
           ),
           builder: (context, child) =>
               Directionality(textDirection: TextDirection.rtl, child: child!),
-        home: const OtpView(),
+        home: const EmployerView(),
         );
 
 

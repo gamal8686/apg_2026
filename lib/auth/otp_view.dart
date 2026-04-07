@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../core/components/app_validator.dart';
 import '../core/components/app_image.dart';
+import '../core/logic/helper_methods.dart';
 
 class OtpView extends StatefulWidget {
   const OtpView({super.key});
@@ -15,6 +16,7 @@ class OtpView extends StatefulWidget {
 class _OtpViewState extends State<OtpView> {
   final formKey = GlobalKey<FormState>();
   final otpController = TextEditingController();
+  bool showResend = false;
 
   @override
   Widget build(BuildContext context) {
@@ -56,28 +58,69 @@ class _OtpViewState extends State<OtpView> {
               Text('Ahmed@gmail.com.'),
               SizedBox(height: 20.h),
               AppOtp(
-                validator: (p0) => InputValidator.phoneValidator(p0),
-                controller: otpController,),
+                validator: InputValidator.phoneValidator,
+                controller: otpController,
+              ),
               SizedBox(height: 32.h),
+
               AppButton(
                 onPressed: () {
                   if (formKey.currentState!.validate()) {
-
+                  } else {
+                    setState(() {
+                      showResend = true;
+                    });
+                    showMessage(
+                      'رمز التحقق غير صحيح .يرجى المحاولة مرة أخرى.',
+                      isError: true,
+                    );
                   }
-                }, text: 'تحقق', width: 343.w,
+                },
+                text: 'تحقق',
+                width: 343.w,
               ),
               SizedBox(height: 20.h),
-              Text(
-                  textAlign: TextAlign.center,
-                  'إعادة الإرسال مرة أخرى؟\nطلب رمز جديد في 00:30 ثانية'),
+              if (showResend)
+                Column(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        print('Resend OTP');
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.replay),
+                          SizedBox(width: 8.w),
+                          Text(
+                            'إعادة إرسال الرمز',
+                            style: TextStyle(
+                              color: Color(0xff251800),
+                              fontWeight: FontWeight.w500,
+                              fontFamily: 'Cairo',
+                            ),
+                          ),
 
 
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 10.h),
+                    Text(
+                      textAlign: TextAlign.center,
+                      'إعادة الإرسال مرة أخرى؟\nطلب رمز جديد في 00:30 ثانية',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20.sp,
+                        fontFamily: 'Cairo',
+                      ),
+                    ),
+                  ],
+                ),
             ],
           ),
         ),
       ),
-
-
     );
   }
 }
