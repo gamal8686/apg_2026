@@ -1,10 +1,12 @@
 import 'package:company_apg_2026/pages/employer.dart';
+import 'package:company_apg_2026/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'auth/create_login.dart';
 import 'auth/login.dart';
 import 'auth/otp_view.dart';
 import 'core/logic/helper_methods.dart';
+import 'on_boarding.dart';
 
 void main() {
   runApp( MyApp());
@@ -80,7 +82,7 @@ class MyApp extends StatelessWidget {
           ),
           builder: (context, child) =>
               Directionality(textDirection: TextDirection.rtl, child: child!),
-        home: const EmployerView(),
+        home: const SplashView(),
         );
 
 
