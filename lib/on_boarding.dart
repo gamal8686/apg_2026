@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OnBoardingView extends StatefulWidget {
-  const OnBoardingView({super.key});
+  const OnBoardingView({super.key, });
 
   @override
   State<OnBoardingView> createState() => _OnBoardingViewState();
@@ -39,6 +39,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
       newTitle: ' مكان واحد وبخطوات بسيطة.',
     ),
   ];
+  bool selectTheme = false;
 
   @override
   Widget build(BuildContext context) {
@@ -103,6 +104,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                 );
               }),
               Spacer(),
+
               GestureDetector(
                 onTap: () {
                   setState(() {

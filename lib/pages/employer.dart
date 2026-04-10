@@ -68,7 +68,7 @@ class _EmployerViewState extends State<EmployerView> {
                         width: 80.w,
                         decoration: BoxDecoration(
                           color: isSelected
-                              ? Color(0xff5A3A22)
+                              ? Theme.of(context).primaryColor
                               : Color(0xffFFFFFF),
                           borderRadius: BorderRadius.circular(15),
                         ),
@@ -78,7 +78,7 @@ class _EmployerViewState extends State<EmployerView> {
                             style: TextStyle(
                               color: isSelected
                                   ? Colors.white
-                                  : Color(0xff6B7280),
+                                  : Theme.of(context).primaryColor,
                               fontSize: 16.sp,
                               fontWeight: FontWeight.w600,
                               fontFamily: 'Cairo',
