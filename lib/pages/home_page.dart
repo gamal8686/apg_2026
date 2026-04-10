@@ -1,6 +1,12 @@
 import 'package:company_apg_2026/core/components/app_image.dart';
+import 'package:company_apg_2026/pages/category.dart';
+import 'package:company_apg_2026/pages/order.dart';
+import 'package:company_apg_2026/pages/product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'car.dart';
+import 'employer.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -10,13 +16,19 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int currentIndex = 0;
+  int currentIndex = 3;
+  final List<Model> list = [
+    Model(CategoryPage()),
+    Model(ProductPage()),
+    Model(CarPage()),
+    Model(EmployerView()),
+    Model(OrderPage()),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-
         selectedFontSize: 15.sp,
         unselectedFontSize: 10.sp,
         currentIndex: currentIndex,
@@ -34,30 +46,34 @@ class _HomePageState extends State<HomePage> {
 
         items: [
           BottomNavigationBarItem(
-            icon: AppImage(path: 'category.png', height: 20),
+            icon: AppImage(path: 'category.png', height: 20.h),
             label: 'التعليمات',
           ),
           BottomNavigationBarItem(
-            icon: AppImage(path: 'prodect.png', height: 20),
+            icon: AppImage(path: 'product.png', height: 20.h),
+            label: 'الموظفين',
+          ),
+          BottomNavigationBarItem(
+            icon: AppImage(path: 'car.png', height: 20.h),
+            label: 'الشحن',
+          ),
+          BottomNavigationBarItem(
+            icon: AppImage(path: 'parson.png', height: 25.h),
             label: 'الانتاج',
           ),
           BottomNavigationBarItem(
-            icon: AppImage(path: 'car.png', height: 20),
-            label: 'الانتاج',
-          ),
-          BottomNavigationBarItem(
-            icon: AppImage(path: 'parson.png', height: 20),
-            label: 'الانتاج',
-          ),
-          BottomNavigationBarItem(
-            icon: AppImage(path: 'orders.png', height: 20),
-            label: 'الانتاج',
+            icon: AppImage(path: 'orders.png', height: 25.h),
+            label: 'الرئيسيه',
           ),
         ],
       ),
-      body: Center(
-        child: Text('Home Page'),
-      ),
+      body: list[currentIndex].page,
     );
   }
+}
+
+class Model {
+  final Widget page;
+
+  Model(this.page);
 }

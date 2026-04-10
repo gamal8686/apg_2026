@@ -4,6 +4,7 @@ import 'package:company_apg_2026/core/components/app_image.dart';
 import 'package:company_apg_2026/core/components/app_input.dart';
 import 'package:company_apg_2026/core/components/app_login_or_register.dart';
 import 'package:company_apg_2026/core/logic/helper_methods.dart';
+import 'package:company_apg_2026/pages/home_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -113,9 +114,9 @@ class _CreateLoginViewState extends State<CreateLoginView> {
               AppButton(
                 text: 'سجل الآن',
                 onPressed: () {
-                  if (fromKey.currentState!.validate()) {
-                    goTo(LoginView());
-                  }
+                 // if (fromKey.currentState!.validate()) {
+                    goTo(HomePage());
+                 // }
                 },
                 width: 343.w,
               ),
