@@ -82,7 +82,7 @@ class MyApp extends StatelessWidget {
           ),
           builder: (context, child) =>
               Directionality(textDirection: TextDirection.rtl, child: child!),
-        home: const SplashView(),
+        home: const LoginView(),
         );
 
 

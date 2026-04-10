@@ -13,7 +13,7 @@ class InputValidator {
   // RegExp if need regex if not need not problem
   static String?  phoneValidator(String? value) {
     if (value == null || value.isEmpty ) {
-    return   '';
+    return   'Please enter your Email';
     }
 
 

@@ -22,6 +22,7 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xffE4E4E4),
       body: SingleChildScrollView(
         padding: EdgeInsetsGeometry.all(15.w),
 
@@ -29,11 +30,31 @@ class _LoginViewState extends State<LoginView> {
           key: fromKey,
           child: Column(
             children: [
-              SizedBox(height: 100.h),
+              SizedBox(height: 50.h),
+              ClipOval(
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                child: AppImage(
+                  fit: BoxFit.cover,
+                  path: 'log.png',
+                  height: 100.h,
+                  width: 120.w,
+                ),
+              ),
               Text(
-                'مرحبًا بعودتك !',
+                  'تسجيل الدخول',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 24.sp, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                    fontSize: 24.sp, fontWeight: FontWeight.w700),
+              ),
+
+              SizedBox(height: 24.h),
+              Text(
+                'لتسجيل الدخول إلى حسابك في التطبيق، أدخل بريدك\nالإلكتروني وكلمة المرور.',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                    fontSize: 16.sp, fontWeight: FontWeight.w400),
               ),
               SizedBox(height: 24.h),
               AppInput(
@@ -42,11 +63,15 @@ class _LoginViewState extends State<LoginView> {
 
                 prefixIcon: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: AppImage(path: 'sms.svg', height: 24.h, width: 24.w),
+                  child: AppImage(path: 'email.png', height: 24.h, width: 24.w),
                 ),
                 label: 'بريد إلكتروني',
               ),
               AppInput(
+                prefixIcon: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: AppImage(path: 'password.png', height: 24.h, width: 24.w),
+                ),
                 controller: password,
                 validator: InputValidator.passwordValidator,
 
@@ -70,7 +95,7 @@ class _LoginViewState extends State<LoginView> {
                   ),
                 ],
               ),
-              SizedBox(height: 30.h),
+              SizedBox(height: 15.h),
 
               AppButton(
                 text: 'تسجيل الدخول',
@@ -79,7 +104,7 @@ class _LoginViewState extends State<LoginView> {
                   if (fromKey.currentState!.validate()) {}
                 },
               ),
-              SizedBox(height: 30.h),
+              SizedBox(height: 15.h),
 
               AppLoginOrRegister(onPressed: () {}),
             ],
