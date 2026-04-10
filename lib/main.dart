@@ -1,4 +1,5 @@
 import 'package:company_apg_2026/pages/employer.dart';
+import 'package:company_apg_2026/pages/home_page.dart';
 import 'package:company_apg_2026/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -41,7 +42,8 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'APG',
           theme: ThemeData(
-
+            splashFactory: NoSplash.splashFactory,
+            highlightColor: Colors.white,
             textTheme: TextTheme(
               bodyMedium: TextStyle(
                 fontSize: 14.sp,
@@ -82,7 +84,7 @@ class MyApp extends StatelessWidget {
           ),
           builder: (context, child) =>
               Directionality(textDirection: TextDirection.rtl, child: child!),
-        home: const LoginView(),
+        home: const HomePage(),
         );
 
 

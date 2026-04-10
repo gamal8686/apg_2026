@@ -44,6 +44,7 @@ class _OtpViewState extends State<OtpView> {
           key: formKey,
           child: Column(
             children: [
+              AppImage(path: 'otp_view.png', height: 150.h, width: 150.w),
               SizedBox(height: 20.h),
 
               Text(
