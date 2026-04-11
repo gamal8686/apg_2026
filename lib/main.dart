@@ -1,3 +1,4 @@
+import 'package:company_apg_2026/core/logic/shared_preferences.dart';
 import 'package:company_apg_2026/pages/employer.dart';
 import 'package:company_apg_2026/pages/home_page.dart';
 import 'package:company_apg_2026/splash.dart';
@@ -12,7 +13,10 @@ import 'core/them_project/get_theme_data_dark.dart';
 import 'core/them_project/get_theme_data_light.dart';
 import 'on_boarding.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+ await CashHelper.init();
+ print('CashHelper');
   runApp(MyApp());
 }
 

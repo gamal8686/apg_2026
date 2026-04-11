@@ -1,6 +1,7 @@
 import 'package:company_apg_2026/auth/login.dart';
 import 'package:company_apg_2026/core/components/app_image.dart';
 import 'package:company_apg_2026/core/logic/helper_methods.dart';
+import 'package:company_apg_2026/core/logic/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -111,6 +112,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                     if (currentSelect < 4 - 1) {
                       currentSelect++;
                     } else {
+                      CashHelper.setIsNotFirst();
                       goTo(LoginView());
                     }
                   });

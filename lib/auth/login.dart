@@ -4,6 +4,7 @@ import 'package:company_apg_2026/core/components/app_image.dart';
 import 'package:company_apg_2026/core/components/app_input.dart';
 import 'package:company_apg_2026/core/components/app_login_or_register.dart';
 import 'package:company_apg_2026/core/logic/helper_methods.dart';
+import 'package:company_apg_2026/core/logic/shared_preferences.dart';
 import 'package:company_apg_2026/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -104,7 +105,10 @@ class _LoginViewState extends State<LoginView> {
                 text: 'تسجيل الدخول',
                 width: 343.w,
                 onPressed: () {
-                  if (fromKey.currentState!.validate()) {}
+                  if (fromKey.currentState!.validate()) {
+
+                    goTo(HomePage());
+                  }
                goTo(CreateLoginView());
                 },
               ),
