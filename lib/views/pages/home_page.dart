@@ -1,12 +1,13 @@
 import 'package:company_apg_2026/core/components/app_image.dart';
-import 'package:company_apg_2026/pages/category.dart';
-import 'package:company_apg_2026/pages/order.dart';
-import 'package:company_apg_2026/pages/product.dart';
+
+import 'package:company_apg_2026/views/pages/category.dart';
+import 'package:company_apg_2026/views/pages/product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'car.dart';
 import 'employer.dart';
+import 'order.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

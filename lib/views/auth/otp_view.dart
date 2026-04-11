@@ -2,9 +2,11 @@ import 'package:company_apg_2026/core/components/app_button.dart';
 import 'package:company_apg_2026/core/components/app_otp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../core/components/app_validator.dart';
-import '../core/components/app_image.dart';
-import '../core/logic/helper_methods.dart';
+
+import '../../core/components/app_image.dart';
+import '../../core/components/app_validator.dart';
+import '../../core/logic/helper_methods.dart';
+
 
 class OtpView extends StatefulWidget {
   const OtpView({super.key});

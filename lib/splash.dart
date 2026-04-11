@@ -1,11 +1,11 @@
 import 'dart:async';
 
 
-import 'package:company_apg_2026/auth/login.dart';
 import 'package:company_apg_2026/core/components/app_image.dart';
 import 'package:company_apg_2026/core/logic/helper_methods.dart';
 import 'package:company_apg_2026/core/logic/shared_preferences.dart';
-import 'package:company_apg_2026/pages/home_page.dart';
+import 'package:company_apg_2026/views/auth/login.dart';
+import 'package:company_apg_2026/views/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 import 'on_boarding.dart';
