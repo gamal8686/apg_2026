@@ -45,11 +45,13 @@ class _LoginViewState extends State<LoginView> {
                 ),
               ),
               Text(
-                  'تسجيل الدخول',
+                'تسجيل الدخول',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    color: Theme.of(context).primaryColor,
-                    fontSize: 24.sp, fontWeight: FontWeight.w700),
+                  color: Theme.of(context).primaryColor,
+                  fontSize: 24.sp,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
 
               SizedBox(height: 24.h),
@@ -57,8 +59,10 @@ class _LoginViewState extends State<LoginView> {
                 'لتسجيل الدخول إلى حسابك في التطبيق، أدخل بريدك\nالإلكتروني وكلمة المرور.',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    color: Theme.of(context).primaryColor,
-                    fontSize: 16.sp, fontWeight: FontWeight.w400),
+                  color: Theme.of(context).primaryColor,
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.w400,
+                ),
               ),
               SizedBox(height: 24.h),
               AppInput(
@@ -74,7 +78,11 @@ class _LoginViewState extends State<LoginView> {
               AppInput(
                 prefixIcon: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: AppImage(path: 'password.png', height: 24.h, width: 24.w),
+                  child: AppImage(
+                    path: 'password.png',
+                    height: 24.h,
+                    width: 24.w,
+                  ),
                 ),
                 controller: password,
                 validator: InputValidator.passwordValidator,
@@ -106,10 +114,10 @@ class _LoginViewState extends State<LoginView> {
                 width: 343.w,
                 onPressed: () {
                   if (fromKey.currentState!.validate()) {
-
                     goTo(HomePage());
+                  } else {
+                    goTo(CreateLoginView());
                   }
-               goTo(CreateLoginView());
                 },
               ),
               SizedBox(height: 15.h),
