@@ -1,9 +1,12 @@
 import 'package:company_apg_2026/core/logic/shared_preferences.dart';
 
 import 'package:company_apg_2026/splash.dart';
+import 'package:company_apg_2026/views/auth/already_password_view.dart';
 import 'package:company_apg_2026/views/auth/forget_password.dart';
 import 'package:company_apg_2026/views/auth/login.dart';
+import 'package:company_apg_2026/views/auth/new_password.dart';
 import 'package:company_apg_2026/views/auth/otp_view.dart';
+import 'package:company_apg_2026/views/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -47,7 +50,7 @@ class MyApp extends StatelessWidget {
                 textDirection: TextDirection.rtl,
                 child: child!,
               ),
-              home: const ForgetPasswordView(),
+              home: const HomePage(),
             ),
           ),
         );

@@ -28,7 +28,7 @@ class AppButton extends StatelessWidget {
           text,
           style: TextStyle(
               fontFamily: 'Cairo',
-              fontSize: 24.sp, fontWeight: FontWeight.w700),
+              fontSize: 23.sp, fontWeight: FontWeight.w700),
         ),
       ),
     );

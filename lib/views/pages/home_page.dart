@@ -17,7 +17,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int currentIndex = 3;
+  int currentIndex = 1;
   final List<Model> list = [
     Model(CategoryPage()),
     Model(ProductPage()),
@@ -51,8 +51,8 @@ class _HomePageState extends State<HomePage> {
             label: 'التعليمات',
           ),
           BottomNavigationBarItem(
-            icon: AppImage(path: 'product.png', height: 20.h),
-            label: 'الموظفين',
+            icon: AppImage(path: 'product_home.png', height: 20.h),
+            label: 'لانتاج',
           ),
           BottomNavigationBarItem(
             icon: AppImage(path: 'car.png', height: 20.h),
@@ -60,7 +60,7 @@ class _HomePageState extends State<HomePage> {
           ),
           BottomNavigationBarItem(
             icon: AppImage(path: 'parson.png', height: 25.h),
-            label: 'الانتاج',
+            label: '  االموظفين  ',
           ),
           BottomNavigationBarItem(
             icon: AppImage(path: 'orders.png', height: 25.h),
