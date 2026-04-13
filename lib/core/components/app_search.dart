@@ -6,29 +6,18 @@ class AppSearch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 46.h,
-
-      decoration: BoxDecoration(
-        color: Color(0xffFFFFFF),
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          children: [
-            Text(
-              'ابحث بالاسم أو الوظيفة',
-              style: TextStyle(
-                color: Color(0xff9CA3AF),
-                fontSize: 20.sp,
-                fontWeight: FontWeight.w400,
-                fontFamily: 'Cairo',
-              ),
-            ),
-            Spacer(),
-            Icon(Icons.search, size: 40),
-          ],
+    return TextField(
+      onTap: () {},
+      keyboardType: TextInputType.numberWithOptions(),
+      decoration: InputDecoration(
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(25.r),
+        ),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.r)),
+        labelText: 'ابحث بالرقم الوظيفة',
+        suffixIcon: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Icon(Icons.search, size: 40),
         ),
       ),
     );
