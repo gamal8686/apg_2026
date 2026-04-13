@@ -24,6 +24,7 @@ class _EmployerViewState extends State<EmployerView> {
   ];
   int isSelected = 0;
   int selectedIndex = 0;
+  bool isDarkMode = false;
 
   @override
   Widget build(BuildContext context) {
@@ -43,18 +44,15 @@ class _EmployerViewState extends State<EmployerView> {
         actions: [
           IconButton(
             onPressed: () {
-              CubitTheme.get(context).selectTheme(ThemeModeState.light);
+              setState(() {
+                isDarkMode = !isDarkMode;
+              });
+              CubitTheme.get(context).selectTheme(
+                isDarkMode ? ThemeModeState.light : ThemeModeState.dark,
+              );
               CashHelper.getThemeMode(CashHelperKeys.themeMode);
             },
-            icon: Icon(Icons.light_mode),
-          ),
-          IconButton(
-            onPressed: () {
-              CubitTheme.get(context).selectTheme(ThemeModeState.dark);
-              CashHelper.getThemeMode(CashHelperKeys.themeMode);
-
-            },
-            icon: Icon(Icons.dark_mode),
+            icon: isDarkMode ? Icon(Icons.dark_mode) : Icon(Icons.light_mode),
           ),
         ],
       ),
