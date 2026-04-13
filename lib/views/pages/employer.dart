@@ -1,9 +1,10 @@
+import 'package:company_apg_2026/core/logic/shared_preferences.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/components/app_search.dart';
-
+import '../../core/them_project/cubit_theme.dart';
 
 class EmployerView extends StatefulWidget {
   const EmployerView({super.key});
@@ -39,7 +40,25 @@ class _EmployerViewState extends State<EmployerView> {
             fontFamily: 'Cairo',
           ),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              CubitTheme.get(context).selectTheme(ThemeModeState.light);
+              CashHelper.getThemeMode(CashHelperKeys.themeMode);
+            },
+            icon: Icon(Icons.light_mode),
+          ),
+          IconButton(
+            onPressed: () {
+              CubitTheme.get(context).selectTheme(ThemeModeState.dark);
+              CashHelper.getThemeMode(CashHelperKeys.themeMode);
+
+            },
+            icon: Icon(Icons.dark_mode),
+          ),
+        ],
       ),
+
       body: SingleChildScrollView(
         padding: EdgeInsetsDirectional.all(15),
         child: Column(

@@ -3,54 +3,54 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../components/app_color.dart';
 
-ThemeData getThemeDataDark() {
- return  ThemeData(
-     fontFamily: 'Montserrat',
-     colorScheme: ColorScheme.fromSeed(
-       seedColor: AppColorThemeDark.colorSchemeColor,
-     ),
-     scaffoldBackgroundColor: AppColorThemeDark.scaffoldBackgroundColor,
-     textTheme: TextTheme(
-       bodyLarge: TextStyle(
-         fontSize: 16,
-         color: AppColorThemeDark.textThemeColor,
-       ),
-       bodyMedium: TextStyle(
-         fontSize: 14,
-         color: AppColorThemeDark.textThemeColor,
-       ),
-       titleLarge: TextStyle(
-         fontSize: 20,
-         fontWeight: FontWeight.bold,
-         color: AppColorThemeDark.textThemeColor,
-       ),
-     ),
-    filledButtonTheme: FilledButtonThemeData(
-      style: FilledButton.styleFrom(
-        fixedSize: Size.fromHeight(56.h),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
-        backgroundColor: AppColorThemeDark.floatingThemeColor,
+ThemeData getThemeDataDark = ThemeData(
+  fontFamily: 'Montserrat',
+  colorScheme: ColorScheme.fromSeed(
+    seedColor: AppColorThemeLight.colorSchemeColor,
+  ),
+  scaffoldBackgroundColor: AppColorThemeLight.scaffoldBackgroundColor,
+  textTheme: TextTheme(
+    bodyLarge: TextStyle(
+      fontSize: 16,
+      color: AppColorThemeLight.textThemeColor,
+    ),
+    bodyMedium: TextStyle(
+      fontSize: 14,
+      color: AppColorThemeLight.textThemeColor,
+    ),
+    titleLarge: TextStyle(
+      fontSize: 20,
+      fontWeight: FontWeight.bold,
+      color: AppColorThemeLight.textThemeColor,
+    ),
+  ),
+  filledButtonTheme: FilledButtonThemeData(
+    style: FilledButton.styleFrom(
+      fixedSize: Size.fromHeight(56.h),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
+      backgroundColor: AppColorThemeLight.floatingThemeColor,
+    ),
+  ),
+  appBarTheme: AppBarTheme(
+    backgroundColor: AppColorThemeLight.appBarThemeColor,
+  ),
+  textButtonTheme: TextButtonThemeData(
+    style: TextButton.styleFrom(
+      foregroundColor: AppColorThemeLight.textButtonThemeColor,
+    ),
+  ),
+
+  cardColor: AppColorThemeLight.cardColor.withValues(alpha: .50),
+  inputDecorationTheme: InputDecorationTheme(
+    fillColor: AppColorThemeLight.inputDecorationThemeColor.withValues(
+      alpha: .40,
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8.r),
+      borderSide: BorderSide(
+        color: AppColorThemeLight.inputDecorationThemeBorderRadiusColor
+            .withValues(alpha: 0.040),
       ),
     ),
-    appBarTheme: AppBarTheme(backgroundColor: AppColorThemeDark.appBarThemeColor),
-    textButtonTheme: TextButtonThemeData(
-      style: TextButton.styleFrom(foregroundColor: AppColorThemeDark.textButtonThemeColor),
-    ),
-
-    cardColor: AppColorThemeDark.cardColor.withValues(alpha: .50),
-    inputDecorationTheme: InputDecorationTheme(
-      fillColor: AppColorThemeDark.inputDecorationThemeColor.withValues(alpha: .40),
-      enabledBorder: OutlineInputBorder(
-
-        borderRadius: BorderRadius.circular(8.r),
-        borderSide: BorderSide(
-          color: AppColorThemeDark.inputDecorationThemeBorderRadiusColor.withValues(alpha: 0.040),
-        ),
-      ),
-    ),
-
-
-
-
-  );
-}
+  ),
+);
