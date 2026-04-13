@@ -4,7 +4,6 @@ import 'package:company_apg_2026/core/components/app_input.dart';
 import 'package:company_apg_2026/core/components/app_login_or_register.dart';
 import 'package:company_apg_2026/core/logic/helper_methods.dart';
 import 'package:company_apg_2026/core/logic/shared_preferences.dart';
-import 'package:company_apg_2026/core/them_project/cubit_theme.dart';
 import 'package:company_apg_2026/views/auth/create_login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

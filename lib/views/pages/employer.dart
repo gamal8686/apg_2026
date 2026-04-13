@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/components/app_search.dart';
-import '../../core/them_project/cubit_theme.dart';
+import '../../core/cubit/them_project/cubit_theme.dart';
 
 class EmployerView extends StatefulWidget {
   const EmployerView({super.key});

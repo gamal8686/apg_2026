@@ -1,17 +1,19 @@
 import 'package:company_apg_2026/core/logic/shared_preferences.dart';
-import 'package:company_apg_2026/core/them_project/cubit_theme.dart';
 
 import 'package:company_apg_2026/splash.dart';
+import 'package:company_apg_2026/views/auth/forget_password.dart';
 import 'package:company_apg_2026/views/auth/login.dart';
+import 'package:company_apg_2026/views/auth/otp_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'core/cubit/them_project/cubit_theme.dart';
+import 'core/cubit/them_project/get_theme_data_dark.dart';
+import 'core/cubit/them_project/get_theme_data_light.dart';
+import 'core/cubit/them_project/state_theme.dart';
 import 'core/logic/helper_methods.dart';
-import 'core/them_project/get_theme_data_dark.dart';
-import 'core/them_project/get_theme_data_light.dart';
-import 'core/them_project/state_theme.dart';
-import 'on_boarding.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -45,7 +47,7 @@ class MyApp extends StatelessWidget {
                 textDirection: TextDirection.rtl,
                 child: child!,
               ),
-              home: const LoginView(),
+              home: const ForgetPasswordView(),
             ),
           ),
         );

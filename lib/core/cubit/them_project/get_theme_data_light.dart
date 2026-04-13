@@ -1,54 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../components/app_color.dart';
+import '../../components/app_color.dart';
 
-ThemeData getThemeDataDark = ThemeData(
+ThemeData getThemeDataLight = ThemeData(
   fontFamily: 'Montserrat',
   colorScheme: ColorScheme.fromSeed(
-    seedColor: AppColorThemeLight.colorSchemeColor,
+    seedColor: AppColorThemeDark.colorSchemeColor,
   ),
-  scaffoldBackgroundColor: AppColorThemeLight.scaffoldBackgroundColor,
+  scaffoldBackgroundColor: AppColorThemeDark.scaffoldBackgroundColor,
   textTheme: TextTheme(
-    bodyLarge: TextStyle(
-      fontSize: 16,
-      color: AppColorThemeLight.textThemeColor,
-    ),
+    bodyLarge: TextStyle(fontSize: 16, color: AppColorThemeDark.textThemeColor),
     bodyMedium: TextStyle(
       fontSize: 14,
-      color: AppColorThemeLight.textThemeColor,
+      color: AppColorThemeDark.textThemeColor,
     ),
     titleLarge: TextStyle(
       fontSize: 20,
       fontWeight: FontWeight.bold,
-      color: AppColorThemeLight.textThemeColor,
+      color: AppColorThemeDark.textThemeColor,
     ),
   ),
   filledButtonTheme: FilledButtonThemeData(
     style: FilledButton.styleFrom(
       fixedSize: Size.fromHeight(56.h),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
-      backgroundColor: AppColorThemeLight.floatingThemeColor,
+      backgroundColor: AppColorThemeDark.floatingThemeColor,
     ),
   ),
-  appBarTheme: AppBarTheme(
-    backgroundColor: AppColorThemeLight.appBarThemeColor,
-  ),
+  appBarTheme: AppBarTheme(backgroundColor: AppColorThemeDark.appBarThemeColor),
   textButtonTheme: TextButtonThemeData(
     style: TextButton.styleFrom(
-      foregroundColor: AppColorThemeLight.textButtonThemeColor,
+      foregroundColor: AppColorThemeDark.textButtonThemeColor,
     ),
   ),
 
-  cardColor: AppColorThemeLight.cardColor.withValues(alpha: .50),
+  cardColor: AppColorThemeDark.cardColor.withValues(alpha: .50),
   inputDecorationTheme: InputDecorationTheme(
-    fillColor: AppColorThemeLight.inputDecorationThemeColor.withValues(
+    fillColor: AppColorThemeDark.inputDecorationThemeColor.withValues(
       alpha: .40,
     ),
     enabledBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(8.r),
       borderSide: BorderSide(
-        color: AppColorThemeLight.inputDecorationThemeBorderRadiusColor
+        color: AppColorThemeDark.inputDecorationThemeBorderRadiusColor
             .withValues(alpha: 0.040),
       ),
     ),

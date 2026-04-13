@@ -123,7 +123,7 @@ class _CreateLoginViewState extends State<CreateLoginView> {
                 },
                 width: 343.w,
               ),
-              AppLoginOrRegister(isLogin: false, onPressed: () {}),
+              AppLoginOrRegister( onPressed: () {}),
             ],
           ),
         ),
