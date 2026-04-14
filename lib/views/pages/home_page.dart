@@ -18,7 +18,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int currentIndex = 1;
+  int currentIndex = 3;
   final List<Model> list = [
     Model(CategoryPage()),
     Model(ProductPage()),

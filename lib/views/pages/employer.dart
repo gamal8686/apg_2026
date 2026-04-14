@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../core/components/app_light_dark.dart';
 import '../../core/components/app_search.dart';
 import '../../core/cubit/them_project/cubit_theme.dart';
 
@@ -24,7 +25,7 @@ class _EmployerViewState extends State<EmployerView> {
   ];
   int isSelected = 0;
   int selectedIndex = 0;
-  bool isDarkMode = false;
+
 
   @override
   Widget build(BuildContext context) {
@@ -42,18 +43,7 @@ class _EmployerViewState extends State<EmployerView> {
           ),
         ),
         actions: [
-          IconButton(
-            onPressed: () {
-              setState(() {
-                isDarkMode = !isDarkMode;
-              });
-              CubitTheme.get(context).selectTheme(
-                isDarkMode ? ThemeModeState.light : ThemeModeState.dark,
-              );
-              CashHelper.getThemeMode(CashHelperKeys.themeMode);
-            },
-            icon: isDarkMode ? Icon(Icons.dark_mode) : Icon(Icons.light_mode),
-          ),
+          AppLightDark()
         ],
       ),
 

@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
                 textDirection: TextDirection.rtl,
                 child: child!,
               ),
-              home: const EmployerView(),
+              home: const HomePage(),
             ),
           ),
         );

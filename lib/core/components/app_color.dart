@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:flutter/material.dart';
+
 class AppColorThemeDark {
   static final Color primarySwatch = Color(0xff5A3A22);
   static final Color textThemeColor = Color(0xff25180E).withValues(alpha: .80);
@@ -17,25 +19,27 @@ class AppColorThemeDark {
 }
 
 class AppColorThemeLight {
-  static final Color primarySwatch = Color(0xFF7E57C2);
+  static final Color primarySwatch = Color(0xFF607D8B); // blueGrey
 
-  static final Color textThemeColor = Color(0xFF7E57C2).withValues(alpha: .80);
+  static final Color textThemeColor = Color(0xFFECEFF1).withValues(alpha: .80);
 
-  static final Color buttonThemeColor = Color(0xFF7E57C2);
+  static final Color buttonThemeColor = Color(0xFF607D8B);
 
-  static final Color appBarThemeColor = Color(0xFF7E57C2);
+  static final Color appBarThemeColor = Color(0xFF455A64);
 
-  static final Color floatingThemeColor = Color(0xFF7E57C2);
+  static final Color floatingThemeColor = Color(0xFF607D8B);
 
-  static final Color inputDecorationThemeColor = Color(0xFFEAF3FF);
+  static final Color inputDecorationThemeColor = Color(0xFFCFD8DC).withValues(alpha: .40);
 
-  static final Color textButtonThemeColor = Color(0xFF7E57C2);
+  static final Color textButtonThemeColor = Color(0xFF607D8B);
 
-  static final Color inputDecorationThemeBorderRadiusColor = Color(0xFF7E57C2);
+  static final Color inputDecorationThemeBorderRadiusColor = Color(0xFF607D8B);
 
-  static final Color cardColor = Color(0xFFFFFFFF);
+  static final Color cardColor = Color(0xFF263238);
 
-  static final Color colorSchemeColor = Color(0xFF7E57C2);
+  static final Color colorSchemeColor = Color(0xFF607D8B);
 
-  static final Color scaffoldBackgroundColor = Color(0xFFF7FAFF);
+  static final Color scaffoldBackgroundColor = Colors.blueGrey;
 }
+
+
