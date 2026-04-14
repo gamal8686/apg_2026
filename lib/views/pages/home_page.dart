@@ -31,8 +31,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-        selectedFontSize: 15.sp,
-        unselectedFontSize: 10.sp,
+        selectedFontSize: 12.sp,
+        unselectedFontSize: 8.sp,
         currentIndex: currentIndex,
         onTap: (index) {
           setState(() {
@@ -42,8 +42,19 @@ class _HomePageState extends State<HomePage> {
         type: BottomNavigationBarType.fixed,
         backgroundColor: Theme.of(context).primaryColor,
         selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white.withValues(alpha: 0.6),
 
-        unselectedItemColor: Colors.black87,
+        selectedLabelStyle: TextStyle(
+          fontWeight: FontWeight.w700,
+          fontFamily: 'Cairo',
+          color: Colors.white24
+        ),
+
+        unselectedLabelStyle: TextStyle(
+          fontWeight: FontWeight.w400,
+          fontFamily: 'Cairo',
+            color: Colors.black54
+        ),
         iconSize: 20,
 
         items: [
