@@ -37,6 +37,7 @@ ThemeData getThemeDataLight = ThemeData(
 
   cardColor: AppColorThemeDark.cardColor.withValues(alpha: .50),
   inputDecorationTheme: InputDecorationTheme(
+
     fillColor: AppColorThemeDark.inputDecorationThemeColor.withValues(
       alpha: .40,
     ),

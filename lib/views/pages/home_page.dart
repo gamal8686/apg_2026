@@ -1,7 +1,8 @@
 import 'package:company_apg_2026/core/components/app_image.dart';
 
 import 'package:company_apg_2026/views/pages/category.dart';
-import 'package:company_apg_2026/views/pages/product.dart';
+import 'package:company_apg_2026/views/pages/product_Page.dart';
+import 'package:company_apg_2026/views/products/product_location.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

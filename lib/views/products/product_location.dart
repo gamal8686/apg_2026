@@ -4,14 +4,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/components/app_back.dart';
 
-class ProductPage extends StatefulWidget {
-  const ProductPage({super.key});
+class ProductLocationView extends StatefulWidget {
+  const ProductLocationView({super.key});
 
   @override
-  State<ProductPage> createState() => _ProductPageState();
+  State<ProductLocationView> createState() => _ProductPageState();
 }
 
-class _ProductPageState extends State<ProductPage> {
+class _ProductPageState extends State<ProductLocationView> {
   List<String> list = List.generate(10, (index) => "Item $index");
 
   @override
@@ -181,42 +181,110 @@ class _ProductPageState extends State<ProductPage> {
                         return await showDialog(
                           context: context,
                           builder: (context) {
-                            return AlertDialog(
-                              title: const Text(
-                                "Delete Item",
-                                textAlign: TextAlign.center,
+                            return Dialog(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20.r),
                               ),
-                              content: const Text(
-                                "هل انت متاكد من حذف مكان المنتج ؟",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: Color(0xff263238),
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 15,
-                                  fontFamily: 'Cairo',
+                              child: Container(
+                                padding: EdgeInsets.all(20),
+                                height: 270.h,
+
+                                child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Divider(
+                                      color: Color(0xff444444),
+                                      thickness: 3,
+                                      height: 10,
+                                      indent: 100,
+                                      endIndent: 100,
+                                    ),
+                                    Text(
+                                      "حذف صنف ",
+                                      style: TextStyle(
+                                        fontFamily: 'Cairo',
+                                        fontSize: 26.sp,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+
+                                    Text(
+                                      "هل انت متاكد من حذف هذا الصنف ؟",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontFamily: 'Cairo',
+                                        fontSize: 20.sp,
+                                        fontWeight: FontWeight.w600,
+                                        color: Color(0xff263238),
+                                      ),
+                                    ),
+
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Expanded(
+                                          child: TextButton(
+                                            onPressed: () =>
+                                                Navigator.pop(context, false),
+                                            child: Row(
+                                              children: [
+                                                SizedBox(width: 10.w),
+                                                Text(
+                                                  "إلغاء",
+                                                  style: TextStyle(
+                                                    color: Colors.red,
+                                                    fontFamily: 'Cairo',
+                                                    fontSize: 18.sp,
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                                ),
+                                                Icon(
+                                                  Icons.close,
+                                                  color: Colors.red,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(width: 10.w),
+                                        Expanded(
+                                          child: ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor: Theme.of(context)
+                                                  .primaryColor
+                                                  .withValues(alpha: 0.1),
+                                            ),
+                                            onPressed: () =>
+                                                Navigator.pop(context, true),
+                                            child: Row(
+                                              children: [
+                                                SizedBox(width: 10.w),
+                                                Text(
+                                                  "حذف",
+                                                  style: TextStyle(
+                                                    color: Colors.red,
+                                                    fontFamily: 'Cairo',
+                                                    fontSize: 18.sp,
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                                ),
+                                                Icon(Icons.check),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
                                 ),
                               ),
-                              actions: [
-                                TextButton(
-                                  onPressed: () =>
-                                      Navigator.pop(context, false),
-                                  child: const Text(
-                                    "Cancel",
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ),
-                                TextButton(
-                                  onPressed: () => Navigator.pop(context, true),
-                                  child: const Text(
-                                    "Delete",
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ),
-                              ],
                             );
                           },
                         );
                       },
+
                       onDismissed: (direction) {
                         setState(() {
                           list.removeAt(index);
