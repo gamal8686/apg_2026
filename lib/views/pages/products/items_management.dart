@@ -7,6 +7,8 @@ import 'package:company_apg_2026/core/components/app_search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../core/components/app_admin.dart';
+
 class ItemsManagementView extends StatefulWidget {
   const ItemsManagementView({super.key});
 
@@ -20,6 +22,8 @@ class _ItemsManagementViewState extends State<ItemsManagementView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: AppAdmin(onTap: () {}),
+
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         title: Text(

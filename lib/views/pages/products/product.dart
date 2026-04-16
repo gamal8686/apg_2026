@@ -94,12 +94,12 @@ class ProductPage extends StatelessWidget {
 
                         Text.rich(
                           TextSpan(
-                            text: 'عبوه ',
+                            text: 'عدد البالتات ',
                             style: TextStyle(color: Colors.black),
 
                             children: [
                               TextSpan(
-                                text: '135 مل',
+                                text: '500',
                                 style: TextStyle(
                                   color: Theme.of(context).primaryColor,
                                   fontWeight: FontWeight.bold,
