@@ -35,6 +35,7 @@ class _SplashViewState extends State<SplashView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: AppImage(path: 'my_name.png', height: 60.h),
       backgroundColor: Colors.white,
       body: Center(
         child: AppImage(path: 'splash.jpg', height: 250.h),

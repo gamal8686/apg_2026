@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
-import 'car.dart';
+import 'car/car.dart';
 import 'employer.dart';
 import 'order.dart';
 
@@ -19,7 +19,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int currentIndex = 1;
+  int currentIndex = 2;
   final List<Model> list = [
     Model(CategoryPage()),
     Model(ProductPage()),

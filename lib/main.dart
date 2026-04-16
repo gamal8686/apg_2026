@@ -6,6 +6,7 @@ import 'package:company_apg_2026/views/auth/forget_password.dart';
 import 'package:company_apg_2026/views/auth/login.dart';
 import 'package:company_apg_2026/views/auth/new_password.dart';
 import 'package:company_apg_2026/views/auth/otp_view.dart';
+import 'package:company_apg_2026/views/pages/car/car.dart';
 import 'package:company_apg_2026/views/pages/employer.dart';
 import 'package:company_apg_2026/views/pages/home_page.dart';
 import 'package:company_apg_2026/views/pages/products/product_location.dart';
@@ -29,6 +30,8 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     final primary = Color(0xff5A3A22);
@@ -53,7 +56,7 @@ class MyApp extends StatelessWidget {
                 textDirection: TextDirection.rtl,
                 child: child!,
               ),
-              home: const ProductLocationView(),
+              home: const CarPage(),
             ),
           ),
         );

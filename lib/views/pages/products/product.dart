@@ -55,7 +55,7 @@ class ProductPage extends StatelessWidget {
                   crossAxisCount: 2,
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 10,
-                  childAspectRatio: 0.8,
+                  childAspectRatio: 0.7,
                 ),
                 itemBuilder: (context, index) {
                   return Container(
@@ -141,17 +141,16 @@ class ProductPage extends StatelessWidget {
                               width: 20.w,
                             ),
                             SizedBox(width: 5.h),
-                            Text.rich(
-                              TextSpan(
-                                children: [
-                                  TextSpan(
-                                    text: 'مخزن A',
-                                    style: TextStyle(
-                                      color: Theme.of(context).primaryColor,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                            FittedBox(
+                              fit: BoxFit.scaleDown,
+                              child: Text.rich(
+                                TextSpan(
+                                  text: 'مخزن A',
+                                  style: TextStyle(
+                                    color: Theme.of(context).primaryColor,
+                                    fontWeight: FontWeight.bold,
                                   ),
-                                ],
+                                ),
                               ),
                             ),
                           ],
