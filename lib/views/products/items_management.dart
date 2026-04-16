@@ -54,7 +54,7 @@ class _ItemsManagementViewState extends State<ItemsManagementView> {
               ),
             ),
             SizedBox(height: 10.h),
-            AppSearch(onPressed: () {}),
+            AppSearch(onPressed: () {},labelText: 'الصنف بالرقم',),
             SizedBox(height: 10.h),
             Text(
               'اجمالي الاصناف * : 540 ',
