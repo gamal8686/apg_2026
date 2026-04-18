@@ -3,8 +3,39 @@ import 'package:company_apg_2026/core/components/app_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CarPage extends StatelessWidget {
+class CarPage extends StatefulWidget {
   const CarPage({super.key});
+
+  @override
+  State<CarPage> createState() => _CarPageState();
+}
+
+class _CarPageState extends State<CarPage> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<Offset> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 2),
+    );
+
+    _animation = Tween<Offset>(
+      begin: Offset(0, -0.3),
+      end: Offset.zero,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
+
+    _controller.forward();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,104 +83,107 @@ class CarPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 10.h),
-            Row(
-              children: [
-                Expanded(
-                  child: Container(
-
-                    decoration: BoxDecoration(
-                      color: Color(0xffFFF3E0),
-                      border: Border.all(color: Color(0xffEFEFEF)),
-                      borderRadius: BorderRadius.circular(14),
-                    ),
-                    height: 120.h,
-                    width: 120.w,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        AppImage(path: 'car_car.png', height: 20.h),
-                        SizedBox(height: 5.h),
-                        Text(
-                          '5',
-                          style: TextStyle(
-                            color: Theme.of(context).primaryColor,
-                            fontFamily: 'Cairo',
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        SizedBox(height: 5.h),
-                        Text(
-                          'عربيات اليوم',
-                          style: TextStyle(
-                            color: Theme.of(context).primaryColor,
-                            fontFamily: 'Cairo',
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(width: 5.w,),
-                Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Color(0xffFFF3E0),
-                      border: Border.all(color: Color(0xffEFEFEF)),
-                      borderRadius: BorderRadius.circular(14),
-                    ),
-                    height: 120.h,
-                    width: 120.w,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        AppImage(path: 'inbox.png', height: 20.h),
-                        SizedBox(height: 5.h),
-                        Text(
-                          '5',
-                          style: TextStyle(
-                            color: Theme.of(context).primaryColor,
-                            fontFamily: 'Cairo',
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        SizedBox(height: 5.h),
-                        Text(
-                          'عربيات اليوم',
-                          style: TextStyle(
-                            color: Theme.of(context).primaryColor,
-                            fontFamily: 'Cairo',
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(height: 10.h),
             Expanded(
-              child: ListView.builder(
-                itemCount: 2,
-                itemBuilder: (context, index) {
-                  return Container(
-                    height: 400.h,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Color(0xffEFEFEF)),
-                      borderRadius: BorderRadius.circular(14),
+              child: ListView(
+                children: [
+
+                  SlideTransition(
+                    position: _animation,
+                    child: FadeTransition(
+                      opacity: _controller,
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Color(0xffFFF3E0),
+                                border: Border.all(color: Color(0xffEFEFEF)),
+                                borderRadius: BorderRadius.circular(14),
+                              ),
+                              height: 120.h,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  AppImage(path: 'car_car.png', height: 20.h),
+                                  SizedBox(height: 5.h),
+                                  Text(
+                                    '5',
+                                    style: TextStyle(
+                                      color: Theme.of(context).primaryColor,
+                                      fontFamily: 'Cairo',
+                                      fontSize: 16.sp,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                  SizedBox(height: 5.h),
+                                  Text(
+                                    'عربيات اليوم',
+                                    style: TextStyle(
+                                      color: Theme.of(context).primaryColor,
+                                      fontFamily: 'Cairo',
+                                      fontSize: 16.sp,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 5.w),
+                          Expanded(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Color(0xffFFF3E0),
+                                border: Border.all(color: Color(0xffEFEFEF)),
+                                borderRadius: BorderRadius.circular(14),
+                              ),
+                              height: 120.h,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  AppImage(path: 'inbox.png', height: 20.h),
+                                  SizedBox(height: 5.h),
+                                  Text(
+                                    '5',
+                                    style: TextStyle(
+                                      color: Theme.of(context).primaryColor,
+                                      fontFamily: 'Cairo',
+                                      fontSize: 16.sp,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                  SizedBox(height: 5.h),
+                                  Text(
+                                    'عربيات اليوم',
+                                    style: TextStyle(
+                                      color: Theme.of(context).primaryColor,
+                                      fontFamily: 'Cairo',
+                                      fontSize: 16.sp,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                  ),
+
+                  SizedBox(height: 10.h),
+
+                  ...List.generate(2, (index) {
+                    return Container(
+                      margin: EdgeInsets.only(bottom: 10.h),
+                      padding: EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Color(0xffEFEFEF)),
+                        borderRadius: BorderRadius.circular(14),
+                      ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(height: 10.h),
                           Text(
                             'شركه ابيكو',
                             style: TextStyle(
@@ -160,14 +194,38 @@ class CarPage extends StatelessWidget {
                             ),
                           ),
                           SizedBox(height: 5.h),
-                          Text(
-                            'يوم 5 يناير',
-                            style: TextStyle(
-                              color: Color(0xff292D32),
-                              fontFamily: 'Cairo',
-                              fontSize: 15.sp,
-                              fontWeight: FontWeight.w500,
-                            ),
+                          Row(
+                            children: [
+                              Text(
+                                'يوم 5 يناير',
+                                style: TextStyle(
+                                  color: Color(0xff292D32),
+                                  fontFamily: 'Cairo',
+                                  fontSize: 15.sp,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              Spacer(),
+                              Container(
+                                padding: EdgeInsets.all(2), // سمك البوردر
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    color: Colors.black, // لون البوردر
+                                    width: 2,
+                                  ),
+                                ),
+                                child: CircleAvatar(
+                               maxRadius: 15,
+                                    child: Text('1',
+                                  style: TextStyle(
+                                    color: Color(0xff292D32),
+                                    fontFamily: 'Cairo',
+                                    fontSize: 20.sp,
+                                    fontWeight: FontWeight.w700,
+                                  ),)),
+                              ),
+                            ],
                           ),
                           SizedBox(height: 10.h),
                           Row(
@@ -293,12 +351,13 @@ class CarPage extends StatelessWidget {
                             text: 'تفاصيل',
                             onPressed: () {},
                             width: double.infinity,
+
                           ),
                         ],
                       ),
-                    ),
-                  );
-                },
+                    );
+                  }),
+                ],
               ),
             ),
           ],

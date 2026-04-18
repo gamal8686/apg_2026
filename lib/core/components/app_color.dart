@@ -19,7 +19,7 @@ class AppColorThemeDark {
 }
 
 class AppColorThemeLight {
-  static final Color primarySwatch = Color(0xFF607D8B); // blueGrey
+  static final Color primarySwatch = Color(0xFF172E3A); // blueGrey
 
   static final Color textThemeColor = Color(0xFFECEFF1).withValues(alpha: .80);
 
@@ -27,11 +27,11 @@ class AppColorThemeLight {
 
   static final Color appBarThemeColor = Color(0xFF455A64);
 
-  static final Color floatingThemeColor = Color(0xFF607D8B);
+  static final Color floatingThemeColor = Color(0xFF79C5EA);
 
   static final Color inputDecorationThemeColor = Color(0xFFCFD8DC).withValues(alpha: .40);
 
-  static final Color textButtonThemeColor = Color(0xFF607D8B);
+  static final Color textButtonThemeColor = Color(0xFF0D618A);
 
   static final Color inputDecorationThemeBorderRadiusColor = Color(0xFF607D8B);
 
