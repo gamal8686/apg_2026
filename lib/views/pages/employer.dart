@@ -37,8 +37,9 @@ class _EmployerViewState extends State<EmployerView> {
         title: Text(
           'العاملين',
           style: TextStyle(
+            color: Theme.of(context).primaryColor,
             fontSize: 20.sp,
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w900,
             fontFamily: 'Cairo',
           ),
         ),

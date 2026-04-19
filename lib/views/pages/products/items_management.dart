@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/components/app_admin.dart';
+import '../../../core/components/app_container_par.dart';
+import '../../../core/components/app_light_dark.dart';
 
 class ItemsManagementView extends StatefulWidget {
   const ItemsManagementView({super.key});
@@ -25,10 +27,12 @@ class _ItemsManagementViewState extends State<ItemsManagementView> {
       floatingActionButton: AppAdmin(onTap: () {}),
 
       appBar: AppBar(
+        actions: [AppLightDark()],
         backgroundColor: Colors.transparent,
         title: Text(
           'اداره الاصناف',
           style: TextStyle(
+            color: Theme.of(context).primaryColor,
             fontFamily: 'Cairo',
             fontSize: 20.sp,
             fontWeight: FontWeight.w700,
@@ -43,20 +47,7 @@ class _ItemsManagementViewState extends State<ItemsManagementView> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Center(
-              child: Container(
-                height: 5.h,
-                width: 88.w,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Color(0xff4B2713),
-                      Color(0xff4B2713).withValues(alpha: 0.10),
-                    ],
-                  ),
-                ),
-              ),
-            ),
+            AppContainerPar(),
             SizedBox(height: 10.h),
             AppSearch(onPressed: () {},labelText: 'الصنف بالرقم',),
             SizedBox(height: 10.h),

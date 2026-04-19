@@ -1,7 +1,12 @@
+import 'package:company_apg_2026/core/logic/helper_methods.dart';
+import 'package:company_apg_2026/views/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../core/components/app_back.dart';
 import '../../../core/components/app_image.dart';
+import '../../../core/components/app_light_dark.dart';
+import 'car.dart';
 
 class ProductDetailsCar extends StatelessWidget {
   const ProductDetailsCar({super.key});
@@ -10,9 +15,17 @@ class ProductDetailsCar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [AppLightDark()],
+        leading: AppBack(
+          pass: 'arrow-left.svg',
+          onTap: () {
+            goTo(HomePage());
+          },
+        ),
         title: Text(
           'تفاصيل الشحنه',
           style: TextStyle(
+            color: Theme.of(context).primaryColor,
             fontFamily: 'Cairo',
             fontSize: 20.sp,
             fontWeight: FontWeight.w700,
@@ -250,9 +263,9 @@ class ProductDetailsCar extends StatelessWidget {
                     indent: 10,
                     endIndent: 10,
                     height: 10.h,
-                    color: Color(0xffD5D5D5),
+                    color: Colors.black54,
                   ),
-
+                  SizedBox(height: 10.h),
                   Text(
                     'معلومات التوصيل',
                     style: TextStyle(
@@ -361,7 +374,7 @@ class ProductDetailsCar extends StatelessWidget {
                     indent: 10,
                     endIndent: 10,
                     height: 10.h,
-                    color: Color(0xffD5D5D5),
+                    color: Colors.black54,
                   ),
                   SizedBox(height: 5.h),
                   Text(
@@ -378,54 +391,54 @@ class ProductDetailsCar extends StatelessWidget {
                     itemCount: 2,
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) {
-                 return   Padding(
-                   padding: const EdgeInsets.all(8.0),
-                   child: Container(
-                        height: 95.h,
-                        decoration: BoxDecoration(
-                          color: Color(0xffFFF8E1),
-                          borderRadius: BorderRadius.circular(14.r),
-                        ),
-                        child: Row(
-                          children: [
-                            SizedBox(width: 5.w),
-                            AppImage(path: 'bottle.png', height: 30.h),
-                            SizedBox(width: 15.w),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'باراسيتامول 500 جم',
-                                    style: TextStyle(
-                                      color: Theme.of(context).primaryColor,
-                                      fontFamily: 'Cairo',
-                                      fontSize: 20.sp,
-                                      fontWeight: FontWeight.w900,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Container(
+                          height: 95.h,
+                          decoration: BoxDecoration(
+                            color: Color(0xffFFF8E1),
+                            borderRadius: BorderRadius.circular(14.r),
+                          ),
+                          child: Row(
+                            children: [
+                              SizedBox(width: 5.w),
+                              AppImage(path: 'bottle.png', height: 30.h),
+                              SizedBox(width: 15.w),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'باراسيتامول 500 جم',
+                                      style: TextStyle(
+                                        color: Theme.of(context).primaryColor,
+                                        fontFamily: 'Cairo',
+                                        fontSize: 20.sp,
+                                        fontWeight: FontWeight.w900,
+                                      ),
                                     ),
-                                  ),
-                                  SizedBox(height: 5.h),
-                                  Text(
-                                    '8 بالات - 2000 علبه ',
-                                    style: TextStyle(
-                                      color: Theme.of(context).primaryColor,
-                                      fontFamily: 'Cairo',
-                                      fontSize: 17.sp,
-                                      fontWeight: FontWeight.w500,
+                                    SizedBox(height: 5.h),
+                                    Text(
+                                      '8 بالات - 2000 علبه ',
+                                      style: TextStyle(
+                                        color: Theme.of(context).primaryColor,
+                                        fontFamily: 'Cairo',
+                                        fontSize: 17.sp,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
                                     ),
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                 );
-                  },
+                      );
+                    },
                   ),
 
                   //todo

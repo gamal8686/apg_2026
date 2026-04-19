@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:company_apg_2026/core/components/app_admin.dart';
 
+import '../../../core/components/app_container_par.dart';
+import '../../../core/components/app_light_dark.dart';
+
 class ProductPage extends StatelessWidget {
   const ProductPage({super.key});
 
@@ -13,9 +16,11 @@ class ProductPage extends StatelessWidget {
     return Scaffold(
       floatingActionButton: AppAdmin(onTap: () {}),
       appBar: AppBar(
+        actions: [AppLightDark()],
         title: Text(
           'اداره الانتاج',
           style: TextStyle(
+            color: Theme.of(context).primaryColor,
             fontFamily: 'Cairo',
             fontSize: 20.sp,
             fontWeight: FontWeight.w700,
@@ -28,20 +33,7 @@ class ProductPage extends StatelessWidget {
         padding: const EdgeInsets.all(12.0),
         child: Column(
           children: [
-            Center(
-              child: Container(
-                height: 5.h,
-                width: 88.w,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Color(0xff4B2713),
-                      Color(0xff4B2713).withValues(alpha: 0.10),
-                    ],
-                  ),
-                ),
-              ),
-            ),
+            AppContainerPar(),
             SizedBox(height: 20.h),
             AppSearch(
               onPressed: () {},

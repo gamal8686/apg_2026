@@ -1,7 +1,13 @@
+import 'package:company_apg_2026/core/components/app_back.dart';
 import 'package:company_apg_2026/core/components/app_button.dart';
 import 'package:company_apg_2026/core/components/app_image.dart';
+import 'package:company_apg_2026/core/components/app_light_dark.dart';
+import 'package:company_apg_2026/core/logic/helper_methods.dart';
+import 'package:company_apg_2026/views/pages/car/product_details_car.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../core/components/app_container_par.dart';
 
 class CarPage extends StatefulWidget {
   const CarPage({super.key});
@@ -41,9 +47,11 @@ class _CarPageState extends State<CarPage> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+ actions: [AppLightDark()],
         title: Text(
           ' اداره عربيات التحميل',
           style: TextStyle(
+            color: Theme.of(context).primaryColor,
             fontFamily: 'Cairo',
             fontSize: 20.sp,
             fontWeight: FontWeight.w700,
@@ -57,20 +65,7 @@ class _CarPageState extends State<CarPage> with SingleTickerProviderStateMixin {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Center(
-              child: Container(
-                height: 5.h,
-                width: 88.w,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Color(0xff4B2713),
-                      Color(0xff4B2713).withValues(alpha: 0.10),
-                    ],
-                  ),
-                ),
-              ),
-            ),
+            AppContainerPar(),
 
             SizedBox(height: 10.h),
             Text(
@@ -349,7 +344,9 @@ class _CarPageState extends State<CarPage> with SingleTickerProviderStateMixin {
                           SizedBox(height: 10.h),
                           AppButton(
                             text: 'تفاصيل',
-                            onPressed: () {},
+                            onPressed: () {
+                              goTo(ProductDetailsCar());
+                            },
                             width: double.infinity,
 
                           ),

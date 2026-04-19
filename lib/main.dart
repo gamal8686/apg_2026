@@ -57,7 +57,7 @@ class MyApp extends StatelessWidget {
                 textDirection: TextDirection.rtl,
                 child: child!,
               ),
-              home: const ProductDetailsCar(),
+              home: const SplashView(),
             ),
           ),
         );

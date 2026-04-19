@@ -1,15 +1,14 @@
-import 'package:company_apg_2026/core/components/app_image.dart';
 
-import 'package:company_apg_2026/views/pages/category.dart';
 import 'package:company_apg_2026/views/pages/products/product.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
+import '../../core/components/app_image.dart';
 import 'car/car.dart';
 import 'employer.dart';
-import 'order.dart';
+import 'category.dart';
+import 'order/order.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -19,13 +18,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int currentIndex = 2;
+  int currentIndex = 0;
   final List<Model> list = [
-    Model(CategoryPage()),
+    Model(OrderPage()),
     Model(ProductPage()),
     Model(CarPage()),
     Model(EmployerView()),
-    Model(OrderPage()),
+    Model(CategoryPage()),
   ];
 
   @override

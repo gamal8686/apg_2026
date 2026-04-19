@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/components/app_admin.dart';
 import '../../../core/components/app_back.dart';
+import '../../../core/components/app_light_dark.dart';
 
 
 class ProductLocationView extends StatefulWidget {
@@ -23,12 +24,14 @@ class _ProductPageState extends State<ProductLocationView> {
       floatingActionButton: AppAdmin(onTap: () {}),
 
       appBar: AppBar(
+        actions: [AppLightDark()],
         leading: AppBack(pass: 'arrow-left.svg', radius: 20.r, onTap: () {}),
         centerTitle: true,
         backgroundColor: Colors.transparent,
         title: Text(
           'تفاصيل المنتج',
           style: TextStyle(
+            color: Theme.of(context).primaryColor,
             fontSize: 20.sp,
             fontFamily: 'Cairo',
             fontWeight: FontWeight.w700,
