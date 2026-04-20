@@ -8,7 +8,7 @@ import 'package:company_apg_2026/views/auth/new_password.dart';
 import 'package:company_apg_2026/views/auth/otp_view.dart';
 import 'package:company_apg_2026/views/pages/car/car.dart';
 import 'package:company_apg_2026/views/pages/car/product_details_car.dart';
-import 'package:company_apg_2026/views/pages/employer.dart';
+import 'package:company_apg_2026/views/pages/employer/employer.dart';
 import 'package:company_apg_2026/views/pages/home_page.dart';
 import 'package:company_apg_2026/views/pages/order/order_details.dart';
 import 'package:company_apg_2026/views/pages/products/product_location.dart';
@@ -58,7 +58,7 @@ class MyApp extends StatelessWidget {
                 textDirection: TextDirection.rtl,
                 child: child!,
               ),
-              home: const OrderDetails(),
+              home: const EmployerView(),
             ),
           ),
         );

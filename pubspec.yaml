@@ -30,6 +30,7 @@ dependencies:
   shimmer: ^3.0.0
   flutter_bloc: ^9.1.1
   cached_network_image: ^3.4.1
+  auto_size_text: ^3.0.0
 
 
 
