@@ -10,6 +10,7 @@ import 'package:company_apg_2026/views/pages/car/car.dart';
 import 'package:company_apg_2026/views/pages/car/product_details_car.dart';
 import 'package:company_apg_2026/views/pages/employer.dart';
 import 'package:company_apg_2026/views/pages/home_page.dart';
+import 'package:company_apg_2026/views/pages/order/order_details.dart';
 import 'package:company_apg_2026/views/pages/products/product_location.dart';
 
 import 'package:flutter/material.dart';
@@ -21,7 +22,6 @@ import 'core/cubit/them_project/get_theme_data_dark.dart';
 import 'core/cubit/them_project/get_theme_data_light.dart';
 import 'core/cubit/them_project/state_theme.dart';
 import 'core/logic/helper_methods.dart';
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -52,12 +52,13 @@ class MyApp extends StatelessWidget {
               theme: getThemeDataLight,
               darkTheme: getThemeDataDark,
               themeMode: CubitTheme.get(context).getTheme(),
-
+              themeAnimationCurve: Curves.easeInOut,
+                themeAnimationDuration: Duration(milliseconds: 700),
               builder: (context, child) => Directionality(
                 textDirection: TextDirection.rtl,
                 child: child!,
               ),
-              home: const SplashView(),
+              home: const OrderDetails(),
             ),
           ),
         );

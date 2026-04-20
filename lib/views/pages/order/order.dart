@@ -1,6 +1,8 @@
 import 'package:company_apg_2026/core/components/app_button.dart';
 import 'package:company_apg_2026/core/components/app_container_par.dart';
 import 'package:company_apg_2026/core/components/app_image.dart';
+import 'package:company_apg_2026/core/logic/helper_methods.dart';
+import 'package:company_apg_2026/views/pages/order/order_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -244,7 +246,9 @@ class _OrderPageState extends State<OrderPage> {
                           SizedBox(height: 10.h),
                           Row(
                             children: [
-                              AppButton(text: 'تفاصيل', onPressed: () {},width:203.w ,),
+                              AppButton(text: 'تفاصيل', onPressed: () {
+                                goTo(OrderDetails());
+                              },width:203.w ,),
                               SizedBox(width: 5.w),
                               AppButton(text: 'حذف', onPressed: () {},width:106.w ,),
                             ],
