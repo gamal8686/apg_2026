@@ -1,3 +1,5 @@
+import 'package:company_apg_2026/core/components/app_container_par.dart';
+import 'package:company_apg_2026/core/components/app_divider.dart';
 import 'package:company_apg_2026/core/logic/helper_methods.dart';
 import 'package:company_apg_2026/views/pages/home_page.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +21,7 @@ class ProductDetailsCar extends StatelessWidget {
         leading: AppBack(
           pass: 'arrow-left.svg',
           onTap: () {
-            goTo(HomePage());
+            goTo(HomePage(initialIndex: 2,));
           },
         ),
         title: Text(
@@ -41,20 +43,7 @@ class ProductDetailsCar extends StatelessWidget {
             Expanded(
               child: ListView(
                 children: [
-                  Center(
-                    child: Container(
-                      height: 5.h,
-                      width: 88.w,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            Color(0xff4B2713),
-                            Color(0xff4B2713).withValues(alpha: 0.10),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
+                 AppContainerPar(),
 
                   SizedBox(height: 10.h),
 
@@ -258,13 +247,7 @@ class ProductDetailsCar extends StatelessWidget {
 
                   SizedBox(height: 10.h),
 
-                  Divider(
-                    thickness: 1,
-                    indent: 10,
-                    endIndent: 10,
-                    height: 10.h,
-                    color: Colors.black54,
-                  ),
+                 AppDivider(),
                   SizedBox(height: 10.h),
                   Text(
                     'معلومات التوصيل',
@@ -369,13 +352,7 @@ class ProductDetailsCar extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 5.h),
-                  Divider(
-                    thickness: 1,
-                    indent: 10,
-                    endIndent: 10,
-                    height: 10.h,
-                    color: Colors.black54,
-                  ),
+                  AppDivider(),
                   SizedBox(height: 5.h),
                   Text(
                     'محتويات الشحنه',

@@ -1,12 +1,13 @@
 import 'package:company_apg_2026/core/components/app_image.dart';
 import 'package:company_apg_2026/core/logic/helper_methods.dart';
+import 'package:company_apg_2026/views/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/components/app_admin.dart';
 import '../../../core/components/app_back.dart';
+import '../../../core/components/app_container_par.dart';
 import '../../../core/components/app_light_dark.dart';
-
 
 class ProductLocationView extends StatefulWidget {
   const ProductLocationView({super.key});
@@ -25,7 +26,13 @@ class _ProductPageState extends State<ProductLocationView> {
 
       appBar: AppBar(
         actions: [AppLightDark()],
-        leading: AppBack(pass: 'arrow-left.svg', radius: 20.r, onTap: () {}),
+        leading: AppBack(
+          pass: 'arrow-left.svg',
+          radius: 20.r,
+          onTap: () {
+            goTo(HomePage(initialIndex: 1));
+          },
+        ),
         centerTitle: true,
         backgroundColor: Colors.transparent,
         title: Text(
@@ -45,6 +52,8 @@ class _ProductPageState extends State<ProductLocationView> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              AppContainerPar(),
+              SizedBox(height: 10.h),
               Center(
                 child: AppImage(fit: BoxFit.cover, path: 'product.png'),
               ),
@@ -221,8 +230,7 @@ class _ProductPageState extends State<ProductLocationView> {
                             Spacer(),
                             InkWell(
                               onTap: () async {
-                                bool? result = await
-                                showDialog(
+                                bool? result = await showDialog(
                                   context: context,
                                   builder: (context) {
                                     return Dialog(
@@ -237,7 +245,7 @@ class _ProductPageState extends State<ProductLocationView> {
 
                                         child: Column(
                                           mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                              MainAxisAlignment.spaceBetween,
                                           children: [
                                             Divider(
                                               color: Color(0xff444444),
@@ -268,12 +276,16 @@ class _ProductPageState extends State<ProductLocationView> {
 
                                             Row(
                                               mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
                                               children: [
                                                 Expanded(
                                                   child: TextButton(
                                                     onPressed: () =>
-                                                        Navigator.pop(context, false),
+                                                        Navigator.pop(
+                                                          context,
+                                                          false,
+                                                        ),
                                                     child: Row(
                                                       children: [
                                                         SizedBox(width: 10.w),
@@ -283,7 +295,8 @@ class _ProductPageState extends State<ProductLocationView> {
                                                             color: Colors.red,
                                                             fontFamily: 'Cairo',
                                                             fontSize: 18.sp,
-                                                            fontWeight: FontWeight.w600,
+                                                            fontWeight:
+                                                                FontWeight.w600,
                                                           ),
                                                         ),
                                                         Icon(
@@ -297,13 +310,20 @@ class _ProductPageState extends State<ProductLocationView> {
                                                 SizedBox(width: 10.w),
                                                 Expanded(
                                                   child: ElevatedButton(
-                                                    style: ElevatedButton.styleFrom(
-                                                      backgroundColor: Theme.of(context)
-                                                          .primaryColor
-                                                          .withValues(alpha: 0.1),
-                                                    ),
+                                                    style:
+                                                        ElevatedButton.styleFrom(
+                                                          backgroundColor:
+                                                              Theme.of(context)
+                                                                  .primaryColor
+                                                                  .withValues(
+                                                                    alpha: 0.1,
+                                                                  ),
+                                                        ),
                                                     onPressed: () =>
-                                                        Navigator.pop(context, true),
+                                                        Navigator.pop(
+                                                          context,
+                                                          true,
+                                                        ),
                                                     child: Row(
                                                       children: [
                                                         SizedBox(width: 10.w),
@@ -313,7 +333,8 @@ class _ProductPageState extends State<ProductLocationView> {
                                                             color: Colors.red,
                                                             fontFamily: 'Cairo',
                                                             fontSize: 18.sp,
-                                                            fontWeight: FontWeight.w600,
+                                                            fontWeight:
+                                                                FontWeight.w600,
                                                           ),
                                                         ),
                                                         Icon(Icons.check),
@@ -350,4 +371,3 @@ class _ProductPageState extends State<ProductLocationView> {
     );
   }
 }
-

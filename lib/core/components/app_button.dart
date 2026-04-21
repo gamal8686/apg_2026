@@ -6,13 +6,14 @@ class AppButton extends StatelessWidget {
   final String text;
   final double? width;
   final void Function() onPressed;
+  final Color? color;
 
   const AppButton({
     super.key,
     required this.text,
     required this.onPressed,
     this.width,
-    this.isLoading = false,
+    this.isLoading = false, this.color,
   });
 
   @override
@@ -23,6 +24,9 @@ class AppButton extends StatelessWidget {
     return SizedBox(
       width: width,
       child: FilledButton(
+        style: FilledButton.styleFrom(
+          backgroundColor:  color ??Color(0xff4B2713),
+        ),
         onPressed: onPressed,
         child: Text(
           text,

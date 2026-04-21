@@ -1,5 +1,6 @@
 import 'package:company_apg_2026/core/components/app_back.dart';
 import 'package:company_apg_2026/core/components/app_container_par.dart';
+import 'package:company_apg_2026/core/components/app_divider.dart';
 import 'package:company_apg_2026/core/components/app_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -39,13 +40,7 @@ class OrderDetails extends StatelessWidget {
         children: [
           AppContainerPar(),
           SizedBox(height: 10.h),
-          Divider(
-            thickness: 1,
-            indent: 10,
-            endIndent: 10,
-            height: 10.h,
-            color: Colors.black54,
-          ),
+         AppDivider(),
           SizedBox(height: 5.h),
           Text(
             'تعليمات جديده بخصوص اضافه الموظفين',
@@ -74,13 +69,7 @@ class OrderDetails extends StatelessWidget {
             ],
           ),
           SizedBox(height: 5.h),
-          Divider(
-            thickness: 1,
-            indent: 10,
-            endIndent: 10,
-            height: 10.h,
-            color: Colors.black54,
-          ),
+          AppDivider(),
           SizedBox(height: 5.h),
 
           Text(
@@ -98,13 +87,7 @@ class OrderDetails extends StatelessWidget {
             ),
           ),
           SizedBox(height: 5.h),
-          Divider(
-            thickness: 1,
-            indent: 10,
-            endIndent: 10,
-            height: 10.h,
-            color: Colors.black54,
-          ),
+          AppDivider(),
           SizedBox(height: 5.h),
           Container(
 

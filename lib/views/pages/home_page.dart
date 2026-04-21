@@ -11,7 +11,9 @@ import 'category.dart';
 import 'order/order.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final int? initialIndex;
+
+  const HomePage({super.key, this.initialIndex = 0});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -26,6 +28,11 @@ class _HomePageState extends State<HomePage> {
     Model(EmployerView()),
     Model(CategoryPage()),
   ];
+  @override
+  void initState() {
+    super.initState();
+    currentIndex = widget.initialIndex!;
+  }
 
   @override
   Widget build(BuildContext context) {
