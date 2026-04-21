@@ -8,21 +8,18 @@ class AppBack extends StatelessWidget {
   final String pass;
   final double? radius;
   final Function()? onTap;
-
-  const AppBack({super.key, required this.pass, this.radius, this.onTap});
+final double? heightImage;
+  const AppBack({super.key, required this.pass, this.radius, this.onTap, this.heightImage=20});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Align(
-        alignment: Alignment.centerLeft,
-        child: CircleAvatar(
-          backgroundColor: Theme.of(context).primaryColor.withValues(alpha: 0.15),
-          radius: radius,
+      child: CircleAvatar(
+        backgroundColor: Theme.of(context).primaryColor.withValues(alpha: 0.15),
+        radius: radius,
 
-          child: AppImage(path: pass, height: 20.h),
-        ),
+        child: AppImage(path: pass, height: heightImage),
       ),
     );
   }

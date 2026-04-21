@@ -25,7 +25,7 @@ class AppButton extends StatelessWidget {
       width: width,
       child: FilledButton(
         style: FilledButton.styleFrom(
-          backgroundColor:  color ??Color(0xff4B2713),
+          backgroundColor:  color ??Theme.of(context).primaryColor.withValues(alpha: 0.90),
         ),
         onPressed: onPressed,
         child: Text(

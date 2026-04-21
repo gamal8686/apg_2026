@@ -19,7 +19,7 @@ class OrderDetails extends StatelessWidget {
         leading: AppBack(
           pass: 'arrow-left.svg',
           onTap: () {
-            goTo(HomePage());
+            goTo(HomePage(initialIndex: 4,));
           },
         ),
         actions: [AppLightDark()],
