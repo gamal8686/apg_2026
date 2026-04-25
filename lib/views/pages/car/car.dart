@@ -90,8 +90,9 @@ class _CarPageState extends State<CarPage> with SingleTickerProviderStateMixin {
                         children: [
                           Expanded(
                             child: Container(
+
                               decoration: BoxDecoration(
-                                color: Color(0xffFFF3E0),
+                                color:  Color(0xffFDF0E9),
                                 border: Border.all(color: Color(0xffEFEFEF)),
                                 borderRadius: BorderRadius.circular(14),
                               ),
@@ -170,9 +171,11 @@ class _CarPageState extends State<CarPage> with SingleTickerProviderStateMixin {
 
                   ...List.generate(2, (index) {
                     return Container(
+
                       margin: EdgeInsets.only(bottom: 10.h),
                       padding: EdgeInsets.all(8),
                       decoration: BoxDecoration(
+                        color:  Color(0xffFDF0E9),
                         border: Border.all(color: Color(0xffEFEFEF)),
                         borderRadius: BorderRadius.circular(14),
                       ),
@@ -215,7 +218,7 @@ class _CarPageState extends State<CarPage> with SingleTickerProviderStateMixin {
                                     child: Text('1',
                                   style: TextStyle(
                                     color: Color(0xff292D32),
-                                    fontFamily: 'Cairo',
+
                                     fontSize: 20.sp,
                                     fontWeight: FontWeight.w700,
                                   ),)),
@@ -323,9 +326,10 @@ class _CarPageState extends State<CarPage> with SingleTickerProviderStateMixin {
                             height: 85.h,
                             width: double.infinity,
                             decoration: BoxDecoration(
+
                               border: Border.all(color: Colors.transparent),
                               borderRadius: BorderRadius.circular(8.r),
-                              color: Color(0xffFFF3E0),
+                              color: Color(0xffeed6b0),
                             ),
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),

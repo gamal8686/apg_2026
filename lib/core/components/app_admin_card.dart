@@ -23,7 +23,7 @@ class _AppAdminCardState extends State<AppAdminCard> {
       height: 220.h,
       width: 190.w,
       decoration: BoxDecoration(
-        color: Colors.white24,
+        color: Color(0xffFDF0E9),
         border: Border.all(color: Color(0xffDEDDDD)),
         borderRadius: BorderRadius.circular(16.r),
       ),

@@ -3,7 +3,7 @@ import 'package:company_apg_2026/core/components/app_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../core/components/app_admin_card.dart';
+import '../../../core/components/app_admin_card.dart';
 
 class CategoryPage extends StatelessWidget {
   const CategoryPage({super.key});
@@ -104,7 +104,6 @@ class CategoryPage extends StatelessWidget {
                     subtitle: 'مواعيد الشحنات \nالقادمه وتفاصيلها',
                     path: 'car_car.png',
                     count: '8 شحنات اليوم',
-
                   ),
                 ),
                 SizedBox(width: 5.w),
@@ -118,8 +117,57 @@ class CategoryPage extends StatelessWidget {
                 ),
               ],
             ),
-              SizedBox(height: 5.h),
-          //todo
+            SizedBox(height: 5.h),
+            Container(
+              height: 128.h,
+              decoration: BoxDecoration(
+                color: Color(0xffFDF0E9),
+                border: Border.all(color: Color(0xffFFEAD9)),
+                borderRadius: BorderRadius.circular(14.r),
+              ),
+              child: Row(
+                children: [
+                  AppBack(pass: 'people.png', radius: 45.r, heightImage: 40.r),
+                  SizedBox(width: 10.w),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'الموظفين',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 18.sp,
+                          fontFamily: 'Cairo',
+                          color: Color(0xff292D32),
+                        ),
+                      ),
+                      SizedBox(height: 5.h),
+
+                      Text(
+                        'تفاصيل الموظفين وصلاحيتهم',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16.sp,
+                          fontFamily: 'Cairo',
+                          color: Color(0xff7F8B8B),
+                        ),
+                      ),
+                      SizedBox(height: 5.h),
+                      Text(
+                        '12 موظف نشط الان',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16.sp,
+                          fontFamily: 'Cairo',
+                          color: Color(0xffE76300),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),

@@ -58,102 +58,111 @@ class ProductPage extends StatelessWidget {
                     },
                     child: Container(
                       decoration: BoxDecoration(
+                        color:
+
+                      Color(0xffFDF0E9)
+
+                        ,
                         border: Border.all(color: Color(0xffFFDECC)),
                         borderRadius: BorderRadius.circular(16.r),
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(height: 10.h),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
 
-                        Row(
-
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                          AppImage(
-                            path: 'bottel_product.png',
-                            height: 70.h,
-                            width: 70.w,
-                          ),
-                         SizedBox(width: 35.w,),
-                          AppBack(pass: 'Remove.png')
+                            SizedBox(height: 10.h),
 
-                        ],),
-                          SizedBox(height: 10.h),
-
-                          Text(
-                            'عبوه 250 مللي',
-                            style: TextStyle(
-                              fontFamily: 'Cairo',
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                          SizedBox(height: 10.h),
-
-                          Text.rich(
-                            TextSpan(
-                              text: 'عدد البالتات ',
-                              style: TextStyle(color: Colors.black),
-
-                              children: [
-                                TextSpan(
-                                  text: '500',
-                                  style: TextStyle(
-                                    color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
                           Row(
+
                             children: [
-                              AppImage(
-                                path: 'array.png',
-                                height: 20.h,
-                                width: 20.w,
+                            AppImage(
+                              path: 'bottel_product.png',
+                              height: 70.h,
+                              width: 70.w,
+                            ),
+                           SizedBox(width: 35.w,),
+                            AppBack(pass: 'Remove.png')
+
+                          ],),
+                            SizedBox(height: 10.h),
+
+                            Text(
+                              'عبوه 250 مللي',
+                              style: TextStyle(
+                                fontFamily: 'Cairo',
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.w700,
                               ),
-                              SizedBox(width: 5.h),
-                              Text.rich(
-                                TextSpan(
-                                  text: '4 ',
-                                  style: TextStyle(color: Colors.black),
-                                  children: [
-                                    TextSpan(
-                                      text: 'صفوف',
-                                      style: TextStyle(
-                                        color: Theme.of(context).primaryColor,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              AppImage(
-                                path: 'home_project.png',
-                                height: 20.h,
-                                width: 20.w,
-                              ),
-                              SizedBox(width: 5.h),
-                              FittedBox(
-                                fit: BoxFit.scaleDown,
-                                child: Text.rich(
+                            ),
+                            SizedBox(height: 10.h),
+
+                            Text.rich(
+                              TextSpan(
+                                text: 'عدد البالتات ',
+                                style: TextStyle(color: Colors.black),
+
+                                children: [
                                   TextSpan(
-                                    text: 'مخزن A',
+                                    text: '500',
                                     style: TextStyle(
                                       color: Theme.of(context).primaryColor,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                ),
+                                ],
                               ),
-                            ],
-                          ),
-                        ],
+                            ),
+                            Row(
+                              children: [
+                                AppImage(
+                                  path: 'array.png',
+                                  height: 20.h,
+                                  width: 20.w,
+                                ),
+                                SizedBox(width: 5.h),
+                                Text.rich(
+                                  TextSpan(
+                                    text: '4 ',
+                                    style: TextStyle(color: Colors.black),
+                                    children: [
+                                      TextSpan(
+                                        text: 'صفوف',
+                                        style: TextStyle(
+                                          color: Theme.of(context).primaryColor,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                AppImage(
+                                  path: 'home_project.png',
+                                  height: 20.h,
+                                  width: 20.w,
+                                ),
+                                SizedBox(width: 5.h),
+                                FittedBox(
+                                  fit: BoxFit.scaleDown,
+                                  child: Text.rich(
+                                    TextSpan(
+                                      text: 'مخزن A',
+                                      style: TextStyle(
+                                        color: Theme.of(context).primaryColor,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   );

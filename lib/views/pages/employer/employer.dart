@@ -11,7 +11,6 @@ import '../../../core/components/app_admin.dart';
 import '../../../core/components/app_container_par.dart';
 import '../../../core/components/app_light_dark.dart';
 import '../../../core/components/app_search.dart';
-import '../../../core/cubit/them_project/cubit_theme.dart';
 import 'employer_details.dart';
 
 class EmployerView extends StatefulWidget {
@@ -183,6 +182,7 @@ class _EmployerViewState extends State<EmployerView> {
                       child: Container(
                         height: 170.h,
                         decoration: BoxDecoration(
+                          color:   Color(0xffFDF0E9),
                           border: Border.all(color: Color(0xffF4F4F4)),
                           borderRadius: BorderRadius.circular(8.r),
                         ),
