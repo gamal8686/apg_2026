@@ -2,9 +2,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../core/components/app_button.dart';
-import '../../core/components/app_image.dart';
-import '../../core/logic/helper_methods.dart';
+import '../../../core/components/app_button.dart';
+import '../../../core/components/app_image.dart';
+import '../../../core/logic/helper_methods.dart';
 
 class AccountActivatedDialog extends StatelessWidget {
   final bool isFromCreateAccount;
@@ -32,6 +32,7 @@ class AccountActivatedDialog extends StatelessWidget {
                     fontFamily: 'Cairo',
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w600,
+                    color: Theme.of(context).primaryColor
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -41,6 +42,7 @@ class AccountActivatedDialog extends StatelessWidget {
                 'سعيدون بترحيبك!',
 
                 style: TextStyle(
+                    color: Theme.of(context).primaryColor,
                     fontFamily: 'Cairo',
                     fontSize: 12.sp, fontWeight: FontWeight.w500),
                 textAlign: TextAlign.center,
@@ -49,10 +51,7 @@ class AccountActivatedDialog extends StatelessWidget {
 
               AppButton(
                 onPressed: () {
-                  // goTo(
-                  //   isFromCreateAccount ? HomeView() : LoginView(),
-                  //   canPop: false,
-                  // );
+
                 },
                 text: 'هيا نبدأ'  ,
                 width: 270.w,

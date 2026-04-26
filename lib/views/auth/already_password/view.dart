@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../core/components/app_button.dart';
-import '../../core/components/app_image.dart';
-import '../../core/components/app_input.dart';
-import '../../core/components/app_login_or_register.dart';
+import '../../../core/components/app_button.dart';
+import '../../../core/components/app_image.dart';
+import '../../../core/components/app_input.dart';
+import '../../../core/components/app_login_or_register.dart';
 
-class AlreadyPasswordView extends StatelessWidget {
+class AlreadyPasswordView extends StatefulWidget {
   const AlreadyPasswordView({super.key});
+
+  @override
+  State<AlreadyPasswordView> createState() => _AlreadyPasswordViewState();
+}
+
+class _AlreadyPasswordViewState extends State<AlreadyPasswordView> {
+
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +30,9 @@ class AlreadyPasswordView extends StatelessWidget {
               Text(
                 'تم إعادة ضبط كلمة المرور بنجاح',
                 style: TextStyle(
-                  fontSize: 28.sp,
+                  color: Theme.of(context).primaryColor
+
+                 , fontSize: 28.sp,
                   fontFamily: 'Cairo',
                   fontWeight: FontWeight.w600,
                 ),
@@ -35,7 +44,9 @@ class AlreadyPasswordView extends StatelessWidget {
                 'أدخل رمز التحقق (OTP) المرسل إلى +1020924779 \n'
                     'على رقم الهاتف.',
                 style: TextStyle(
-                  fontSize: 15.sp,
+                  color: Theme.of(context).primaryColor
+
+                ,  fontSize: 15.sp,
                   fontFamily: 'Cairo',
                   fontWeight: FontWeight.w400,
                 ),

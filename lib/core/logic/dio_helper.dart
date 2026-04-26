@@ -2,7 +2,7 @@
 import 'package:company_apg_2026/core/logic/shared_preferences.dart';
 import 'package:dio/dio.dart';
 
-import '../../views/auth/login.dart';
+import '../../views/auth/login/view.dart';
 import 'helper_methods.dart';
 
 enum DataState { init,loading, failed, success }

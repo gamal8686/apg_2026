@@ -1,11 +1,12 @@
 import 'package:company_apg_2026/core/logic/shared_preferences.dart';
 
 import 'package:company_apg_2026/splash.dart';
-import 'package:company_apg_2026/views/auth/already_password_view.dart';
-import 'package:company_apg_2026/views/auth/forget_password.dart';
-import 'package:company_apg_2026/views/auth/login.dart';
-import 'package:company_apg_2026/views/auth/new_password.dart';
-import 'package:company_apg_2026/views/auth/otp_view.dart';
+import 'package:company_apg_2026/views/auth/Create_Login/view.dart';
+import 'package:company_apg_2026/views/auth/already_password/view.dart';
+import 'package:company_apg_2026/views/auth/forget_password/view.dart';
+import 'package:company_apg_2026/views/auth/login/view.dart';
+import 'package:company_apg_2026/views/auth/new_password/view.dart';
+import 'package:company_apg_2026/views/auth/otp_view/view.dart';
 import 'package:company_apg_2026/views/pages/car/car.dart';
 import 'package:company_apg_2026/views/pages/car/product_details_car.dart';
 import 'package:company_apg_2026/views/pages/employer/employer.dart';
@@ -61,7 +62,7 @@ class MyApp extends StatelessWidget {
                 textDirection: TextDirection.rtl,
                 child: child!,
               ),
-              home: const HomePage(),
+              home: const OtpView(),
             ),
           ),
         );

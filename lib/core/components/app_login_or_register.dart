@@ -27,7 +27,8 @@ class AppLoginOrRegister extends StatelessWidget {
                 child: Text(
                   " Login",
                   style: TextStyle(
-                    color: Color(0xff5A3A22),
+                    color: Theme.of(context).primaryColor,
+
                     fontSize: 18.sp,
                     fontWeight: FontWeight.w400,
                     fontFamily: 'Cairo',
