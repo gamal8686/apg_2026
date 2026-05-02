@@ -1,6 +1,7 @@
 import 'package:company_apg_2026/core/components/app_validator.dart';
 import 'package:company_apg_2026/core/logic/dio_helper.dart';
 import 'package:company_apg_2026/views/auth/new_password/cubit.dart';
+import 'package:company_apg_2026/views/auth/new_password/state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,105 +21,96 @@ class NewPasswordView extends StatefulWidget {
 class _NewPasswordViewState extends State<NewPasswordView> {
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<NewPasswordCubit>();
 
-    return BlocProvider(
-      create: (context) => NewPasswordCubit(),
-      child: Builder(
-        builder: (context) {
-          final cubit = context.read<NewPasswordCubit>();
-          return Scaffold(
-            backgroundColor: Colors.white,
-            body: Form(
-              key: cubit.formKey,
-              child: SafeArea(
-                child: SingleChildScrollView(
-                  padding: const EdgeInsets.all(20),
-                  child: Column(
-                    children: [
-                      AppImage(path: 'log_ok.jpg', height: 150.h, width: 150.w),
-                      SizedBox(height: 50.h),
-                      Text(
-                        'التحقق من رمز التحقق',
-                        style: TextStyle(
-                          fontSize: 24.sp,
-                          fontFamily: 'Cairo',
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                      SizedBox(height: 10.h),
-                      Text(
-                        textAlign: TextAlign.center,
-                        'أدخل رمز التحقق (OTP) المرسل إلى الايميل الخاص\n'
-                        'بك علي الفور.',
-                        style: TextStyle(
-                          fontSize: 12.sp,
-                          fontFamily: 'Cairo',
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      SizedBox(height: 15.h),
-                      AppInput(
-                        controller: cubit.email,
-                        validator: InputValidator.passwordValidator,
-                        isKeyboardType: true,
-                        label: 'كلمه المرور الجديده',
-                        prefixIcon: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: AppImage(
-                            path: 'password.png',
-                            height: 10.h,
-                            width: 10.w,
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 15.h),
-                      AppInput(
-                        controller: cubit.newEmail,
-                        validator: InputValidator.passwordValidator,
-                        isKeyboardType: true,
-                        label: 'تاكيد كلمه المرور',
-
-                        prefixIcon: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: AppImage(
-                            path: 'password.png',
-                            height: 10.h,
-                            width: 10.w,
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 15.h),
-                      BlocBuilder<NewPasswordCubit, DataState>(
-
-                        builder: (context, state) {
-
-                          if (state == DataState.loading) {
-                            return CircularProgressIndicator();
-                          } else {
-                            return AppButton(
-                              text: 'إعادة ضبط كلمة المرور',
-                              onPressed: () {
-                                if (cubit.formKey.currentState!.validate()) {
-                                  cubit.sentData();
-                                }
-                              },
-
-                              width: 380.w,
-                            );
-                          }
-                        },
-                      ),
-
-                      SizedBox(height: 30.h),
-
-                      AppLoginOrRegister(onPressed: () {}),
-                    ],
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Form(
+        key: cubit.formKey,
+        child: SafeArea(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              children: [
+                AppImage(path: 'log_ok.jpg', height: 150.h, width: 150.w),
+                SizedBox(height: 50.h),
+                Text(
+                  'التحقق من رمز التحقق',
+                  style: TextStyle(
+                    fontSize: 24.sp,
+                    fontFamily: 'Cairo',
+                    fontWeight: FontWeight.w400,
                   ),
                 ),
-              ),
+                SizedBox(height: 10.h),
+                Text(
+                  textAlign: TextAlign.center,
+                  'أدخل رمز التحقق (OTP) المرسل إلى الايميل الخاص\n'
+                  'بك علي الفور.',
+                  style: TextStyle(
+                    fontSize: 12.sp,
+                    fontFamily: 'Cairo',
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                SizedBox(height: 15.h),
+                AppInput(
+                  controller: cubit.email,
+                  validator: InputValidator.passwordValidator,
+                  isKeyboardType: true,
+                  label: 'كلمه المرور الجديده',
+                  prefixIcon: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: AppImage(
+                      path: 'password.png',
+                      height: 10.h,
+                      width: 10.w,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 15.h),
+                AppInput(
+                  controller: cubit.newEmail,
+                  validator: InputValidator.passwordValidator,
+                  isKeyboardType: true,
+                  label: 'تاكيد كلمه المرور',
+
+                  prefixIcon: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: AppImage(
+                      path: 'password.png',
+                      height: 10.h,
+                      width: 10.w,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 15.h),
+                BlocBuilder<NewPasswordCubit, NewPasswordState>(
+                  builder: (context, state) {
+                    if (state is  NewPasswordLoadingState) {
+                      return CircularProgressIndicator();
+                    }
+                      return AppButton(
+                        text: 'إعادة ضبط كلمة المرور',
+                        onPressed: () {
+                          if (cubit.formKey.currentState!.validate()) {
+                            cubit.sentData();
+                          }
+                        },
+
+                        width: 380.w,
+                      );
+
+                  },
+                ),
+
+                SizedBox(height: 30.h),
+
+                AppLoginOrRegister(onPressed: () {}),
+              ],
             ),
-          );
-        },
+          ),
+        ),
       ),
     );
   }

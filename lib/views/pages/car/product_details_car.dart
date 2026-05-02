@@ -8,7 +8,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/components/app_back.dart';
 import '../../../core/components/app_image.dart';
 import '../../../core/components/app_light_dark.dart';
-import 'car.dart';
 
 class ProductDetailsCar extends StatelessWidget {
   const ProductDetailsCar({super.key});

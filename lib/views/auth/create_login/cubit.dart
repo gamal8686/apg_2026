@@ -1,14 +1,9 @@
+import 'package:company_apg_2026/views/auth/create_login/state.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../core/logic/dio_helper.dart';
-import '../../../core/logic/helper_methods.dart';
-import '../../pages/home_page.dart';
-
-
-
-class CreateLoginCubit extends Cubit<DataState> {
-  CreateLoginCubit() : super(DataState.init);
+class CreateLoginCubit extends Cubit<StateCreateLogin> {
+  CreateLoginCubit() : super(StateCreateLoginInitial());
   final name = TextEditingController();
 
   final email = TextEditingController();
@@ -16,23 +11,16 @@ class CreateLoginCubit extends Cubit<DataState> {
   final password = TextEditingController();
 
   final newPassword = TextEditingController();
-  final fromKey = GlobalKey<FormState>();
-
+  final formKey = GlobalKey<FormState>();
 
   Future<void> sentData() async {
+    try {
+      emit(StateCreateLoginLoading());
 
-try{
-  emit(DataState.loading);
-
-  await Future.delayed(Duration(seconds: 2));
-  emit(DataState.success);
-
-  goTo(HomePage());
-}catch(e){
-  emit(DataState.failed);
-
-}
-
-
-}
+      await Future.delayed(Duration(seconds: 5));
+      emit(StateCreateLoginSuccess());
+    } catch (e) {
+      emit(StateCreateLoginFailed());
+    }
   }
+}

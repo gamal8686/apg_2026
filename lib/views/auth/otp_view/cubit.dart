@@ -1,22 +1,21 @@
 import 'package:company_apg_2026/core/logic/dio_helper.dart';
+import 'package:company_apg_2026/views/auth/otp_view/state.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class OtbCubit extends Cubit<DataState> {
-  OtbCubit() : super(DataState.init);
+class OtbCubit extends Cubit<OtpState> {
+  OtbCubit() : super(OtpStateInitialState());
   final formKey = GlobalKey<FormState>();
   final otpController = TextEditingController();
-  bool showResend = false;
 
   Future<void> sentData() async {
-    emit(DataState.loading);
+    emit(OtpStateLoadingState());
     try {
       await Future.delayed(Duration(seconds: 5));
 
-      emit(DataState.success);
+      emit(OtpStateSuccessState());
     } catch (e) {
-      showResend= true;
-      emit(DataState.failed);
+      emit(OtpStateErrorState(showResend: true));
     }
   }
 }
