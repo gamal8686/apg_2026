@@ -1,9 +1,5 @@
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:company_apg_2026/core/components/app_color.dart';
 import 'package:company_apg_2026/core/components/app_image.dart';
 import 'package:company_apg_2026/core/logic/helper_methods.dart';
-import 'package:company_apg_2026/core/logic/shared_preferences.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
