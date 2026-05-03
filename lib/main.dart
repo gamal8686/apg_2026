@@ -10,6 +10,7 @@ import 'package:company_apg_2026/views/auth/new_password/cubit.dart';
 import 'package:company_apg_2026/views/auth/new_password/view.dart';
 import 'package:company_apg_2026/views/auth/otp_view/cubit.dart';
 import 'package:company_apg_2026/views/auth/otp_view/view.dart';
+import 'package:company_apg_2026/views/pages/employer/add/view.dart';
 import 'package:company_apg_2026/views/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -64,7 +65,7 @@ class MyApp extends StatelessWidget {
                   textDirection: TextDirection.rtl,
                   child: child!,
                 ),
-                home: const OtpView(),
+                home: const AddEmployerView(),
               ),
             ),
           );

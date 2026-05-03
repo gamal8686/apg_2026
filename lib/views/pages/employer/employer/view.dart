@@ -7,11 +7,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../core/components/app_admin.dart';
-import '../../../core/components/app_container_par.dart';
-import '../../../core/components/app_light_dark.dart';
-import '../../../core/components/app_search.dart';
-import 'employer_details.dart';
+import '../../../../core/components/app_admin.dart';
+import '../../../../core/components/app_container_par.dart';
+import '../../../../core/components/app_light_dark.dart';
+import '../../../../core/components/app_search.dart';
+import '../employer_details/view.dart';
 
 class EmployerView extends StatefulWidget {
   const EmployerView({super.key});

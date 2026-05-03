@@ -21,7 +21,7 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<LoginCubit>();
-    print('build');
+
     return Scaffold(
       backgroundColor: Color(0xffE4E4E4),
       body: SingleChildScrollView(

@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/components/app_image.dart';
 import 'car/car.dart';
-import 'employer/employer.dart';
+import 'employer/employer/view.dart';
 import 'category/category.dart';
 import 'order/order.dart';
 
