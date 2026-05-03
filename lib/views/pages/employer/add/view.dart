@@ -40,6 +40,7 @@ class _AddEmployerViewState extends State<AddEmployerView> {
     phoneController.dispose();
     addressController.dispose();
     numberController.dispose();
+
     super.dispose();
   }
 
@@ -194,51 +195,62 @@ class _AddEmployerViewState extends State<AddEmployerView> {
                 ),
               ),
               SizedBox(height: 5.h),
-
-              ExpansionTileCard(
-                key: _tileKey,
-                onExpansionChanged: (isExpanded) {
-                  if (isExpanded) {
-                    Future.delayed(Duration(milliseconds: 300), () {
-                      Scrollable.ensureVisible(
-                        _tileKey.currentContext!,
-                        duration: Duration(milliseconds: 500),
-                        curve: Curves.easeInOut,
-                      );
-                    });
-                  }
-                },
-                baseColor: Color(0xffD9D9D9),
-
-                title: Text(
-                  selectedDepartment ?? 'القسم',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: Colors.grey.shade400),
                 ),
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(12),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Column(
-                          children: departments.map((dept) {
-                            return ListTile(
-                              onTap: () {
-                                setState(() {
-                                  selectedDepartment = dept;
-                                });
+                child: ExpansionTileCard(
+                  key: _tileKey,
 
-                                _tileKey.currentState?.collapse();
-                              },
-                              leading: Icon(Icons.apartment),
-                              title: Text(dept),
-                            );
-                          }).toList(),
-                        ),
-                      ],
+                  elevation: 0,
+                  baseColor: Colors.transparent,
+                  expandedColor: Colors.white,
+                  shadowColor: Colors.transparent,
+
+                  onExpansionChanged: (isExpanded) {
+                    if (isExpanded) {
+                      Future.delayed(Duration(milliseconds: 300), () {
+                        Scrollable.ensureVisible(
+                          _tileKey.currentContext!,
+                          duration: Duration(milliseconds: 500),
+                          curve: Curves.easeInOut,
+                        );
+                      });
+                    }
+                  },
+
+                  title: Text(
+                    selectedDepartment ?? 'اختار القسم',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: selectedDepartment == null
+                          ? Colors.grey
+                          : Colors.black,
                     ),
                   ),
-                ],
+
+                  trailing: Icon(Icons.arrow_drop_down),
+
+                  children: [
+                    Column(
+                      children: departments.map((dept) {
+                        return ListTile(
+                          onTap: () {
+                            setState(() {
+                              selectedDepartment = dept;
+                            });
+
+                            _tileKey.currentState?.collapse();
+                          },
+                          leading: Icon(Icons.apartment),
+                          title: Text(dept),
+                        );
+                      }).toList(),
+                    ),
+                  ],
+                ),
               ),
               SizedBox(height: 20.h),
               AppButton(width: 390.w, text: 'حفظ', onPressed: () {}),
