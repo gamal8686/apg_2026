@@ -3,7 +3,7 @@ import 'package:company_apg_2026/core/components/app_button.dart';
 import 'package:company_apg_2026/core/components/app_image.dart';
 import 'package:company_apg_2026/core/components/app_light_dark.dart';
 import 'package:company_apg_2026/core/logic/helper_methods.dart';
-import 'package:company_apg_2026/views/pages/car/product_details_car.dart';
+import 'package:company_apg_2026/views/pages/car/details_car.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

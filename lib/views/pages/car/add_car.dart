@@ -1,4 +1,3 @@
-
 import 'dart:io';
 
 import 'package:company_apg_2026/core/components/app_button.dart';
@@ -14,33 +13,39 @@ import '../../../../core/components/app_image.dart';
 import '../../../../core/components/app_input.dart';
 import '../../../../core/components/app_validator.dart';
 
-class EditeEmployerView extends StatefulWidget {
-  const EditeEmployerView({super.key});
+class AddCarView extends StatefulWidget {
+  const AddCarView({super.key});
 
   @override
-  State<EditeEmployerView> createState() => _EditeEmployerViewState();
+  State<AddCarView> createState() => _AddCarViewState();
 }
 
-class _EditeEmployerViewState extends State<EditeEmployerView> {
+class _AddCarViewState extends State<AddCarView> {
   final nameController = TextEditingController();
-  final emailController = TextEditingController();
-  final phoneController = TextEditingController();
-  final addressController = TextEditingController();
+  final numberPackagesController = TextEditingController();
+  final dateRegistrationController = TextEditingController();
+  final packageDescriptionController = TextEditingController();
   final numberController = TextEditingController();
   final GlobalKey<ExpansionTileCardState> _tileKey = GlobalKey();
   final fromKey = GlobalKey<FormState>();
-  List<String> departments = ["HR", "IT", "Sales", "Marketing", "Accounting"];
+  List<String> departments = [
+    "ايبكو",
+    "المهن",
+    "الشركة العربية",
+    "ادكوا",
+    "Accounting",
+  ];
   String? selectedDepartment;
-  final picker = ImagePicker();
-  File? imageFile;
+
 
   @override
   void dispose() {
     nameController.dispose();
-    emailController.dispose();
-    phoneController.dispose();
-    addressController.dispose();
+    numberPackagesController.dispose();
+    dateRegistrationController.dispose();
     numberController.dispose();
+    packageDescriptionController.dispose();
+
 
     super.dispose();
   }
@@ -56,7 +61,7 @@ class _EditeEmployerViewState extends State<EditeEmployerView> {
         centerTitle: true,
         backgroundColor: Colors.transparent,
         title: Text(
-          'تعديل بيانات الموظف',
+          'اضافه شحنه جديده',
           style: TextStyle(
             fontSize: 20.sp,
             fontWeight: FontWeight.w600,
@@ -74,37 +79,9 @@ class _EditeEmployerViewState extends State<EditeEmployerView> {
             children: [
               AppContainerPar(),
               SizedBox(height: 10.h),
-              Center(
-                child: GestureDetector(
-                  onTap: () async {
-                    XFile? resp = await picker.pickImage(
-                      source: ImageSource.gallery,
-                    );
-                    if (resp != null) {
-                      setState(() {
-                        imageFile = File(resp.path);
-                      });
-                    }
-                  },
-                  child: imageFile != null
-                      ? ClipRRect(
-                    borderRadius: BorderRadius.circular(100),
-                    child: Image.file(
-                      imageFile!,
-                      width: 150,
-                      height: 150,
-                      fit: BoxFit.cover,
-                    ),
-                  )
-                      : AppImage(
-                    path: 'edite_image.png',
-                    height: 200.h,
-                    width: 200.w,
-                  ),
-                ),
-              ),
+
               Text(
-                'الرقم الوظيفي ',
+                'رقم الشحنه ',
                 style: TextStyle(
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w600,
@@ -116,78 +93,12 @@ class _EditeEmployerViewState extends State<EditeEmployerView> {
               AppInput(
                 isKeyboardType: true,
                 controller: numberController,
-                label: 'ادخل الرقم الوظيفي',
+                label: 'ادخل الرقم الشحنه',
                 validator: InputValidator.passwordValidator,
               ),
               SizedBox(height: 5.h),
               Text(
-                'الاسم الكامل  ',
-                style: TextStyle(
-                  fontSize: 18.sp,
-                  fontWeight: FontWeight.w600,
-                  fontFamily: 'Cairo',
-                  color: Theme.of(context).primaryColor,
-                ),
-              ),
-              SizedBox(height: 5.h),
-              AppInput(
-                label: 'ادخل الاسم الكامل',
-                controller: nameController,
-                validator: InputValidator.phoneValidator,
-              ),
-              SizedBox(height: 5.h),
-
-              Text(
-                'البريد الإلكتروني  ',
-                style: TextStyle(
-                  fontSize: 18.sp,
-                  fontWeight: FontWeight.w600,
-                  fontFamily: 'Cairo',
-                  color: Theme.of(context).primaryColor,
-                ),
-              ),
-              SizedBox(height: 5.h),
-              AppInput(
-                label: 'ادخل البريد الإلكتروني',
-                controller: emailController,
-                validator: InputValidator.phoneValidator,
-              ),
-              SizedBox(height: 5.h),
-              Text(
-                'رقم الهاتف ',
-                style: TextStyle(
-                  fontSize: 18.sp,
-                  fontWeight: FontWeight.w600,
-                  fontFamily: 'Cairo',
-                  color: Theme.of(context).primaryColor,
-                ),
-              ),
-              SizedBox(height: 5.h),
-              AppInput(
-                label: '01xxxxxxxxx',
-                controller: phoneController,
-                validator: InputValidator.phoneValidator,
-                isKeyboardType: true,
-              ),
-              SizedBox(height: 5.h),
-              Text(
-                'العنوان',
-                style: TextStyle(
-                  fontSize: 18.sp,
-                  fontWeight: FontWeight.w600,
-                  fontFamily: 'Cairo',
-                  color: Theme.of(context).primaryColor,
-                ),
-              ),
-              SizedBox(height: 5.h),
-              AppInput(
-                label: 'ادخل العنوان',
-                controller: addressController,
-                validator: InputValidator.phoneValidator,
-              ),
-              SizedBox(height: 5.h),
-              Text(
-                'القسم',
+                'اسم الشركه   ',
                 style: TextStyle(
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w600,
@@ -223,7 +134,7 @@ class _EditeEmployerViewState extends State<EditeEmployerView> {
                   },
 
                   title: Text(
-                    selectedDepartment ?? 'اختار القسم',
+                    selectedDepartment ?? 'اختار الشركه',
                     style: TextStyle(
                       fontSize: 16,
                       color: selectedDepartment == null
@@ -253,8 +164,62 @@ class _EditeEmployerViewState extends State<EditeEmployerView> {
                   ],
                 ),
               ),
-              SizedBox(height: 20.h),
-              AppButton(width: 390.w, text: 'حفظ', onPressed: () {}),
+              SizedBox(height: 5.h),
+
+              Text(
+                'عدد العبوات  ',
+                style: TextStyle(
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.w600,
+                  fontFamily: 'Cairo',
+                  color: Theme.of(context).primaryColor,
+                ),
+              ),
+              SizedBox(height: 5.h),
+              AppInput(
+                label: 'ادخل عدد العبوات',
+                controller: numberPackagesController,
+                validator: InputValidator.phoneValidator,
+              ),
+              SizedBox(height: 5.h),
+              Text(
+                'تاريخ التسجيل  ',
+                style: TextStyle(
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.w600,
+                  fontFamily: 'Cairo',
+                  color: Theme.of(context).primaryColor,
+                ),
+              ),
+              SizedBox(height: 5.h),
+              AppInput(
+                isData: true,
+                label: 'تاريخ التسجيل ',
+                controller: dateRegistrationController,
+                validator: InputValidator.phoneValidator,
+                isKeyboardType: true,
+              ),
+              SizedBox(height: 5.h),
+              Text(
+                'وصف الشحنه والملاحظات ',
+                style: TextStyle(
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.w600,
+                  fontFamily: 'Cairo',
+                  color: Theme.of(context).primaryColor,
+                ),
+              ),
+              SizedBox(height: 5.h),
+              AppInput(
+                maxLines: 5,
+                label: 'ادخل العنوان',
+                controller: packageDescriptionController,
+                validator: InputValidator.phoneValidator,
+              ),
+              SizedBox(height: 5.h),
+
+
+              AppButton(width: 390.w, text: 'حفظ الشحنه', onPressed: () {}),
             ],
           ),
         ),

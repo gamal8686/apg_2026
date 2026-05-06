@@ -29,7 +29,9 @@ class AppColorThemeLight {
 
   static final Color floatingThemeColor = Color(0xFF79C5EA);
 
-  static final Color inputDecorationThemeColor = Color(0xFFCFD8DC).withValues(alpha: .40);
+  static final Color inputDecorationThemeColor = Color(
+    0xFFCFD8DC,
+  ).withValues(alpha: .40);
 
   static final Color textButtonThemeColor = Color(0xFF0D618A);
 
@@ -41,5 +43,3 @@ class AppColorThemeLight {
 
   static final Color scaffoldBackgroundColor = Colors.blueGrey;
 }
-
-

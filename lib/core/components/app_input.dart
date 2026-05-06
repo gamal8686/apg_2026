@@ -16,6 +16,8 @@ class AppInput extends StatefulWidget {
   final bool isKeyboardType;
   final double isBorder;
   final bool? isLottieControlled;
+  final bool? isData;
+  final int? maxLines;
 
   const AppInput({
     super.key,
@@ -31,6 +33,7 @@ class AppInput extends StatefulWidget {
     this.validator,
     this.isLottieControlled,
     this.onSelectedCountryCode,
+    this.isData = false, this.maxLines,
   });
 
   @override
@@ -63,7 +66,7 @@ class _AppInpotState extends State<AppInput> {
             Expanded(
               flex: 2,
               child: TextFormField(
-
+                maxLines: widget.maxLines,
                 style: TextStyle(
                   fontSize: 14.sp,
 
@@ -91,6 +94,11 @@ class _AppInpotState extends State<AppInput> {
                                 : 'visibility_on.svg',
                           ),
                         )
+                      : widget.isData == true
+                      ? Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: AppImage(path: 'data_time.png',height: 5.h,width: 5.w,),
+                      )
                       : null,
 
                   border: OutlineInputBorder(
@@ -102,7 +110,7 @@ class _AppInpotState extends State<AppInput> {
                     fontFamily: 'Cairo',
                     fontWeight: FontWeight.w400,
                     fontSize: 16.sp,
-                    color: Colors.black87
+                    color: Colors.black87,
                   ),
                   filled: true,
                   fillColor: Color(0xffD9D9D9),

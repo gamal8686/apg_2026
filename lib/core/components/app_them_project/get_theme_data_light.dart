@@ -28,7 +28,9 @@ ThemeData getThemeDataLight = ThemeData(
       backgroundColor: AppColorThemeDark.floatingThemeColor,
     ),
   ),
-  appBarTheme: AppBarTheme(backgroundColor: AppColorThemeDark.appBarThemeColor),
+  appBarTheme: AppBarTheme(
+
+      backgroundColor: AppColorThemeDark.appBarThemeColor),
   textButtonTheme: TextButtonThemeData(
     style: TextButton.styleFrom(
       foregroundColor: AppColorThemeDark.textButtonThemeColor,
