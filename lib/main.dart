@@ -14,6 +14,7 @@ import 'package:company_apg_2026/views/pages/car/add_car.dart';
 import 'package:company_apg_2026/views/pages/employer/add/view.dart';
 import 'package:company_apg_2026/views/pages/employer/edite/view.dart';
 import 'package:company_apg_2026/views/pages/home_page.dart';
+import 'package:company_apg_2026/views/pages/order/add_order.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -68,7 +69,7 @@ class MyApp extends StatelessWidget {
                   textDirection: TextDirection.rtl,
                   child: child!,
                 ),
-                home: const AddCarView(),
+                home: const AddOrderView(),
               ),
             ),
           );
