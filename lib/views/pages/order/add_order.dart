@@ -1,15 +1,11 @@
-import 'dart:io';
-
 import 'package:company_apg_2026/core/components/app_button.dart';
+import 'package:company_apg_2026/core/components/app_image.dart';
 import 'package:expansion_tile_card/expansion_tile_card.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:image_picker/image_picker.dart';
 
 import '../../../../core/components/app_back.dart';
 import '../../../../core/components/app_container_par.dart';
-import '../../../../core/components/app_image.dart';
 import '../../../../core/components/app_input.dart';
 import '../../../../core/components/app_validator.dart';
 
@@ -34,7 +30,6 @@ class _AddOrderViewState extends State<AddOrderView> {
   void dispose() {
     instructionTitleController.dispose();
     instructionContentController.dispose();
-
 
     super.dispose();
   }
@@ -174,7 +169,33 @@ class _AddOrderViewState extends State<AddOrderView> {
                 validator: InputValidator.passwordValidator,
               ),
               SizedBox(height: 30.h),
+              Container(
+                height: 40.h,
+                width: 390.w,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).primaryColor.withValues(alpha: 0.30),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Row(
+                  children: [
+                    Container(color: Color(0xffFFC107), width: 5.w),
+                    SizedBox(width: 10.w),
+                    AppImage(path: 'Attention.png', height: 20.h),
+                    SizedBox(width: 5.w),
 
+                    Text(
+                      'سيتم ارسال اشعار فوري لجميع الموظفين في القسم المحدد',
+                      style: TextStyle(
+                        fontSize: 10.sp,
+                        fontWeight: FontWeight.w500,
+                        fontFamily: 'Cairo',
+                        color: Colors.black87,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 10.h),
               AppButton(width: 390.w, text: 'نشر التعليمات', onPressed: () {}),
             ],
           ),
