@@ -10,6 +10,7 @@ class AppInput extends StatefulWidget {
   final String? Function(String?)? validator;
   final String? path, label;
   final Widget? prefixIcon;
+  final Color? fillColor;
 
   final bool dropDown;
   final bool isPassword;
@@ -33,7 +34,9 @@ class AppInput extends StatefulWidget {
     this.validator,
     this.isLottieControlled,
     this.onSelectedCountryCode,
-    this.isData = false, this.maxLines,
+    this.isData = false,
+    this.maxLines,
+    this.fillColor = const Color(0xffD9D9D9),
   });
 
   @override
@@ -96,9 +99,13 @@ class _AppInpotState extends State<AppInput> {
                         )
                       : widget.isData == true
                       ? Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: AppImage(path: 'data_time.png',height: 5.h,width: 5.w,),
-                      )
+                          padding: const EdgeInsets.all(10.0),
+                          child: AppImage(
+                            path: 'data_time.png',
+                            height: 5.h,
+                            width: 5.w,
+                          ),
+                        )
                       : null,
 
                   border: OutlineInputBorder(
@@ -113,7 +120,7 @@ class _AppInpotState extends State<AppInput> {
                     color: Colors.black87,
                   ),
                   filled: true,
-                  fillColor: Color(0xffD9D9D9),
+                  fillColor: widget.fillColor,
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(widget.isBorder),
                   ),
