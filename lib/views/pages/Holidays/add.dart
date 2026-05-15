@@ -1,5 +1,4 @@
 import 'package:company_apg_2026/core/components/app_button.dart';
-import 'package:company_apg_2026/core/logic/helper_methods.dart';
 import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -229,11 +228,58 @@ class _AddHolidaysViewState extends State<AddHolidayView> {
                 validator: InputValidator.phoneValidator,
               ),
 
-              AppButton(width: 390.w, text: 'ارسال طلب ', onPressed: () {}),
+              AppButton(width: 390.w, text: 'ارسال طلب ',  onPressed: () {
+
+                if (fromKey.currentState!.validate()) {
+
+                  HolidayModel holiday = HolidayModel(
+
+                    type: selectedDepartment ?? '',
+
+                    fromDate: fromDateController.text,
+
+                    toDate: toDateController.text,
+
+                    reason: reasonController.text,
+
+                    duration: durationController.text,
+
+                    status: 'pending',
+                  );
+
+                  // Navigator.push(
+                  //   context,
+                  //
+                  //   MaterialPageRoute(
+                  //     builder: (_) => HolidayDetailsView(
+                  //       holiday: holiday,
+                  //     ),
+                  //   ),
+                  // );
+                }
+              },),
             ],
           ),
         ),
       ),
     );
   }
+}
+class HolidayModel {
+
+  final String type;
+  final String fromDate;
+  final String toDate;
+  final String reason;
+  final String duration;
+  final String status;
+
+  HolidayModel({
+    required this.type,
+    required this.fromDate,
+    required this.toDate,
+    required this.reason,
+    required this.duration,
+    required this.status,
+  });
 }

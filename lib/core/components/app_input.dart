@@ -69,7 +69,7 @@ class _AppInpotState extends State<AppInput> {
             Expanded(
               flex: 2,
               child: TextFormField(
-                maxLines: widget.maxLines,
+                maxLines: widget.isPassword ? 1 : widget.maxLines,
                 style: TextStyle(
                   fontSize: 14.sp,
 
