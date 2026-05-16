@@ -2,17 +2,18 @@ import 'package:company_apg_2026/core/components/app_back.dart';
 import 'package:company_apg_2026/core/components/app_button.dart';
 import 'package:company_apg_2026/core/components/app_image.dart';
 import 'package:company_apg_2026/core/logic/admin.dart';
+import 'package:company_apg_2026/views/pages/employer/holidays/view.dart';
 import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/components/app_container_par.dart';
-
 import '../../../../core/components/app_divider.dart';
 import '../../../../core/components/app_employer_icon.dart';
 import '../../../../core/components/app_light_dark.dart';
 import '../../../../core/logic/helper_methods.dart';
-import '../../Holidays/view.dart';
+
 import '../../home_page.dart';
+import '../edite/view.dart';
 
 class EmployerDetailsView extends StatefulWidget {
   final String? pass;
@@ -33,11 +34,14 @@ class _EmployerDetailsViewState extends State<EmployerDetailsView> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.transparent,
-        leading: AppBack(
-          pass: 'arrow-left.svg',
-          onTap: () {
-            goTo(HomePage(initialIndex: 3));
-          },
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: AppBack(
+            pass: 'arrow-left.svg',
+            onTap: () {
+              goTo(HomePage(initialIndex: 3));
+            },
+          ),
         ),
         title: Text(
           'العاملين',
@@ -169,13 +173,11 @@ class _EmployerDetailsViewState extends State<EmployerDetailsView> {
                       text: 'الاجازات',
                       onPressed: () {
                         goTo(HolidayDetailsView());
-                      },width: double.infinity,
+                      },
+                      width: double.infinity,
                     ),
 
                     SizedBox(height: 5),
-
-
-
                   ],
                 ),
               ),
@@ -471,11 +473,13 @@ class _EmployerDetailsViewState extends State<EmployerDetailsView> {
           // if(Admin.isAdmin)
           AppButton(
             text: 'تعديل بيانات الموظف',
-            onPressed: () {},
+            onPressed: () {
+              goTo(EditeEmployerView());
+            },
             width: 122.w,
           ),
           SizedBox(height: 5.h),
-         //todo
+          //todo
           //if(Admin.isAdmin)
           AppButton(
             text: 'حذف الموظف',

@@ -13,6 +13,9 @@ import '../../../../core/components/app_container_par.dart';
 import '../../../../core/components/app_image.dart';
 import '../../../../core/components/app_input.dart';
 import '../../../../core/components/app_validator.dart';
+import '../../../../core/logic/helper_methods.dart';
+import '../../home_page.dart';
+import '../employer_details/view.dart';
 
 class EditeEmployerView extends StatefulWidget {
   const EditeEmployerView({super.key});
@@ -51,7 +54,9 @@ class _EditeEmployerViewState extends State<EditeEmployerView> {
       appBar: AppBar(
         leading: Padding(
           padding: const EdgeInsets.all(15.0),
-          child: AppBack(pass: 'arrow-left.svg'),
+          child: AppBack(pass: 'arrow-left.svg',onTap: () {
+            goTo(EmployerDetailsView());
+          },),
         ),
         centerTitle: true,
         backgroundColor: Colors.transparent,

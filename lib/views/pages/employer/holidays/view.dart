@@ -4,9 +4,12 @@ import 'package:company_apg_2026/core/logic/helper_methods.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../core/components/app_back.dart';
-import '../../../core/components/app_container_par.dart';
-import '../employer/employer_details/view.dart';
+import '../../../../core/components/app_back.dart';
+import '../../../../core/components/app_container_par.dart';
+import '../../../../core/components/app_light_dark.dart';
+import '../employer_details/view.dart';
+import 'add.dart';
+
 
 class HolidayDetailsView extends StatefulWidget {
   const HolidayDetailsView({super.key});
@@ -22,6 +25,17 @@ class _HolidayDetailsViewState extends State<HolidayDetailsView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: AppBack(pass: 'plus.svg',onTap: () {
+              goTo(AddHolidayView());
+            },),
+          ),
+          SizedBox(width: 10.w,),
+          AppLightDark(),
+        ],
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
           child: AppBack(
@@ -61,7 +75,7 @@ class _HolidayDetailsViewState extends State<HolidayDetailsView> {
                       decoration: BoxDecoration(
                         color: Color(0xffFDF0E9),
                         border: Border.all(color: Color(0xffEFEFEF)),
-                        borderRadius: BorderRadius.circular(14),
+                        borderRadius: BorderRadius.circular(14.r),
                       ),
                       height: 120.h,
                       child: Column(
@@ -98,7 +112,7 @@ class _HolidayDetailsViewState extends State<HolidayDetailsView> {
                       decoration: BoxDecoration(
                         color: Color(0xffFFF3E0),
                         border: Border.all(color: Color(0xffEFEFEF)),
-                        borderRadius: BorderRadius.circular(14),
+                        borderRadius: BorderRadius.circular(14.r),
                       ),
                       height: 120.h,
                       child: Column(

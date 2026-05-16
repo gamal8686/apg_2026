@@ -1,4 +1,6 @@
 import 'package:company_apg_2026/core/components/app_button.dart';
+import 'package:company_apg_2026/core/logic/helper_methods.dart';
+import 'package:company_apg_2026/views/pages/employer/holidays/view.dart';
 import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,7 +9,7 @@ import '../../../../core/components/app_back.dart';
 import '../../../../core/components/app_container_par.dart';
 import '../../../../core/components/app_input.dart';
 import '../../../../core/components/app_validator.dart';
-import '../../../core/logic/data.dart';
+import '../../../../core/logic/data.dart';
 
 class AddHolidayView extends StatefulWidget {
   const AddHolidayView({super.key});
@@ -41,7 +43,9 @@ class _AddHolidaysViewState extends State<AddHolidayView> {
       appBar: AppBar(
         leading: Padding(
           padding: const EdgeInsets.all(15.0),
-          child: AppBack(pass: 'arrow-left.svg'),
+          child: AppBack(pass: 'arrow-left.svg',onTap: () {
+            goTo(HolidayDetailsView());
+          },),
         ),
         centerTitle: true,
         backgroundColor: Colors.transparent,

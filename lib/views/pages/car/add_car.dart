@@ -1,6 +1,9 @@
 import 'dart:io';
 
 import 'package:company_apg_2026/core/components/app_button.dart';
+import 'package:company_apg_2026/core/logic/admin.dart';
+import 'package:company_apg_2026/core/logic/helper_methods.dart';
+import 'package:company_apg_2026/views/pages/home_page.dart';
 import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -56,7 +59,11 @@ class _AddCarViewState extends State<AddCarView> {
       appBar: AppBar(
         leading: Padding(
           padding: const EdgeInsets.all(15.0),
-          child: AppBack(pass: 'arrow-left.svg'),
+          child:
+
+          AppBack(pass: 'arrow-left.svg',onTap: () {
+            goTo(HomePage(initialIndex: 2,));
+          },),
         ),
         centerTitle: true,
         backgroundColor: Colors.transparent,

@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
   int currentIndex = 0;
   final List<Model> list = [
     //todo
-    // if(Admin.isAdmin)
+    //if(Admin.isAdmin)
     Model(CategoryPage()),
     Model(ProductPage()),
     Model(CarPage()),
@@ -71,7 +71,7 @@ class _HomePageState extends State<HomePage> {
 
         items: [
           //todo
-         // if(Admin.isAdmin)
+        //  if(Admin.isAdmin)
           BottomNavigationBarItem(
             icon: AppImage(path: 'category.png', height: 20.h),
             label: 'الرئيسيه',

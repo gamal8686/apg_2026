@@ -9,7 +9,8 @@ import 'package:company_apg_2026/core/components/app_admin.dart';
 
 import '../../../core/components/app_container_par.dart';
 import '../../../core/components/app_light_dark.dart';
-import '../../../core/logic/admin.dart';
+
+import 'add.dart';
 
 class ProductPage extends StatelessWidget {
   const ProductPage({super.key});
@@ -175,9 +176,12 @@ class ProductPage extends StatelessWidget {
       ),
       floatingActionButton:
           //todo
-      Admin.isAdmin
-          ? AppAdmin(onTap: () {})
-          : null,
+     // Admin.isAdmin ?
+
+        AppAdmin(onTap: () {
+          goTo(AddProductView());
+        })
+         // : null,
 
     );
   }

@@ -2,12 +2,14 @@ import 'package:company_apg_2026/core/components/app_back.dart';
 import 'package:company_apg_2026/core/components/app_button.dart';
 import 'package:company_apg_2026/core/components/app_image.dart';
 import 'package:company_apg_2026/core/components/app_light_dark.dart';
+import 'package:company_apg_2026/core/logic/admin.dart';
 import 'package:company_apg_2026/core/logic/helper_methods.dart';
 import 'package:company_apg_2026/views/pages/car/details_car.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/components/app_container_par.dart';
+import 'add_car.dart';
 
 class CarPage extends StatefulWidget {
   const CarPage({super.key});
@@ -47,7 +49,22 @@ class _CarPageState extends State<CarPage> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
- actions: [AppLightDark()],
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child:
+              //todo
+         // Admin.isAdmin?
+          AppBack(
+            pass: 'plus.svg',
+            onTap: () {
+              goTo(AddCarView());
+            },
+          ),
+              //:null,
+
+          //:null,
+        ),
+        actions: [AppLightDark()],
         title: Text(
           ' اداره عربيات التحميل',
           style: TextStyle(
@@ -81,7 +98,6 @@ class _CarPageState extends State<CarPage> with SingleTickerProviderStateMixin {
             Expanded(
               child: ListView(
                 children: [
-
                   SlideTransition(
                     position: _animation,
                     child: FadeTransition(
@@ -90,9 +106,8 @@ class _CarPageState extends State<CarPage> with SingleTickerProviderStateMixin {
                         children: [
                           Expanded(
                             child: Container(
-
                               decoration: BoxDecoration(
-                                color:  Color(0xffFDF0E9),
+                                color: Color(0xffFDF0E9),
                                 border: Border.all(color: Color(0xffEFEFEF)),
                                 borderRadius: BorderRadius.circular(14),
                               ),
@@ -171,11 +186,10 @@ class _CarPageState extends State<CarPage> with SingleTickerProviderStateMixin {
 
                   ...List.generate(2, (index) {
                     return Container(
-
                       margin: EdgeInsets.only(bottom: 10.h),
                       padding: EdgeInsets.all(8),
                       decoration: BoxDecoration(
-                        color:  Color(0xffFDF0E9),
+                        color: Color(0xffFDF0E9),
                         border: Border.all(color: Color(0xffEFEFEF)),
                         borderRadius: BorderRadius.circular(14),
                       ),
@@ -214,14 +228,17 @@ class _CarPageState extends State<CarPage> with SingleTickerProviderStateMixin {
                                   ),
                                 ),
                                 child: CircleAvatar(
-                               maxRadius: 15,
-                                    child: Text('1',
-                                  style: TextStyle(
-                                    color: Color(0xff292D32),
+                                  maxRadius: 15,
+                                  child: Text(
+                                    '1',
+                                    style: TextStyle(
+                                      color: Color(0xff292D32),
 
-                                    fontSize: 20.sp,
-                                    fontWeight: FontWeight.w700,
-                                  ),)),
+                                      fontSize: 20.sp,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                ),
                               ),
                             ],
                           ),
@@ -326,7 +343,6 @@ class _CarPageState extends State<CarPage> with SingleTickerProviderStateMixin {
                             height: 85.h,
                             width: double.infinity,
                             decoration: BoxDecoration(
-
                               border: Border.all(color: Colors.transparent),
                               borderRadius: BorderRadius.circular(8.r),
                               color: Color(0xffeed6b0),
@@ -346,13 +362,31 @@ class _CarPageState extends State<CarPage> with SingleTickerProviderStateMixin {
                             ),
                           ),
                           SizedBox(height: 10.h),
-                          AppButton(
-                            text: 'تفاصيل',
-                            onPressed: () {
-                              goTo(ProductDetailsCar());
-                            },
-                            width: double.infinity,
-
+                          Row(
+                            children: [
+                              Expanded(
+                                child: AppButton(
+                                  text: 'تفاصيل',
+                                  onPressed: () {
+                                    goTo(ProductDetailsCar());
+                                  },
+                                  width: double.infinity,
+                                ),
+                              ),
+                              SizedBox(width: 5.w),
+                              //todo
+                              //if(Admin.isAdmin)
+                              Expanded(
+                                child: AppButton(
+                                  color: Colors.red,
+                                  text: 'حذف',
+                                  onPressed: () {
+                                    goTo(ProductDetailsCar());
+                                  },
+                                  width: double.infinity,
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),

@@ -17,11 +17,15 @@ class ProductDetailsCar extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [AppLightDark()],
-        leading: AppBack(
-          pass: 'arrow-left.svg',
-          onTap: () {
-            goTo(HomePage(initialIndex: 2,));
-          },
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: AppBack(
+            pass: 'arrow-left.svg',
+
+            onTap: () {
+              goTo(HomePage(initialIndex: 2,));
+            },
+          ),
         ),
         title: Text(
           'تفاصيل الشحنه',

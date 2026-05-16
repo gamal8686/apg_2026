@@ -5,8 +5,7 @@ import 'package:company_apg_2026/views/auth/forget_password/cubit.dart';
 import 'package:company_apg_2026/views/auth/login/cubit.dart';
 import 'package:company_apg_2026/views/auth/new_password/cubit.dart';
 import 'package:company_apg_2026/views/auth/otp_view/cubit.dart';
-import 'package:company_apg_2026/views/pages/Holidays/add.dart';
-import 'package:company_apg_2026/views/pages/Holidays/view.dart';
+
 import 'package:company_apg_2026/views/pages/employer/employer/view.dart';
 import 'package:company_apg_2026/views/pages/home_page.dart';
 import 'package:company_apg_2026/views/pages/products/add.dart';
