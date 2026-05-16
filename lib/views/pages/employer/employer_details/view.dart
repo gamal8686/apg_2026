@@ -1,6 +1,7 @@
 import 'package:company_apg_2026/core/components/app_back.dart';
 import 'package:company_apg_2026/core/components/app_button.dart';
 import 'package:company_apg_2026/core/components/app_image.dart';
+import 'package:company_apg_2026/core/logic/admin.dart';
 import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,10 +11,13 @@ import '../../../../core/components/app_divider.dart';
 import '../../../../core/components/app_employer_icon.dart';
 import '../../../../core/components/app_light_dark.dart';
 import '../../../../core/logic/helper_methods.dart';
+import '../../Holidays/view.dart';
 import '../../home_page.dart';
 
 class EmployerDetailsView extends StatefulWidget {
-  const EmployerDetailsView({super.key});
+  final String? pass;
+
+  const EmployerDetailsView({super.key, this.pass});
 
   @override
   State<EmployerDetailsView> createState() => _EmployerDetailsViewState();
@@ -53,11 +57,7 @@ class _EmployerDetailsViewState extends State<EmployerDetailsView> {
           SizedBox(height: 20.h),
           Center(
             child: ClipOval(
-              child: AppImage(
-                path:
-                    'https://scontent.fcai19-2.fna.fbcdn.net/v/t39.30808-6/655757355_914435494703347_4741616360734265394_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=XBa095afCzMQ7kNvwFaE237&_nc_oc=Adr9VDAabL6GPPTtKGKTYSiVA3ldAQsY6NcNJVKbpyMikPIgndDN0jjQ6Eiqfh6rD78&_nc_zt=23&_nc_ht=scontent.fcai19-2.fna&_nc_gid=RL_Rh33QyIvT0ksIzEaicQ&_nc_ss=7a3a8&oh=00_Af3x6g_Bqg0mzMsq2S00op4j7yL14pLcugVm-drYdEY8cA&oe=69ED2EF7',
-                height: 100.h,
-              ),
+              child: AppImage(path: widget.pass ?? '', height: 100.h),
             ),
           ),
           SizedBox(height: 10.h),
@@ -165,50 +165,17 @@ class _EmployerDetailsViewState extends State<EmployerDetailsView> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'اجازه سنويه',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 18.sp,
-                        fontFamily: 'Cairo',
-                        color: Color(0xff292D32),
-                      ),
+                    AppButton(
+                      text: 'الاجازات',
+                      onPressed: () {
+                        goTo(HolidayDetailsView());
+                      },width: double.infinity,
                     ),
+
                     SizedBox(height: 5),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        SizedBox(height: 5.h),
-                        AppImage(path: 'data_time.png', height: 20.h),
-                        SizedBox(width: 10.w),
-                        Text(
-                          '10-05-2024 - 15-05-2024',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 15.sp,
-                            fontFamily: 'Cairo',
-                            color: Color(0xff292D32),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 5.h),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        AppImage(path: 'i_image.png', height: 20.h),
-                        SizedBox(width: 10.w),
-                        Text(
-                          '5 ايام ',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 15.sp,
-                            fontFamily: 'Cairo',
-                            color: Color(0xff292D32),
-                          ),
-                        ),
-                      ],
-                    ),
+
+
+
                   ],
                 ),
               ),
@@ -500,9 +467,22 @@ class _EmployerDetailsViewState extends State<EmployerDetailsView> {
             ],
           ),
           SizedBox(height: 5.h),
-          AppButton(text: 'تعديل بيانات الموظف', onPressed: () {},width: 122.w,),
+          //todo
+          // if(Admin.isAdmin)
+          AppButton(
+            text: 'تعديل بيانات الموظف',
+            onPressed: () {},
+            width: 122.w,
+          ),
           SizedBox(height: 5.h),
-          AppButton(text: 'حذف الموظف', onPressed: () {},width: 122.w,color: Color(0xffC92A2A),),
+         //todo
+          //if(Admin.isAdmin)
+          AppButton(
+            text: 'حذف الموظف',
+            onPressed: () {},
+            width: 122.w,
+            color: Color(0xffC92A2A),
+          ),
         ],
       ),
     );

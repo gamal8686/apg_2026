@@ -1,5 +1,7 @@
 import 'package:company_apg_2026/core/components/app_button.dart';
 import 'package:company_apg_2026/core/components/app_image.dart';
+import 'package:company_apg_2026/core/logic/helper_methods.dart';
+import 'package:company_apg_2026/views/pages/order/order.dart';
 import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -40,7 +42,9 @@ class _AddOrderViewState extends State<AddOrderView> {
       appBar: AppBar(
         leading: Padding(
           padding: const EdgeInsets.all(15.0),
-          child: AppBack(pass: 'arrow-left.svg'),
+          child: AppBack(pass: 'arrow-left.svg',onTap: () {
+            goTo(OrderPage());
+          },),
         ),
         centerTitle: true,
         backgroundColor: Colors.transparent,

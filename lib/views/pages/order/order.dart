@@ -7,8 +7,11 @@ import 'package:company_apg_2026/views/pages/order/order_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../core/components/app_back.dart';
 import '../../../core/components/app_light_dark.dart';
 import '../../../core/components/app_search.dart';
+import '../../../core/logic/admin.dart';
+import 'add_order.dart';
 
 class OrderPage extends StatefulWidget {
   const OrderPage({super.key});
@@ -32,6 +35,19 @@ class _OrderPageState extends State<OrderPage> {
     return Scaffold(
       appBar: AppBar(
         actions: [AppLightDark()],
+
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child:
+              //todo
+              // Admin.isAdmin?
+              AppBack(pass: 'plus.svg', onTap: () {
+                goTo(AddOrderView());
+
+              }),
+
+          //:null,
+        ),
         title: Text(
           'اداره التعليمات',
           style: TextStyle(
@@ -242,25 +258,29 @@ class _OrderPageState extends State<OrderPage> {
                             SizedBox(height: 10.h),
                             Row(
                               children: [
-                                GestureDetector(
-                                  onTap: () {
-                                    goTo(OrderDetails());
-                                  },
-                                  child: Container(
-                                    height: 40.h,
-                                    width: 90.w,
-                                    decoration: BoxDecoration(
-                                      color: Theme.of(context).primaryColor,
-                                      borderRadius: BorderRadius.circular(25.r),
-                                    ),
-                                    child: Center(
-                                      child: Text(
-                                        'تفاصيل',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontFamily: 'Cairo',
-                                          fontSize: 18.sp,
-                                          fontWeight: FontWeight.w700,
+                                Expanded(
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      goTo(OrderDetails());
+                                    },
+                                    child: Container(
+                                      height: 40.h,
+                                      width: 90.w,
+                                      decoration: BoxDecoration(
+                                        color: Theme.of(context).primaryColor,
+                                        borderRadius: BorderRadius.circular(
+                                          25.r,
+                                        ),
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          'تفاصيل',
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontFamily: 'Cairo',
+                                            fontSize: 18.sp,
+                                            fontWeight: FontWeight.w700,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -268,6 +288,8 @@ class _OrderPageState extends State<OrderPage> {
                                 ),
 
                                 Spacer(),
+                                //todo
+                                // if(Admin.isAdmin)
                                 GestureDetector(
                                   onTap: () {},
                                   child: CircleAvatar(

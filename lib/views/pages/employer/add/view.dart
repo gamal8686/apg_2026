@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:company_apg_2026/core/components/app_button.dart';
+import 'package:company_apg_2026/core/logic/helper_methods.dart';
+import 'package:company_apg_2026/views/pages/home_page.dart';
 import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +14,7 @@ import '../../../../core/components/app_container_par.dart';
 import '../../../../core/components/app_image.dart';
 import '../../../../core/components/app_input.dart';
 import '../../../../core/components/app_validator.dart';
+import '../employer/view.dart';
 
 class AddEmployerView extends StatefulWidget {
   const AddEmployerView({super.key});
@@ -50,7 +53,9 @@ class _AddEmployerViewState extends State<AddEmployerView> {
       appBar: AppBar(
         leading: Padding(
           padding: const EdgeInsets.all(15.0),
-          child: AppBack(pass: 'arrow-left.svg'),
+          child: AppBack(pass: 'arrow-left.svg',onTap: () {
+            goTo(HomePage(initialIndex: 3,));
+          },),
         ),
         centerTitle: true,
         backgroundColor: Colors.transparent,

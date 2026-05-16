@@ -9,6 +9,7 @@ import 'package:company_apg_2026/core/components/app_admin.dart';
 
 import '../../../core/components/app_container_par.dart';
 import '../../../core/components/app_light_dark.dart';
+import '../../../core/logic/admin.dart';
 
 class ProductPage extends StatelessWidget {
   const ProductPage({super.key});
@@ -16,7 +17,7 @@ class ProductPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: AppAdmin(onTap: () {}),
+
       appBar: AppBar(
         actions: [AppLightDark()],
         title: Text(
@@ -172,6 +173,12 @@ class ProductPage extends StatelessWidget {
           ],
         ),
       ),
+      floatingActionButton:
+          //todo
+      Admin.isAdmin
+          ? AppAdmin(onTap: () {})
+          : null,
+
     );
   }
 }

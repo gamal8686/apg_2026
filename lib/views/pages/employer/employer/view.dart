@@ -1,4 +1,5 @@
 import 'package:company_apg_2026/core/components/app_image.dart';
+import 'package:company_apg_2026/core/logic/admin.dart';
 import 'package:company_apg_2026/core/logic/helper_methods.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,6 +8,7 @@ import '../../../../core/components/app_admin.dart';
 import '../../../../core/components/app_container_par.dart';
 import '../../../../core/components/app_light_dark.dart';
 import '../../../../core/components/app_search.dart';
+import '../add/view.dart';
 import '../employer_details/view.dart';
 
 class EmployerView extends StatefulWidget {
@@ -48,7 +50,14 @@ class _EmployerViewState extends State<EmployerView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: AppAdmin(),
+      floatingActionButton:
+      //todo
+     // Admin.isAdmin?
+      AppAdmin(onTap: () {
+        goTo(AddEmployerView());
+      },),
+
+          //:null,
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.transparent,
@@ -164,7 +173,7 @@ class _EmployerViewState extends State<EmployerView> {
             Expanded(
               child: GestureDetector(
                 onTap: () {
-                  goTo(EmployerDetailsView() );
+                  goTo(EmployerDetailsView(pass:'https://thumbs.dreamstime.com/z/beautiful-autumn-beautiful-brunette-18465358.jpg' ,) );
                 },
                 child: ListView.builder(
                   physics: BouncingScrollPhysics(),
@@ -187,11 +196,13 @@ class _EmployerViewState extends State<EmployerView> {
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              ClipOval(
-                                child: AppImage(
-                                  path:
-                                      'https://scontent.fcai19-2.fna.fbcdn.net/v/t39.30808-6/655757355_914435494703347_4741616360734265394_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=XBa095afCzMQ7kNvwFaE237&_nc_oc=Adr9VDAabL6GPPTtKGKTYSiVA3ldAQsY6NcNJVKbpyMikPIgndDN0jjQ6Eiqfh6rD78&_nc_zt=23&_nc_ht=scontent.fcai19-2.fna&_nc_gid=RL_Rh33QyIvT0ksIzEaicQ&_nc_ss=7a3a8&oh=00_Af3x6g_Bqg0mzMsq2S00op4j7yL14pLcugVm-drYdEY8cA&oe=69ED2EF7',
-                                  height: 70.h,
+                              Expanded(
+                                child: ClipOval(
+                                  child: AppImage(
+                                    path:
+                                        'https://thumbs.dreamstime.com/z/beautiful-autumn-beautiful-brunette-18465358.jpg',
+                                    height: 70.h,
+                                  ),
                                 ),
                               ),
                               SizedBox(width: 10.w,),
@@ -200,7 +211,7 @@ class _EmployerViewState extends State<EmployerView> {
                                 children: [
                                   SizedBox(height: 10.h,),
                                   Text(
-                                    'اسامة جمال جمال ',
+                                    'جمال اسامة جمال',
                                     style: TextStyle(
                                       fontWeight: FontWeight.w900,
                                       fontSize: 20.sp,

@@ -1,4 +1,5 @@
 
+import 'package:company_apg_2026/core/logic/admin.dart';
 import 'package:company_apg_2026/views/pages/products/product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,11 +23,15 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int currentIndex = 0;
   final List<Model> list = [
+    //todo
+    // if(Admin.isAdmin)
     Model(CategoryPage()),
     Model(ProductPage()),
     Model(CarPage()),
     Model(EmployerView()),
     Model(OrderPage()),
+
+
   ];
   @override
   void initState() {
@@ -65,6 +70,8 @@ class _HomePageState extends State<HomePage> {
         iconSize: 20,
 
         items: [
+          //todo
+         // if(Admin.isAdmin)
           BottomNavigationBarItem(
             icon: AppImage(path: 'category.png', height: 20.h),
             label: 'الرئيسيه',
@@ -81,6 +88,7 @@ class _HomePageState extends State<HomePage> {
             icon: AppImage(path: 'parson.png', height: 25.h),
             label: '  االموظفين  ',
           ),
+          // if(Admin.isAdmin)
           BottomNavigationBarItem(
             icon: AppImage(path: 'orders.png', height: 25.h),
             label: 'التعليمات',
