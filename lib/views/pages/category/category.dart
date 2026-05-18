@@ -1,5 +1,7 @@
 import 'package:company_apg_2026/core/components/app_back.dart';
 import 'package:company_apg_2026/core/components/app_image.dart';
+import 'package:company_apg_2026/core/logic/helper_methods.dart';
+import 'package:company_apg_2026/views/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -77,20 +79,30 @@ class CategoryPage extends StatelessWidget {
             Row(
               children: [
                 Expanded(
-                  child: AppAdminCard(
-                    title: 'الانتاج التام',
-                    subtitle: 'عرض كل الزجاجات والعبوات\nواماكنها',
-                    path: 'box_admin.png',
-                    count: '1,200',
+                  child: GestureDetector(
+                    onTap: () {
+                      goTo(HomePage(initialIndex: 1,));
+                    },
+                    child: AppAdminCard(
+                      title: 'الانتاج التام',
+                      subtitle: 'عرض كل الزجاجات والعبوات\nواماكنها',
+                      path: 'box_admin.png',
+                      count: '1,200',
+                    ),
                   ),
                 ),
                 SizedBox(width: 5.w),
                 Expanded(
-                  child: AppAdminCard(
-                    title: 'الانتاج اليومي',
-                    subtitle: 'تحديث كميات اليوم\n لكل صنف',
-                    path: '50pont.png',
-                    count: 'تحديث الان',
+                  child: GestureDetector(
+                    onTap: () {
+                      goTo(HomePage(initialIndex: 3,));
+                    },
+                    child: AppAdminCard(
+                      title: 'العاملين',
+                      subtitle: 'تحديث كميات اليوم\n لكل صنف',
+                      path: 'under_ review.png',
+                      count: 'تحديث الان',
+                    ),
                   ),
                 ),
               ],
@@ -99,75 +111,36 @@ class CategoryPage extends StatelessWidget {
             Row(
               children: [
                 Expanded(
-                  child: AppAdminCard(
-                    title: 'سيارات التحميل',
-                    subtitle: 'مواعيد الشحنات \nالقادمه وتفاصيلها',
-                    path: 'car_car.png',
-                    count: '8 شحنات اليوم',
+                  child: GestureDetector(
+                    onTap: () {
+                      goTo(HomePage(initialIndex: 2,));
+                    },
+                    child: AppAdminCard(
+                      title: 'سيارات التحميل',
+                      subtitle: 'مواعيد الشحنات \nالقادمه وتفاصيلها',
+                      path: 'car_car.png',
+                      count: '8 شحنات اليوم',
+                    ),
                   ),
                 ),
                 SizedBox(width: 5.w),
                 Expanded(
-                  child: AppAdminCard(
-                    title: 'التعليمات',
-                    subtitle: 'اطلع علي تعليماتك\n او تعليمات المدير',
-                    path: 'sheet.png',
-                    count: '3 تعليمات جديده',
+                  child: GestureDetector(
+                    onTap: () {
+                      goTo(HomePage(initialIndex: 4,));
+                    },
+                    child: AppAdminCard(
+                      title: 'التعليمات',
+                      subtitle: 'اطلع علي تعليماتك\n او تعليمات المدير',
+                      path: 'sheet.png',
+                      count: '3 تعليمات جديده',
+                    ),
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 5.h),
-            Container(
-              height: 128.h,
-              decoration: BoxDecoration(
-                color: Color(0xffFDF0E9),
-                border: Border.all(color: Color(0xffFFEAD9)),
-                borderRadius: BorderRadius.circular(14.r),
-              ),
-              child: Row(
-                children: [
-                  AppBack(pass: 'people.png', radius: 45.r, heightImage: 40.r),
-                  SizedBox(width: 10.w),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'الموظفين',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18.sp,
-                          fontFamily: 'Cairo',
-                          color: Color(0xff292D32),
-                        ),
-                      ),
-                      SizedBox(height: 5.h),
 
-                      Text(
-                        'تفاصيل الموظفين وصلاحيتهم',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 16.sp,
-                          fontFamily: 'Cairo',
-                          color: Color(0xff7F8B8B),
-                        ),
-                      ),
-                      SizedBox(height: 5.h),
-                      Text(
-                        '12 موظف نشط الان',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16.sp,
-                          fontFamily: 'Cairo',
-                          color: Color(0xffE76300),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
+
           ],
         ),
       ),

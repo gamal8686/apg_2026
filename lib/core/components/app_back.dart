@@ -17,7 +17,7 @@ final double? heightImage;
         backgroundColor: Theme.of(context).primaryColor.withValues(alpha: 0.15),
         radius: radius,
 
-        child: AppImage(path: pass, height: heightImage),
+        child: AppImage(path: pass, height: heightImage,),
       ),
     );
   }

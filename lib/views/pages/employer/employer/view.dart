@@ -10,7 +10,7 @@ import '../../../../core/components/app_light_dark.dart';
 import '../../../../core/components/app_search.dart';
 import '../add/view.dart';
 import '../employer_details/view.dart';
-
+//todo
 class EmployerView extends StatefulWidget {
   const EmployerView({super.key});
 
