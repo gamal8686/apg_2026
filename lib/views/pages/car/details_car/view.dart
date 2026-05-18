@@ -5,12 +5,13 @@ import 'package:company_apg_2026/views/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../core/components/app_back.dart';
-import '../../../core/components/app_image.dart';
-import '../../../core/components/app_light_dark.dart';
+import '../../../../core/components/app_back.dart';
+import '../../../../core/components/app_image.dart';
+import '../../../../core/components/app_light_dark.dart';
 
-class ProductDetailsCar extends StatelessWidget {
-  const ProductDetailsCar({super.key});
+class ProductDetailsCarView extends StatelessWidget {
+
+  const ProductDetailsCarView({super.key});
 
   @override
   Widget build(BuildContext context) {

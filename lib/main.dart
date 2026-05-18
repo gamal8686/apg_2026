@@ -5,6 +5,11 @@ import 'package:company_apg_2026/views/auth/forget_password/cubit.dart';
 import 'package:company_apg_2026/views/auth/login/cubit.dart';
 import 'package:company_apg_2026/views/auth/new_password/cubit.dart';
 import 'package:company_apg_2026/views/auth/otp_view/cubit.dart';
+import 'package:company_apg_2026/views/pages/car/add_car/cubit.dart';
+import 'package:company_apg_2026/views/pages/car/add_car/view.dart';
+import 'package:company_apg_2026/views/pages/car/car/cubit.dart';
+import 'package:company_apg_2026/views/pages/car/details_car/cubit.dart';
+import 'package:company_apg_2026/views/pages/car/details_car/view.dart';
 
 import 'package:company_apg_2026/views/pages/employer/employer/view.dart';
 import 'package:company_apg_2026/views/pages/home_page.dart';
@@ -40,6 +45,9 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (context) => LoginCubit()),
           BlocProvider(create: (context) => NewPasswordCubit()),
           BlocProvider(create: (context) => OtbCubit()),
+          BlocProvider(create: (context) => CarCubit()),
+          BlocProvider(create: (context) => AddCarCubit()),
+          BlocProvider(create: (context) => DetailsCarCubit()..getData()),
       ],
       child: ScreenUtilInit(
         designSize: const Size(360, 690),
@@ -63,7 +71,7 @@ class MyApp extends StatelessWidget {
                   textDirection: TextDirection.rtl,
                   child: child!,
                 ),
-                home: const HomePage(),
+                home: const ProductDetailsCarView(),
               ),
             ),
           );

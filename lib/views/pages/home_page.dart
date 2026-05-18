@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 import '../../core/components/app_image.dart';
-import 'car/car.dart';
+import 'car/car/view.dart';
 import 'employer/employer/view.dart';
 import 'category/category.dart';
 import 'order/order.dart';
@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
     //if(Admin.isAdmin)
     Model(CategoryPage()),
     Model(ProductPage()),
-    Model(CarPage()),
+    Model(CarView()),
     Model(EmployerView()),
     Model(OrderPage()),
 

@@ -4,23 +4,29 @@ import 'package:company_apg_2026/core/components/app_image.dart';
 import 'package:company_apg_2026/core/components/app_light_dark.dart';
 import 'package:company_apg_2026/core/logic/admin.dart';
 import 'package:company_apg_2026/core/logic/helper_methods.dart';
-import 'package:company_apg_2026/views/pages/car/details_car.dart';
+import 'package:company_apg_2026/views/pages/car/details_car/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../core/components/app_container_par.dart';
-import 'add_car.dart';
+import '../../../../core/components/app_container_par.dart';
+import '../add_car/view.dart';
 
-class CarPage extends StatefulWidget {
-  const CarPage({super.key});
+class CarView extends StatefulWidget {
+  const CarView({super.key});
 
   @override
-  State<CarPage> createState() => _CarPageState();
+  State<CarView> createState() => _CarViewState();
 }
 
-class _CarPageState extends State<CarPage> with SingleTickerProviderStateMixin {
+class _CarViewState extends State<CarView> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Offset> _animation;
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   void initState() {
@@ -40,12 +46,6 @@ class _CarPageState extends State<CarPage> with SingleTickerProviderStateMixin {
   }
 
   @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -53,14 +53,14 @@ class _CarPageState extends State<CarPage> with SingleTickerProviderStateMixin {
           padding: const EdgeInsets.all(8.0),
           child:
               //todo
-         // Admin.isAdmin?
-          AppBack(
-            pass: 'plus.svg',
-            onTap: () {
-              goTo(AddCarView());
-            },
-          ),
-              //:null,
+              // Admin.isAdmin?
+              AppBack(
+                pass: 'plus.svg',
+                onTap: () {
+                  goTo(AddCarView());
+                },
+              ),
+          //:null,
 
           //:null,
         ),
@@ -368,7 +368,7 @@ class _CarPageState extends State<CarPage> with SingleTickerProviderStateMixin {
                                 child: AppButton(
                                   text: 'تفاصيل',
                                   onPressed: () {
-                                    goTo(ProductDetailsCar());
+                                    goTo(ProductDetailsCarView());
                                   },
                                   width: double.infinity,
                                 ),
@@ -381,7 +381,7 @@ class _CarPageState extends State<CarPage> with SingleTickerProviderStateMixin {
                                   color: Colors.red,
                                   text: 'حذف',
                                   onPressed: () {
-                                    goTo(ProductDetailsCar());
+                                    goTo(ProductDetailsCarView());
                                   },
                                   width: double.infinity,
                                 ),
