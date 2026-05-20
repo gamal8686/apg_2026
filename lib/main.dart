@@ -29,9 +29,11 @@ import 'core/components/app_them_project/get_theme_data_dark.dart';
 import 'core/components/app_them_project/get_theme_data_light.dart';
 import 'core/components/app_them_project/state_theme.dart';
 import 'core/logic/helper_methods.dart';
+import 'core/service/service_locator.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  initGetIt();
   await CashHelper.init();
 
   runApp(MyApp());
