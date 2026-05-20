@@ -1,6 +1,6 @@
 
 import 'package:company_apg_2026/core/logic/admin.dart';
-import 'package:company_apg_2026/views/pages/products/product.dart';
+import 'package:company_apg_2026/views/pages/products/product/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -9,7 +9,7 @@ import '../../core/components/app_image.dart';
 import 'car/car/view.dart';
 import 'employer/employer/view.dart';
 import 'category/category.dart';
-import 'order/order.dart';
+import 'order/order/view.dart';
 
 class HomePage extends StatefulWidget {
   final int? initialIndex;

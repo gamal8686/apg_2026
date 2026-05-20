@@ -2,15 +2,15 @@ import 'package:company_apg_2026/core/components/app_back.dart';
 import 'package:company_apg_2026/core/components/app_image.dart';
 import 'package:company_apg_2026/core/components/app_search.dart';
 import 'package:company_apg_2026/core/logic/helper_methods.dart';
-import 'package:company_apg_2026/views/pages/products/product_location.dart';
+import 'package:company_apg_2026/views/pages/products/product_location/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:company_apg_2026/core/components/app_admin.dart';
 
-import '../../../core/components/app_container_par.dart';
-import '../../../core/components/app_light_dark.dart';
+import '../../../../core/components/app_container_par.dart';
+import '../../../../core/components/app_light_dark.dart';
 
-import 'add.dart';
+import '../add_products/view.dart';
 
 class ProductPage extends StatelessWidget {
   const ProductPage({super.key});

@@ -5,9 +5,9 @@ import 'package:company_apg_2026/core/components/app_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../core/components/app_light_dark.dart';
-import '../../../core/logic/helper_methods.dart';
-import '../home_page.dart';
+import '../../../../core/components/app_light_dark.dart';
+import '../../../../core/logic/helper_methods.dart';
+import '../../home_page.dart';
 
 class OrderDetails extends StatelessWidget {
   const OrderDetails({super.key});

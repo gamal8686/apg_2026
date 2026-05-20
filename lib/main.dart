@@ -15,7 +15,7 @@ import 'package:company_apg_2026/views/pages/employer/add/cubit.dart';
 
 import 'package:company_apg_2026/views/pages/employer/employer/view.dart';
 import 'package:company_apg_2026/views/pages/home_page.dart';
-import 'package:company_apg_2026/views/pages/products/add.dart';
+import 'package:company_apg_2026/views/pages/products/add_products/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
