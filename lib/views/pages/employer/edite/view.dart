@@ -16,7 +16,7 @@ import '../../../../core/components/app_image.dart';
 import '../../../../core/components/app_input.dart';
 import '../../../../core/components/app_validator.dart';
 import '../../../../core/logic/helper_methods.dart';
-import '../../home_page.dart';
+import '../../home_page/view.dart';
 import '../employer_details/view.dart';
 
 class EditeEmployerView extends StatefulWidget {

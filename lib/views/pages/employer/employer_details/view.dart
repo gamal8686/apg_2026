@@ -13,7 +13,7 @@ import '../../../../core/components/app_employer_icon.dart';
 import '../../../../core/components/app_light_dark.dart';
 import '../../../../core/logic/helper_methods.dart';
 
-import '../../home_page.dart';
+import '../../home_page/view.dart';
 import '../edite/view.dart';
 import 'cubit.dart';
 

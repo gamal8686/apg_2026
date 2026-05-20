@@ -1,21 +1,25 @@
 import 'package:company_apg_2026/core/logic/shared_preferences.dart';
-import 'package:company_apg_2026/splash.dart';
 import 'package:company_apg_2026/views/auth/Create_Login/cubit.dart';
 import 'package:company_apg_2026/views/auth/forget_password/cubit.dart';
 import 'package:company_apg_2026/views/auth/login/cubit.dart';
 import 'package:company_apg_2026/views/auth/new_password/cubit.dart';
 import 'package:company_apg_2026/views/auth/otp_view/cubit.dart';
 import 'package:company_apg_2026/views/pages/car/add_car/cubit.dart';
-import 'package:company_apg_2026/views/pages/car/add_car/view.dart';
 import 'package:company_apg_2026/views/pages/car/car/cubit.dart';
 import 'package:company_apg_2026/views/pages/car/details_car/cubit.dart';
-import 'package:company_apg_2026/views/pages/car/details_car/view.dart';
 import 'package:company_apg_2026/views/pages/category/category.dart';
 import 'package:company_apg_2026/views/pages/employer/add/cubit.dart';
-
-import 'package:company_apg_2026/views/pages/employer/employer/view.dart';
-import 'package:company_apg_2026/views/pages/home_page.dart';
-import 'package:company_apg_2026/views/pages/products/add_products/view.dart';
+import 'package:company_apg_2026/views/pages/employer/edite/cubit.dart';
+import 'package:company_apg_2026/views/pages/employer/employer/cubit.dart';
+import 'package:company_apg_2026/views/pages/employer/employer_details/cubit.dart';
+import 'package:company_apg_2026/views/pages/employer/holidays/add/cubit.dart';
+import 'package:company_apg_2026/views/pages/employer/holidays/holiday/cubit.dart';
+import 'package:company_apg_2026/views/pages/home_page/cubit.dart';
+import 'package:company_apg_2026/views/pages/order/add_order/cubit.dart';
+import 'package:company_apg_2026/views/pages/order/order/cubit.dart';
+import 'package:company_apg_2026/views/pages/products/add_products/cubit.dart';
+import 'package:company_apg_2026/views/pages/products/items_management/cubit.dart';
+import 'package:company_apg_2026/views/pages/products/product_location/cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -51,6 +55,17 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (context) => AddCarCubit()),
           BlocProvider(create: (context) => DetailsCarCubit()..getData()),
           BlocProvider(create: (context) => AddEmployerCubit()),
+          BlocProvider(create: (context) => EditEmployerCubit()),
+          BlocProvider(create: (context) => EmployerCubit()),
+          BlocProvider(create: (context) => EmployerDetailsCubit()),
+          BlocProvider(create: (context) => HolidayAddCubit()),
+          BlocProvider(create: (context) => HolidayCubit()),
+          BlocProvider(create: (context) => AddOrderCubit()),
+          BlocProvider(create: (context) => OrderCubit()),
+          BlocProvider(create: (context) => AddProductsCubit()),
+          BlocProvider(create: (context) => ItemsManagementCubit()),
+          BlocProvider(create: (context) => ProductLocationCubit()),
+          BlocProvider(create: (context) => HomepageCubit()),
       ],
       child: ScreenUtilInit(
         designSize: const Size(360, 690),

@@ -13,7 +13,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/components/app_validator.dart';
 import '../../../core/logic/helper_methods.dart';
-import '../../pages/home_page.dart';
+import '../../pages/home_page/view.dart';
 import 'cubit.dart';
 
 class CreateLoginView extends StatefulWidget {

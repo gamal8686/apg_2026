@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:company_apg_2026/core/components/app_button.dart';
 import 'package:company_apg_2026/core/logic/helper_methods.dart';
 import 'package:company_apg_2026/views/pages/employer/add/cubit.dart';
-import 'package:company_apg_2026/views/pages/home_page.dart';
+import 'package:company_apg_2026/views/pages/home_page/view.dart';
 import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
