@@ -14,7 +14,7 @@ class OtpView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<OtbCubit>();
+    final cubit = context.read<OtpCubit>();
 
     return Scaffold(
       appBar: AppBar(
@@ -60,7 +60,7 @@ class OtpView extends StatelessWidget {
               ),
               SizedBox(height: 32.h),
 
-              BlocBuilder<OtbCubit, OtpState>(
+              BlocBuilder<OtpCubit, OtpState>(
                 builder: (context, state) {
                   return Column(
                     children: [

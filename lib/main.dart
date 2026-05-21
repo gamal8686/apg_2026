@@ -46,57 +46,33 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final primary = Color(0xff5A3A22);
 
-    return MultiBlocProvider(
-      providers: [
-          BlocProvider(create: (context) => CreateLoginCubit()),
-          BlocProvider(create: (context) => ForgetPasswordCubit()),
-          BlocProvider(create: (context) => LoginCubit()),
-          BlocProvider(create: (context) => NewPasswordCubit()),
-          BlocProvider(create: (context) => OtbCubit()),
-          BlocProvider(create: (context) => CarCubit()),
-          BlocProvider(create: (context) => AddCarCubit()),
-          BlocProvider(create: (context) => DetailsCarCubit()..getData()),
-          BlocProvider(create: (context) => AddEmployerCubit()),
-          BlocProvider(create: (context) => EditEmployerCubit()),
-          BlocProvider(create: (context) => EmployerCubit()),
-          BlocProvider(create: (context) => EmployerDetailsCubit()),
-          BlocProvider(create: (context) => HolidayAddCubit()),
-          BlocProvider(create: (context) => HolidayCubit()),
-          BlocProvider(create: (context) => AddOrderCubit()),
-          BlocProvider(create: (context) => OrderCubit()),
-          BlocProvider(create: (context) => AddProductsCubit()),
-          BlocProvider(create: (context) => ItemsManagementCubit()),
-          BlocProvider(create: (context) => ProductLocationCubit()),
-          BlocProvider(create: (context) => HomepageCubit()),
-      ],
-      child: ScreenUtilInit(
-        designSize: const Size(360, 690),
-        minTextAdapt: true,
-        splitScreenMode: true,
-        builder: (_, child) {
-          return BlocProvider(
-            create: (context) => CubitTheme(),
-            child: BlocBuilder<CubitTheme, StateTheme>(
-              builder: (context, state) => MaterialApp(
+    return ScreenUtilInit(
+      designSize: const Size(360, 690),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (_, child) {
+        return BlocProvider(
+          create: (context) => CubitTheme(),
+          child: BlocBuilder<CubitTheme, StateTheme>(
+            builder: (context, state) => MaterialApp(
 
-                navigatorKey: navKey,
-                debugShowCheckedModeBanner: false,
-                title: 'APG',
-                theme: getThemeDataLight,
-                darkTheme: getThemeDataDark,
-                themeMode: CubitTheme.get(context).getTheme(),
-                themeAnimationCurve: Curves.easeInOut,
-                  themeAnimationDuration: Duration(milliseconds: 700),
-                builder: (context, child) => Directionality(
-                  textDirection: TextDirection.rtl,
-                  child: child!,
-                ),
-                home: const CategoryPage(),
+              navigatorKey: navKey,
+              debugShowCheckedModeBanner: false,
+              title: 'APG',
+              theme: getThemeDataLight,
+              darkTheme: getThemeDataDark,
+              themeMode: CubitTheme.get(context).getTheme(),
+              themeAnimationCurve: Curves.easeInOut,
+                themeAnimationDuration: Duration(milliseconds: 700),
+              builder: (context, child) => Directionality(
+                textDirection: TextDirection.rtl,
+                child: child!,
               ),
+              home: const CategoryPage(),
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }

@@ -1,12 +1,12 @@
 
 import 'package:company_apg_2026/core/logic/shared_preferences.dart';
 import 'package:dio/dio.dart';
+import 'package:get_it/get_it.dart';
 
 import '../../views/auth/login/view.dart';
 import 'helper_methods.dart';
 
-enum DataState { init,loading, failed, success }
-
+// enum DataState { init,loading, failed, success }
 class DioHelper {
   static const _baseUrl = 'https://cosmatics.growfet.com';
   static final _dio = Dio(
@@ -19,7 +19,7 @@ class DioHelper {
     ),
   );
 
-  static Future<CustomResponse> getData({String pass = ''}) async {
+  Future<CustomResponse> getData({String pass = ''}) async {
     _dio.options.headers.addAll({
       'Authorization': 'Bearer ${CashHelper.token}',
     });
@@ -43,7 +43,7 @@ class DioHelper {
     }
   }
 
-  static Future<CustomResponse> sendData({
+ Future<CustomResponse> sendData({
     String pass = '',
     Map<String, dynamic>? data,
   }) async {

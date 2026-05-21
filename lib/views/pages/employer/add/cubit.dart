@@ -1,10 +1,11 @@
 import 'dart:io';
 
 import 'package:company_apg_2026/core/logic/dio_helper.dart';
-import 'package:company_apg_2026/views/pages/employer/add/stste.dart';
+import 'package:company_apg_2026/views/pages/employer/add/state.dart';
 import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
 
 class AddEmployerCubit extends Cubit<AddEmployerState> {
@@ -20,7 +21,7 @@ class AddEmployerCubit extends Cubit<AddEmployerState> {
   String? selectedDepartment;
   final picker = ImagePicker();
   File? imageFile;
-
+final _dio=GetIt.instance<DioHelper>();
   @override
   Future<void> close() {
     nameController.dispose();
@@ -34,7 +35,7 @@ class AddEmployerCubit extends Cubit<AddEmployerState> {
   Future <void> sentData() async {
     if(fromKey.currentState!.validate()){
       emit(AddEmployerLoadingState());
-      await DioHelper.sendData(data: {},pass: '');
+      await _dio.sendData(data: {},pass: '');
       emit(AddEmployerSuccessState());
     }
   }

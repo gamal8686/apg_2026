@@ -3,10 +3,12 @@ import 'package:company_apg_2026/views/pages/car/add_car/state.dart';
 import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 
 class AddCarCubit extends Cubit<AddCarState> {
   AddCarCubit() : super(AddCarInitialState());
-
+  final _dio=GetIt.instance<DioHelper>();
+  //todo GetIt whit DioHelper
   final nameController = TextEditingController();
   final numberPackagesController = TextEditingController();
   final dateRegistrationController = TextEditingController();
@@ -38,7 +40,7 @@ class AddCarCubit extends Cubit<AddCarState> {
     if (fromKey.currentState!.validate()) {
       emit(AddCarLoadingState());
       try {
-        await DioHelper.sendData(
+        await _dio.sendData(
           pass: '',
           data: {
             "name": nameController.text,

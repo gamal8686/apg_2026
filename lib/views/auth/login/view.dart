@@ -8,19 +8,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/components/app_validator.dart';
+import '../../../core/service/service_locator.dart';
 import 'cubit.dart';
 
-class LoginView extends StatefulWidget {
-  const LoginView({super.key});
-
-  @override
-  State<LoginView> createState() => _LoginViewState();
-}
-
-class _LoginViewState extends State<LoginView> {
+class LoginView extends StatelessWidget {
+   LoginView({super.key});
+  final cubit = box<LoginCubit>();
+//todo
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<LoginCubit>();
+
 
     return Scaffold(
       backgroundColor: Color(0xffE4E4E4),
@@ -108,7 +105,7 @@ class _LoginViewState extends State<LoginView> {
 
               BlocBuilder<LoginCubit, StateLogin>(
                 builder: (context, state) {
-                  print('BlocBuilder');
+
 
                   if (state is StateLoginLoading) {
                     return CircularProgressIndicator();

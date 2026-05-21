@@ -1,9 +1,11 @@
+import 'package:company_apg_2026/core/logic/dio_helper.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../views/auth/Create_Login/cubit.dart';
 import '../../views/auth/forget_password/cubit.dart';
 import '../../views/auth/login/cubit.dart';
 import '../../views/auth/new_password/cubit.dart';
+
 import '../../views/auth/otp_view/cubit.dart';
 import '../../views/pages/car/add_car/cubit.dart';
 import '../../views/pages/car/car/cubit.dart';
@@ -24,11 +26,12 @@ import '../../views/pages/products/product_location/cubit.dart';
 final box = GetIt.instance;
 
 void initGetIt() {
+  box.registerLazySingleton(() => DioHelper());
   box.registerFactory(() => CreateLoginCubit());
   box.registerFactory(() => ForgetPasswordCubit());
   box.registerFactory(() => LoginCubit());
   box.registerFactory(() => NewPasswordCubit());
-  box.registerFactory(() => OtbCubit());
+  box.registerFactory(() => OtpCubit());
   box.registerFactory(() => CarCubit());
   box.registerFactory(() => AddCarCubit());
   box.registerFactory(() => DetailsCarCubit()..getData());
