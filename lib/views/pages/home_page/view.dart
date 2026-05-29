@@ -33,11 +33,13 @@ class HomePage extends StatelessWidget {
               selectedFontSize: 12.sp,
               unselectedFontSize: 8.sp,
               currentIndex: cubit.currentIndex,
-              onTap: (index) {
 
-                  cubit.currentIndex = index;
 
-              },
+                onTap: (index) {
+                  cubit.changeIndex(index);
+                },
+
+
               type: BottomNavigationBarType.fixed,
               backgroundColor: Theme.of(context).primaryColor,
               selectedItemColor: Colors.white,

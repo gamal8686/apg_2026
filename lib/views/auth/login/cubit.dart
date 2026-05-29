@@ -1,24 +1,33 @@
-import 'package:company_apg_2026/core/logic/helper_methods.dart';
-import 'package:company_apg_2026/views/auth/login/state.dart';
-import 'package:company_apg_2026/views/pages/home_page/view.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-import '../../../core/logic/dio_helper.dart';
+import 'state.dart';
 
 class LoginCubit extends Cubit<StateLogin> {
   LoginCubit() : super(StateLoginInitial());
-  final email = TextEditingController(text: 'sdbvsdfbg');
-  final password = TextEditingController(text: 'vfbdfvdfv');
+
   final formKey = GlobalKey<FormState>();
+
+  final email = TextEditingController();
+  final password = TextEditingController();
+
+  final supabase = Supabase.instance.client;
 
   Future<void> sentData() async {
     try {
       emit(StateLoginLoading());
-      await Future.delayed(Duration(seconds: 5));
+
+      await supabase.auth.signInWithPassword(
+        email: email.text.trim(),
+        password: password.text.trim(),
+      );
+
       emit(StateLoginSuccess());
+    } on AuthException catch (e) {
+      emit(StateLoginError(e.message));
     } catch (e) {
-      emit(StateLoginFailed(' حدث خطأ ما'));
+      emit(StateLoginError(e.toString()));
     }
   }
 }

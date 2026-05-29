@@ -25,7 +25,7 @@ class AppLoginOrRegister extends StatelessWidget {
 
                 onPressed: onPressed,
                 child: Text(
-                  " Login",
+                  " Sign Up",
                   style: TextStyle(
                     color: Theme.of(context).primaryColor,
 

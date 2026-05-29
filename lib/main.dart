@@ -1,5 +1,7 @@
 import 'package:company_apg_2026/core/logic/shared_preferences.dart';
+import 'package:company_apg_2026/splash.dart';
 import 'package:company_apg_2026/views/auth/Create_Login/cubit.dart';
+import 'package:company_apg_2026/views/auth/create_login/view.dart';
 import 'package:company_apg_2026/views/auth/forget_password/cubit.dart';
 import 'package:company_apg_2026/views/auth/login/cubit.dart';
 import 'package:company_apg_2026/views/auth/new_password/cubit.dart';
@@ -23,6 +25,7 @@ import 'package:company_apg_2026/views/pages/products/product_location/cubit.dar
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'core/components/app_them_project/cubit_theme.dart';
 import 'core/components/app_them_project/get_theme_data_dark.dart';
@@ -31,9 +34,18 @@ import 'core/components/app_them_project/state_theme.dart';
 import 'core/logic/helper_methods.dart';
 import 'core/service/service_locator.dart';
 
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+
+
+  await Supabase.initialize(
+    url: 'https://eksdncdxluuukcrbzkdd.supabase.co',
+    anonKey: 'sb_publishable_l3g9xl2Ddx1EYOmLotDX6A_IMIlXOkx',
+  );
   initGetIt();
+
   await CashHelper.init();
 
   runApp(MyApp());
@@ -55,7 +67,6 @@ class MyApp extends StatelessWidget {
           create: (context) => CubitTheme(),
           child: BlocBuilder<CubitTheme, StateTheme>(
             builder: (context, state) => MaterialApp(
-
               navigatorKey: navKey,
               debugShowCheckedModeBanner: false,
               title: 'APG',
@@ -63,12 +74,15 @@ class MyApp extends StatelessWidget {
               darkTheme: getThemeDataDark,
               themeMode: CubitTheme.get(context).getTheme(),
               themeAnimationCurve: Curves.easeInOut,
-                themeAnimationDuration: Duration(milliseconds: 700),
+              themeAnimationDuration: Duration(milliseconds: 700),
               builder: (context, child) => Directionality(
                 textDirection: TextDirection.rtl,
                 child: child!,
               ),
-              home: const CategoryPage(),
+              home: BlocProvider(
+                create: (_) => box<CreateLoginCubit>(),
+                child: SplashView(),
+              ),
             ),
           ),
         );

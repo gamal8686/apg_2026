@@ -13,6 +13,11 @@ class HomepageCubit extends Cubit<HomePageState>{
       : currentIndex = initialIndex,
         super(HomePageInitialState());
   int currentIndex = 0;
+
+  void changeIndex(int index) {
+    currentIndex = index;
+    emit(HomePageChangeBottomNavState());
+  }
   final int initialIndex;
   final List<Model> list = [
     //todo

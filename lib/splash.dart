@@ -22,12 +22,12 @@ class _SplashViewState extends State<SplashView> {
   void initState() {
     super.initState();
     goTo(
-      CashHelper.getIsNotFirst
+      CashHelper.getIsNotFirst == true
           ? OnBoardingView()
           : CashHelper.isAuth
-          ? HomePage(initialIndex: 0,)
-          : LoginView(),
+          ? LoginView()
 
+          : HomePage(initialIndex: 0,),
       delayDuration: 3,
     );
   }
