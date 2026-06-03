@@ -4,12 +4,62 @@ import 'package:company_apg_2026/core/logic/helper_methods.dart';
 import 'package:company_apg_2026/views/pages/home_page/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../../core/components/app_admin_card.dart';
 
-class CategoryPage extends StatelessWidget {
+class CategoryPage extends StatefulWidget {
   const CategoryPage({super.key});
 
+  @override
+  State<CategoryPage> createState() => _CategoryPageState();
+}
+
+class _CategoryPageState extends State<CategoryPage> {
+  @override
+  void initState() {
+    super.initState();
+    createEmployeeIfNotExists();
+    getUserData();
+  }
+
+  Future<void> createEmployeeIfNotExists() async {
+    final user = Supabase.instance.client.auth.currentUser;
+
+    if (user == null) return;
+
+    final res = await Supabase.instance.client
+        .from('employees')
+        .select()
+        .eq('id', user.id)
+        .maybeSingle();
+
+    if (res == null) {
+      await Supabase.instance.client.from('employees').insert({
+        'id': user.id,
+        'name': '',
+        'phone': '',
+        'address': '',
+      });
+    }
+  }
+  Map<String, dynamic>? userData;
+
+
+
+  Future<void> getUserData() async {
+    final user = Supabase.instance.client.auth.currentUser;
+
+    final response = await Supabase.instance.client
+        .from('employees')
+        .select()
+        .eq('user_id', user!.id)
+        .single();
+
+    setState(() {
+      userData = response;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,24 +73,24 @@ class CategoryPage extends StatelessWidget {
                 ClipOval(
                   child: AppImage(
                     path:
-                        'https://tse2.mm.bing.net/th/id/OIP.AQtvP5FcfiEMQpu14ueJCgHaGU?rs=1&pid=ImgDetMain&o=7&rm=3',
+                    userData?['image'] ?? '',
                     height: 50.h,
                   ),
                 ),
                 SizedBox(width: 10.w),
                 Column(
                   children: [
+
+                Text(userData?['name'] ?? 'موظف جديد', style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 16.sp,
+                  fontFamily: 'Cairo',
+                  color: Color(0xff292D32),
+                ),),
+
+
                     Text(
-                      'احمد عماد',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 16.sp,
-                        fontFamily: 'Cairo',
-                        color: Color(0xff292D32),
-                      ),
-                    ),
-                    Text(
-                      'مدير المخزون',
+                      userData?['job_title'] ?? '',
                       style: TextStyle(
                         fontWeight: FontWeight.w400,
                         fontSize: 12.sp,
@@ -56,11 +106,11 @@ class CategoryPage extends StatelessWidget {
             ),
             SizedBox(height: 30.h),
             Text(
-              'مرحبا بك في لوحه التحكم',
+              'اهلا بكم في الشركة العربية للزجاج الدوائى',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontWeight: FontWeight.w700,
-                fontSize: 20.sp,
+                fontSize: 18.sp,
                 fontFamily: 'Cairo',
                 color: Theme.of(context).primaryColor,
               ),

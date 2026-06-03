@@ -1,7 +1,7 @@
 import 'package:company_apg_2026/views/pages/employer/employer/state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../order/order/model.dart';
+import 'model.dart';
 
 
 
@@ -9,18 +9,7 @@ import '../../order/order/model.dart';
 
 class EmployerCubit  extends Cubit<EmployerState>{
   EmployerCubit(): super(EmployerInitialState());
-  final List<Model> models = [
-    Model('الكل',),
-    Model('المالية'),
-    Model('التكاليف'),
-    Model('شئون العاملين'),
-    Model('المبيعات'),
-    Model('المشتريات'),
-    Model('الجراج والحركة'),
-    Model('المنتج النهائى'),
-    Model('الفحص'),
-    Model('i.s'),
-  ];
+
   final Map<String, List<String>> subData = {
     'الكل': ['موظف 1', 'موظف 2', 'موظف 3'],
     'المالية': ['محاسب 1', 'محاسب 2'],
@@ -33,7 +22,29 @@ class EmployerCubit  extends Cubit<EmployerState>{
     'الفحص': ['Check 1', 'Check 2'],
     'i.s': ['IS 1', 'IS 2'],
   };
+  List<EmployeeModel> employees = [
+    EmployeeModel(
+      id: '1',
+      name: 'جمال أسامة',
+      department: 'المحاسبة',
+      jobTitle: 'محاسب',
+      phone: '01065953330',
+      email: 'test@gmail.com',
+      image: 'https://...',
+      shift: 'الصباحية',
+    ),
 
+    EmployeeModel(
+      id: '2',
+      name: 'محمد أحمد',
+      department: 'المبيعات',
+      jobTitle: 'مندوب مبيعات',
+      phone: '01111111111',
+      email: 'sales@gmail.com',
+      image: 'https://...',
+      shift: 'المسائية',
+    ),
+  ];
   int isSelected = 0;
   int selectedIndex = 0;
   Future <void> changeSelected(int index) async {

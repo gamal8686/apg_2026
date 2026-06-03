@@ -70,7 +70,7 @@ class _EmployerViewState extends State<EmployerView> {
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       physics: BouncingScrollPhysics(),
-                      itemCount:cubit.  models.length,
+                      itemCount:cubit.  employees.length,
                       itemBuilder: (context, index) {
                         bool isSelected = index == cubit. selectedIndex;
 
@@ -126,7 +126,7 @@ class _EmployerViewState extends State<EmployerView> {
                                           : Theme.of(context).primaryColor,
                                     ),
                                     child: Text(
-                                      cubit.  models[index].name,
+                                      cubit.  employees[index].name,
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
                                     ),
@@ -158,11 +158,11 @@ class _EmployerViewState extends State<EmployerView> {
                       },
                       child: ListView.builder(
                         physics: BouncingScrollPhysics(),
-                        itemCount: cubit. subData[cubit. models[cubit. selectedIndex].name]?.length ?? 0,
+                        itemCount: cubit. subData[cubit. employees[cubit. selectedIndex].name]?.length ?? 0,
                         itemBuilder: (context, index) {
                           final item =
-                              cubit. subData[cubit. models[cubit. selectedIndex].name]?[index] ?? '';
-                      
+                              cubit. subData[cubit. employees[cubit. selectedIndex].name]?[index] ?? '';
+
                           return Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Container(

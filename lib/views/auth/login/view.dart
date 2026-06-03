@@ -127,8 +127,7 @@ class _LoginViewState extends State<LoginView> {
                           );
                           CashHelper.setIsNotFirst();
 
-                          print("isFirst = ${CashHelper.getIsNotFirst}");
-                          goTo(HomePage(initialIndex: 2,));
+                          goTo(HomePage(initialIndex: 1,));
 
                         }
 
@@ -137,7 +136,7 @@ class _LoginViewState extends State<LoginView> {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text(state.error)),
                           );
-                          print(state.error);
+
                         }
                       },
 
