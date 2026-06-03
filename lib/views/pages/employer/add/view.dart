@@ -245,9 +245,8 @@ class _AddEmployerViewState extends State<AddEmployerView> {
                       ),
 
                       SizedBox(height: 5.h),
-
                       Container(
-                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(12),
@@ -256,24 +255,27 @@ class _AddEmployerViewState extends State<AddEmployerView> {
                         child: DropdownButton<int>(
                           value: cubit.shiftId,
                           isExpanded: true,
-                          underline: SizedBox(),
-                          items: const [
-                            DropdownMenuItem(value: 1, child: Text('وردية    أ')),
-                            DropdownMenuItem(value: 2, child: Text('وردية    ب')),
-                            DropdownMenuItem(value: 3, child: Text('وردية    ج ')),
-                            DropdownMenuItem(value: 4, child: Text('وردية    د')),
-                          ],
-                          onChanged: (value) {
-                            setState(() {
-                              cubit.shiftId = value!;
-                            });
-                          },
+                          hint: const Text("اختر الوردية"),
+                          underline: const SizedBox(),
+
+                          items: cubit.shifts.map((shift) {
+                            return DropdownMenuItem<int>(
+                              value: shift.id,
+                              child: Text(shift.name),
+                            );
+                          }).toList(),
+
+                            onChanged: (value) {
+                              cubit.changeShift(value);
+                            }
                         ),
                       ),
 
+
+
                       SizedBox(height: 5.h),
 
-// ===== Status =====
+
                       Text(
                         'الحالة الوظيفية',
                         style: TextStyle(
@@ -310,7 +312,7 @@ class _AddEmployerViewState extends State<AddEmployerView> {
 
                       SizedBox(height: 5.h),
 
-// ===== Role =====
+
                       Text(
                         'الصلاحية',
                         style: TextStyle(
@@ -356,62 +358,28 @@ class _AddEmployerViewState extends State<AddEmployerView> {
                         ),
                       ),
                       SizedBox(height: 5.h),
+
                       Container(
+                        padding: EdgeInsets.symmetric(horizontal: 10),
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(12),
                           border: Border.all(color: Colors.grey.shade400),
                         ),
-                        child: ExpansionTileCard(
-                          key: cubit.tileKey,
-
-                          elevation: 0,
-                          baseColor: Colors.transparent,
-                          expandedColor: Colors.white,
-                          shadowColor: Colors.transparent,
-
-                          onExpansionChanged: (isExpanded) {
-                            if (isExpanded) {
-                              Future.delayed(Duration(milliseconds: 300), () {
-                                Scrollable.ensureVisible(
-                                  cubit.tileKey.currentContext!,
-                                  duration: Duration(milliseconds: 500),
-                                  curve: Curves.easeInOut,
-                                );
-                              });
+                        child: DropdownButton<int>(
+                          hint: const Text("اختر القسم "),
+                          value: cubit.departmentId,
+                          isExpanded: true,
+                          underline: SizedBox(),
+                          items: cubit.departments.map((department) {
+                            return DropdownMenuItem<int>(
+                              value: department.id,
+                              child: Text(department.name),
+                            );
+                          }).toList(),
+                            onChanged: (value) {
+                              cubit.changeDepartment(value);
                             }
-                          },
-
-                          title: Text(
-                            cubit.selectedDepartment ?? 'اختار القسم',
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: cubit.selectedDepartment == null
-                                  ? Colors.grey
-                                  : Colors.black,
-                            ),
-                          ),
-
-                          trailing: Icon(Icons.arrow_drop_down),
-
-                          children: [
-                            Column(
-                              children: cubit.departments.map((dept) {
-                                return ListTile(
-                                  onTap: () {
-                                    setState(() {
-                                      cubit.departmentId = dept.id;
-                                      cubit.selectedDepartment = dept.name;
-                                    });
-
-                                    cubit.tileKey.currentState?.collapse();
-                                  },
-                                  leading: Icon(Icons.apartment),
-                                  title: Text(dept.name),
-                                );
-                              }).toList(),
-                            ),
-                          ],
                         ),
                       ),
                       SizedBox(height: 20.h),

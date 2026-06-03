@@ -10,7 +10,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/components/app_image.dart';
 import '../car/car/view.dart';
 import '../employer/employer/view.dart';
-import '../category/category.dart';
+import '../category/view.dart';
 import '../order/order/view.dart';
 
 class HomePage extends StatelessWidget {

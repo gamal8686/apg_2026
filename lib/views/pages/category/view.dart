@@ -1,6 +1,7 @@
 import 'package:company_apg_2026/core/components/app_back.dart';
 import 'package:company_apg_2026/core/components/app_image.dart';
 import 'package:company_apg_2026/core/logic/helper_methods.dart';
+import 'package:company_apg_2026/views/auth/login/view.dart';
 import 'package:company_apg_2026/views/pages/home_page/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -101,7 +102,15 @@ class _CategoryPageState extends State<CategoryPage> {
                   ],
                 ),
                 Spacer(),
-                AppBack(pass: 'boll.png'),
+                AppBack(
+                  pass: 'logout.svg',
+                  onTap: () async {
+                    await Supabase.instance.client.auth.signOut();
+
+
+                    goTo(LoginView(), canPop: false);
+                  },
+                ),
               ],
             ),
             SizedBox(height: 30.h),

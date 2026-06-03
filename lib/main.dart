@@ -9,7 +9,7 @@ import 'package:company_apg_2026/views/auth/otp_view/cubit.dart';
 import 'package:company_apg_2026/views/pages/car/add_car/cubit.dart';
 import 'package:company_apg_2026/views/pages/car/car/cubit.dart';
 import 'package:company_apg_2026/views/pages/car/details_car/cubit.dart';
-import 'package:company_apg_2026/views/pages/category/category.dart';
+import 'package:company_apg_2026/views/pages/category/view.dart';
 import 'package:company_apg_2026/views/pages/employer/add/cubit.dart';
 import 'package:company_apg_2026/views/pages/employer/add/view.dart';
 import 'package:company_apg_2026/views/pages/employer/edite/cubit.dart';

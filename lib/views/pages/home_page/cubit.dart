@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../car/car/view.dart';
-import '../category/category.dart';
+import '../category/view.dart';
 import '../employer/employer/view.dart';
 import '../order/order/view.dart';
 import '../products/product/view.dart';

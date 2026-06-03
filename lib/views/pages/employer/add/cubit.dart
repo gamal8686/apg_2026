@@ -15,8 +15,10 @@ import 'model.dart';
 
 class AddEmployerCubit extends Cubit<AddEmployerState> {
   AddEmployerCubit() : super(AddEmployerInitialState()) {
-    getDepartments();
-    getShifts();
+    Future.delayed(Duration.zero, () {
+      getDepartments();
+      getShifts();
+    });
   }
 
   final nameController = TextEditingController();
@@ -35,7 +37,9 @@ class AddEmployerCubit extends Cubit<AddEmployerState> {
   final GlobalKey<ExpansionTileCardState> tileKey = GlobalKey();
   final fromKey = GlobalKey<FormState>();
   List<Department> departments = [];
-  List<Shift> shifts = [];
+  List<Shift> shifts = [
+
+  ];
   String? selectedDepartment;
   final picker = ImagePicker();
   File? imageFile;
@@ -79,11 +83,26 @@ class AddEmployerCubit extends Cubit<AddEmployerState> {
 
     return imageUrl;
   }
-
+  void changeShift(int? value) {
+    shiftId = value;
+    emit(AddEmployerUpdateState());
+  }
+  void changeDepartment(int? value) {
+    departmentId = value;
+    emit(AddEmployerUpdateState());
+  }
   Future<void> getShifts() async {
-    final response = await Supabase.instance.client.from('shifts').select();
+    print("Loading shifts...");
 
-    shifts = (response as List).map((e) => Shift.fromJson(e)).toList();
+    final response = await Supabase.instance.client
+        .from('shifts')
+        .select();
+
+    print("SHIFTS RESPONSE: $response");
+
+    shifts = (response as List)
+        .map((e) => Shift.fromJson(e))
+        .toList();
 
     emit(AddEmployerUpdateState());
   }
@@ -136,8 +155,12 @@ class AddEmployerCubit extends Cubit<AddEmployerState> {
         });
         print("CURRENT USER = ${Supabase.instance.client.auth.currentUser}");
         print("USER ID = ${Supabase.instance.client.auth.currentUser?.id}");
+        if (shiftId == null || departmentId == null) {
+          showMessage("من فضلك اختار القسم والوردية");
+          return;
+        }
         emit(AddEmployerSuccessState("تم إضافة الموظف بنجاح ✅"));
-        goTo(HomePage(initialIndex: 0));
+        goTo(HomePage(initialIndex: 3));
       } on PostgrestException catch (e) {
     print("MESSAGE: ${e.message}");
     print("DETAILS: ${e.details}");
