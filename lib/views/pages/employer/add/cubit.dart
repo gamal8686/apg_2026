@@ -21,14 +21,14 @@ class AddEmployerCubit extends Cubit<AddEmployerState> {
     });
   }
 
-  final nameController = TextEditingController();
+  final nameController = TextEditingController(text: '  Gamal osama');
 
-  final phoneController = TextEditingController();
-  final addressController = TextEditingController();
-  final numberController = TextEditingController();
-  final jobTitleController = TextEditingController();
-  final salaryController = TextEditingController();
-  final nationalIdController = TextEditingController();
+  final phoneController = TextEditingController(text: '  01065953330');
+  final addressController = TextEditingController(text: '  abrag rawda');
+  final numberController = TextEditingController(text: '  1390');
+  final jobTitleController = TextEditingController(text: 'driver');
+  final salaryController = TextEditingController(text: ' 12000');
+  final nationalIdController = TextEditingController(text: ' 8888888888');
 
   String status = 'active';
   String role = 'employee';
@@ -109,6 +109,10 @@ class AddEmployerCubit extends Cubit<AddEmployerState> {
 
   Future<void> sentData() async {
     if (fromKey.currentState!.validate()) {
+      if (shiftId == null || departmentId == null) {
+        showMessage("من فضلك اختار القسم والوردية");
+        return;
+      }
       emit(AddEmployerLoadingState());
 
       try {
@@ -155,13 +159,14 @@ class AddEmployerCubit extends Cubit<AddEmployerState> {
         });
         print("CURRENT USER = ${Supabase.instance.client.auth.currentUser}");
         print("USER ID = ${Supabase.instance.client.auth.currentUser?.id}");
-        if (shiftId == null || departmentId == null) {
-          showMessage("من فضلك اختار القسم والوردية");
-          return;
-        }
+
+
+
+
         emit(AddEmployerSuccessState("تم إضافة الموظف بنجاح ✅"));
-        goTo(HomePage(initialIndex: 3));
+        goTo(HomePage(initialIndex: 0));
       } on PostgrestException catch (e) {
+        print(e);
     print("MESSAGE: ${e.message}");
     print("DETAILS: ${e.details}");
     print("CODE: ${e.code}");

@@ -14,7 +14,8 @@ import '../category/view.dart';
 import '../order/order/view.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key, required int initialIndex});
+  final int initialIndex;
+  const HomePage({super.key,   this.initialIndex=0});
 
 
 
@@ -24,7 +25,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomepageCubit(),
+      create: (context) => HomepageCubit(  initialIndex: initialIndex,),
       child: Builder(
         builder: (context) {
           final cubit = context.watch<HomepageCubit>();

@@ -25,19 +25,19 @@ class _CategoryPageState extends State<CategoryPage> {
   }
 
   Future<void> createEmployeeIfNotExists() async {
-    final user = Supabase.instance.client.auth.currentUser;
+    final user =    Supabase.instance.client.auth.currentUser!.id;
 
     if (user == null) return;
 
     final res = await Supabase.instance.client
         .from('employees')
         .select()
-        .eq('id', user.id)
+        .eq('user_id', user)
         .maybeSingle();
 
     if (res == null) {
       await Supabase.instance.client.from('employees').insert({
-        'id': user.id,
+        'user_id': user,
         'name': '',
         'phone': '',
         'address': '',
@@ -49,12 +49,12 @@ class _CategoryPageState extends State<CategoryPage> {
 
 
   Future<void> getUserData() async {
-    final user = Supabase.instance.client.auth.currentUser;
+    final user =    Supabase.instance.client.auth.currentUser!.id;
 
     final response = await Supabase.instance.client
         .from('employees')
         .select()
-        .eq('user_id', user!.id)
+        .eq('user_id', user)
         .single();
 
     setState(() {
@@ -66,7 +66,7 @@ class _CategoryPageState extends State<CategoryPage> {
     return Scaffold(
       body: SafeArea(
         child: ListView(
-          padding: EdgeInsets.all(10.h),
+          padding: EdgeInsets.all(15.h),
 
           children: [
             Row(
@@ -75,7 +75,7 @@ class _CategoryPageState extends State<CategoryPage> {
                   child: AppImage(
                     path:
                     userData?['image'] ?? '',
-                    height: 50.h,
+                    height: 50.h, width: 50.w,
                   ),
                 ),
                 SizedBox(width: 10.w),
@@ -139,9 +139,9 @@ class _CategoryPageState extends State<CategoryPage> {
               children: [
                 Expanded(
                   child: GestureDetector(
-                    onTap: () {
+                onTap: () {
                       goTo(HomePage(initialIndex: 1,));
-                    },
+    },
                     child: AppAdminCard(
                       title: 'الانتاج التام',
                       subtitle: 'عرض كل الزجاجات والعبوات\nواماكنها',

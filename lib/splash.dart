@@ -22,17 +22,17 @@ class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     super.initState();
-    goTo(
-      CashHelper.getIsNotFirst == true
-          ? OnBoardingView()
-          : CashHelper.isAuth
-          ? LoginView()
+    Widget startPage;
 
-          :
+    if (CashHelper.getIsNotFirst == true) {
+      startPage = OnBoardingView();
+    } else if (!CashHelper.isAuth) {
+      startPage = LoginView();
+    } else {
+      startPage = HomePage(initialIndex: 0);
+    }
 
-      HomePage(initialIndex: 0,),
-      delayDuration: 3,
-    );
+    goTo(startPage, delayDuration: 3);
   }
 
   @override

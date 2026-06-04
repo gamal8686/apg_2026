@@ -38,7 +38,7 @@ class _AddEmployerViewState extends State<AddEmployerView> {
         if (state is AddEmployerSuccessState) {
           showMessage('تم إضافة الموظف بنجاح');
 
-          Navigator.pop(context);
+
         }
 
         if (state is AddEmployerErrorState) {
@@ -179,7 +179,7 @@ class _AddEmployerViewState extends State<AddEmployerView> {
                         validator: InputValidator.phoneValidator,
                       ),
                       SizedBox(height: 5.h),
-                      // ===== Job Title =====
+
                       Text(
                         'المسمى الوظيفي',
                         style: TextStyle(
@@ -197,7 +197,7 @@ class _AddEmployerViewState extends State<AddEmployerView> {
 
                       SizedBox(height: 5.h),
 
-// ===== Salary =====
+
                       Text(
                         'الراتب',
                         style: TextStyle(
@@ -216,7 +216,6 @@ class _AddEmployerViewState extends State<AddEmployerView> {
 
                       SizedBox(height: 5.h),
 
-// ===== National ID =====
                       Text(
                         'الرقم القومي',
                         style: TextStyle(

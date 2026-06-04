@@ -12,7 +12,7 @@ class HomepageCubit extends Cubit<HomePageState>{
   HomepageCubit({this.initialIndex = 0})
       : currentIndex = initialIndex,
         super(HomePageInitialState());
-  int currentIndex = 0;
+  int currentIndex ;
 
   void changeIndex(int index) {
     currentIndex = index;
