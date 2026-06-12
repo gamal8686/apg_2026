@@ -18,7 +18,7 @@ import '../employer_details/view.dart';
 import 'cubit.dart';
 import 'model.dart';
 
-//todo
+
 class EmployerView extends StatefulWidget {
   const EmployerView({super.key});
 
@@ -34,17 +34,9 @@ class _EmployerViewState extends State<EmployerView> {
       child: Builder(
         builder: (context) {
           return Scaffold(
-            floatingActionButton:
-                //todo
-                // Admin.isAdmin?
-                AppAdmin(
-                  onTap: () {
-                    goTo(AddEmployerView());
-                  },
-                ),
 
-            //:null,
             appBar: AppBar(
+              automaticallyImplyLeading: false,
               centerTitle: true,
               backgroundColor: Colors.transparent,
 
@@ -60,253 +52,250 @@ class _EmployerViewState extends State<EmployerView> {
               actions: [AppLightDark()],
             ),
 
-            body: Padding(
-              padding: EdgeInsets.all(15),
-              child: BlocBuilder<EmployerCubit, EmployerState>(
-                builder: (context, state) {
-                  final cubit = context.read<EmployerCubit>();
-                  return Padding(
-                    padding: const EdgeInsets.all(15),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        AppContainerPar(),
-                        SizedBox(height: 10.h),
-                        AppSearch(
-                          labelText: ' ابحث بالرقم الوظيفي أو الاسم',
-                          onChanged: (value) {
-                            context.read<EmployerCubit>().searchEmployee(value);
-                          },
-                        ),
-                        SizedBox(height: 10.h),
+            body: BlocBuilder<EmployerCubit, EmployerState>(
+              builder: (context, state) {
+                final cubit = context.read<EmployerCubit>();
+                return Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      AppContainerPar(),
+                      SizedBox(height: 10.h),
+                      AppSearch(
+                        labelText: ' ابحث بالرقم الوظيفي',
+                        onChanged: (value) {
+                          context.read<EmployerCubit>().searchEmployee(value);
+                        },
+                      ),
+                      SizedBox(height: 10.h),
 
-                        SizedBox(
-                          height: 55.h,
-                          child: ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            physics: BouncingScrollPhysics(),
-                            itemCount: cubit.departments.length,
-                            itemBuilder: (context, index) {
-                              bool isSelected = index == cubit.selectedIndex;
+                      SizedBox(
+                        height: 55.h,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          physics: BouncingScrollPhysics(),
+                          itemCount: cubit.departments.length,
+                          itemBuilder: (context, index) {
+                            bool isSelected = index == cubit.selectedIndex;
 
-                              return Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 6,
-                                ),
-                                child: GestureDetector(
-                                  onTap: () {
-                                    cubit.changeDepartment(index);
-                                  },
-                                  child: AnimatedScale(
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 6,
+                              ),
+                              child: GestureDetector(
+                                onTap: () {
+                                  cubit.changeDepartment(index);
+                                },
+                                child: AnimatedScale(
+                                  duration: Duration(milliseconds: 250),
+                                  curve: Curves.easeInOut,
+                                  scale: isSelected ? 1.15 : 0.95,
+                                  child: AnimatedContainer(
                                     duration: Duration(milliseconds: 250),
                                     curve: Curves.easeInOut,
-                                    scale: isSelected ? 1.15 : 0.95,
-                                    child: AnimatedContainer(
-                                      duration: Duration(milliseconds: 250),
-                                      curve: Curves.easeInOut,
-                                      width: isSelected ? 105.w : 90.w,
-                                      decoration: BoxDecoration(
-                                        color: isSelected
-                                            ? Theme.of(context).primaryColor
-                                            : Colors.white,
-                                        borderRadius: BorderRadius.circular(16),
-                                        boxShadow: isSelected
-                                            ? [
-                                                BoxShadow(
-                                                  color: Theme.of(context)
-                                                      .primaryColor
-                                                      .withOpacity(0.3),
-                                                  blurRadius: 12,
-                                                  offset: Offset(0, 5),
-                                                ),
-                                              ]
-                                            : [
-                                                BoxShadow(
-                                                  color: Colors.black12,
-                                                  blurRadius: 5,
-                                                  offset: Offset(0, 2),
-                                                ),
-                                              ],
-                                      ),
-                                      child: Center(
-                                        child: AnimatedDefaultTextStyle(
-                                          duration: Duration(milliseconds: 250),
-                                          curve: Curves.easeInOutQuint,
-                                          style: TextStyle(
-                                            fontSize: isSelected
-                                                ? 16.sp
-                                                : 14.sp,
-                                            fontWeight: FontWeight.w600,
-                                            fontFamily: 'Cairo',
-                                            color: isSelected
-                                                ? Colors.white
-                                                : Theme.of(
-                                                    context,
-                                                  ).primaryColor,
-                                          ),
-                                          child: Text(
-                                            cubit.departments[index].name,
-                                            maxLines: 1,
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
+                                    width: isSelected ? 105.w : 90.w,
+                                    decoration: BoxDecoration(
+                                      color: isSelected
+                                          ? Theme.of(context).primaryColor
+                                          : Colors.white,
+                                      borderRadius: BorderRadius.circular(16),
+                                      boxShadow: isSelected
+                                          ? [
+                                              BoxShadow(
+                                                color: Theme.of(context)
+                                                    .primaryColor
+                                                    .withOpacity(0.3),
+                                                blurRadius: 12,
+                                                offset: Offset(0, 5),
+                                              ),
+                                            ]
+                                          : [
+                                              BoxShadow(
+                                                color: Colors.black12,
+                                                blurRadius: 5,
+                                                offset: Offset(0, 2),
+                                              ),
+                                            ],
+                                    ),
+                                    child: Center(
+                                      child: AnimatedDefaultTextStyle(
+                                        duration: Duration(milliseconds: 250),
+                                        curve: Curves.easeInOutQuint,
+                                        style: TextStyle(
+                                          fontSize: isSelected
+                                              ? 16.sp
+                                              : 14.sp,
+                                          fontWeight: FontWeight.w600,
+                                          fontFamily: 'Cairo',
+                                          color: isSelected
+                                              ? Colors.white
+                                              : Theme.of(
+                                                  context,
+                                                ).primaryColor,
+                                        ),
+                                        child: Text(
+                                          cubit.departments[index].name,
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
                                         ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              );
-                            },
-                          ),
+                              ),
+                            );
+                          },
                         ),
+                      ),
 
-                        SizedBox(height: 20.h),
-                        Text(
-                          'اجمالي الموظفين : ${cubit.filteredEmployees.length}',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 16.sp,
-                            fontFamily: 'Cairo',
-                            color: Color(0xff292D32),
-                          ),
+                      SizedBox(height: 20.h),
+                      Text(
+                        'اجمالي الموظفين : ${cubit.filteredEmployees.length}',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16.sp,
+                          fontFamily: 'Cairo',
+                          color: Color(0xff292D32),
                         ),
-                        SizedBox(height: 10.h),
-                        Expanded(
-                          child: ListView.builder(
-                            physics: BouncingScrollPhysics(),
-                            itemCount: cubit.filteredEmployees.length,
-                            itemBuilder: (context, index) {
-                              final employee = cubit.filteredEmployees[index];
+                      ),
+                      SizedBox(height: 10.h),
+                      Expanded(
+                        child: ListView.builder(
+                          physics: BouncingScrollPhysics(),
+                          itemCount: cubit.filteredEmployees.length,
+                          itemBuilder: (context, index) {
+                            final employee = cubit.filteredEmployees[index];
 
-                              return Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: GestureDetector(
-                                  onTap: () {
-                                    final currentUserId = CashHelper.userId;
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: GestureDetector(
+                                onTap: () {
+                                  final currentUserId = CashHelper.userId;
 
-                                    if (Admin.isAdmin || employee.userId == currentUserId) {
-                                      goTo(
-                                        EmployerDetailsView(
-                                          pass: employee.image,
-                                        ),
-                                      );
-                                    } else {
-                                      showMessage('غير مسموح لك بعرض بيانات موظف آخر');
-                                    }
-                                  },
-                                  child: Container(
-                                    // height: 170.h,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xffFDF0E9),
-                                      border: Border.all(
-                                        color: Color(0xffF4F4F4),
+                                  if (Admin.isAdmin || employee.userId == currentUserId) {
+                                    goTo(
+                                      EmployerDetailsView(
+                                        pass: employee.image,
                                       ),
-                                      borderRadius: BorderRadius.circular(8.r),
+                                    );
+                                  } else {
+                                    showMessage('غير مسموح لك بعرض بيانات موظف آخر');
+                                  }
+                                },
+                                child: Container(
+                                  // height: 170.h,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xffFDF0E9),
+                                    border: Border.all(
+                                      color: Color(0xffF4F4F4),
                                     ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Row(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Expanded(
-                                            child: ClipOval(
-                                              child: Padding(
-                                                padding: const EdgeInsets.all(
-                                                  8.0,
-                                                ),
-                                                child: AppImage(
-                                                  path: employee.image,
-                                                  height: 80.h,
-                                                ),
+                                    borderRadius: BorderRadius.circular(8.r),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Expanded(
+                                          child: ClipOval(
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(
+                                                8.0,
+                                              ),
+                                              child: AppImage(
+                                                path: employee.image,
+                                                height: 80.h,
                                               ),
                                             ),
                                           ),
-                                          SizedBox(width: 10.w),
-                                          Expanded(
-                                            flex: 2,
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                SizedBox(height: 10.h),
-                                                Text(
-                                                  employee.name,
-                                                  maxLines: 2,
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(
-                                                    fontWeight: FontWeight.w900,
-                                                    fontSize: 20.sp,
-                                                    fontFamily: 'Cairo',
-                                                    color: const Color(
-                                                      0xff292D32,
-                                                    ),
+                                        ),
+                                        SizedBox(width: 10.w),
+                                        Expanded(
+                                          flex: 2,
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              SizedBox(height: 10.h),
+                                              Text(
+                                                employee.name,
+                                                maxLines: 2,
+                                                overflow:
+                                                    TextOverflow.ellipsis,
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.w900,
+                                                  fontSize: 20.sp,
+                                                  fontFamily: 'Cairo',
+                                                  color: const Color(
+                                                    0xff292D32,
                                                   ),
                                                 ),
-                                                SizedBox(height: 5.h),
-                                                Text(
-                                                  employee.jobTitle,
-                                                  maxLines: 2,
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(
-                                                    fontWeight: FontWeight.w700,
-                                                    fontSize: 15.sp,
-                                                    fontFamily: 'Cairo',
-                                                    color: const Color(
-                                                      0xff292D32,
-                                                    ),
+                                              ),
+                                              SizedBox(height: 5.h),
+                                              Text(
+                                                employee.jobTitle,
+                                                maxLines: 2,
+                                                overflow:
+                                                    TextOverflow.ellipsis,
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.w700,
+                                                  fontSize: 15.sp,
+                                                  fontFamily: 'Cairo',
+                                                  color: const Color(
+                                                    0xff292D32,
                                                   ),
                                                 ),
-                                                SizedBox(height: 10.h),
+                                              ),
+                                              SizedBox(height: 10.h),
 
-                                                Row(
-                                                  children: [
-                                                    AppImage(
-                                                      path: 'phone.png',
-                                                      height: 20.h,
-                                                    ),
-                                                    SizedBox(width: 10.w),
-                                                    Expanded(
-                                                      child: Text(
-                                                        employee.phone,
-                                                        maxLines: 2,
-                                                        overflow: TextOverflow
-                                                            .ellipsis,
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.w700,
-                                                          fontSize: 15.sp,
-                                                          fontFamily: 'Cairo',
-                                                          color: const Color(
-                                                            0xff292D32,
-                                                          ),
+                                              Row(
+                                                children: [
+                                                  AppImage(
+                                                    path: 'phone.png',
+                                                    height: 20.h,
+                                                  ),
+                                                  SizedBox(width: 10.w),
+                                                  Expanded(
+                                                    child: Text(
+                                                      employee.phone,
+                                                      maxLines: 2,
+                                                      overflow: TextOverflow
+                                                          .ellipsis,
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                        fontSize: 15.sp,
+                                                        fontFamily: 'Cairo',
+                                                        color: const Color(
+                                                          0xff292D32,
                                                         ),
                                                       ),
                                                     ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
                                           ),
-                                        ],
-                                      ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),
-                              );
-                            },
-                          ),
+                              ),
+                            );
+                          },
                         ),
-                      ],
-                    ),
-                  );
-                },
-              ),
+                      ),
+                    ],
+                  ),
+                );
+              },
             ),
           );
         },

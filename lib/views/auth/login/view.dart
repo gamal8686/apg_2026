@@ -7,10 +7,12 @@ import 'package:company_apg_2026/views/auth/login/state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../../core/components/app_validator.dart';
 import '../../../core/logic/helper_methods.dart';
 import '../../../core/service/service_locator.dart';
+import '../../pages/employer/add/view.dart';
 import '../../pages/home_page/view.dart';
 import '../Create_Login/cubit.dart';
 import '../create_login/view.dart';
@@ -118,16 +120,27 @@ class _LoginViewState extends State<LoginView> {
                     SizedBox(height: 15.h),
 
                     BlocConsumer<LoginCubit, StateLogin>(
-                      listener: (context, state) {
+                      listener: (context, state) async {
 
-                        if (state is StateLoginSuccess) {
+                        if (state is StateLoginSuccess)  {
 
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('تم تسجيل الدخول بنجاح')),
                           );
                           CashHelper.setIsNotFirst();
 
-                          goTo(HomePage(initialIndex: 1,));
+                          final userId = Supabase.instance.client.auth.currentUser!.id;
+
+                          final response = await Supabase.instance.client
+                              .from('employees')
+                              .select()
+                              .eq('user_id', userId);
+
+                          if (response.isEmpty) {
+                            goTo(AddEmployerView());
+                          } else {
+                            goTo(HomePage(initialIndex: 0));
+                          }
 
                         }
 
@@ -150,7 +163,7 @@ class _LoginViewState extends State<LoginView> {
 
                         return AppButton(
                           text: 'تسجيل الدخول',
-                          width: 343.w,
+                          width: double.infinity,
                           onPressed: () {
 
                             if (cubit.formKey.currentState!.validate()) {

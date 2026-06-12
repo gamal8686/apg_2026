@@ -20,8 +20,6 @@ class CashHelper {
     String? email,
     String? phone,
   }) async {
-
-
     await _preferences.setString('user_id', userId);
     if (id != null) await _preferences.setInt('id', id);
     if (token != null) await _preferences.setString('token', token);
@@ -37,6 +35,10 @@ class CashHelper {
 
   static void setIsNotFirst() {
     _preferences.setBool('isFirst', false);
+  }
+
+  static bool get isCompletedProfile {
+    return _preferences.getBool('isCompletedProfile') ?? false;
   }
 
   static bool get getIsNotFirst {

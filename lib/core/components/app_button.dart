@@ -22,9 +22,10 @@ class AppButton extends StatelessWidget {
       return Center(child: CircularProgressIndicator(strokeAlign: 0.9,),);
     }
     return SizedBox(
-      width: width,
+      width: width?? double.infinity,
       child: FilledButton(
         style: FilledButton.styleFrom(
+          minimumSize: Size(double.infinity, 55.h),
           backgroundColor:  color ??Theme.of(context).primaryColor.withValues(alpha: 0.90),
         ),
         onPressed: onPressed,

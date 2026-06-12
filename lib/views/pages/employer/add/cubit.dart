@@ -1,13 +1,11 @@
 import 'dart:io';
 
-import 'package:company_apg_2026/core/logic/dio_helper.dart';
 import 'package:company_apg_2026/core/logic/helper_methods.dart';
 import 'package:company_apg_2026/views/pages/employer/add/state.dart';
 import 'package:company_apg_2026/views/pages/home_page/view.dart';
 import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -37,9 +35,7 @@ class AddEmployerCubit extends Cubit<AddEmployerState> {
   final GlobalKey<ExpansionTileCardState> tileKey = GlobalKey();
   final fromKey = GlobalKey<FormState>();
   List<Department> departments = [];
-  List<Shift> shifts = [
-
-  ];
+  List<Shift> shifts = [];
   String? selectedDepartment;
   final picker = ImagePicker();
   File? imageFile;
@@ -83,26 +79,25 @@ class AddEmployerCubit extends Cubit<AddEmployerState> {
 
     return imageUrl;
   }
+
   void changeShift(int? value) {
     shiftId = value;
     emit(AddEmployerUpdateState());
   }
+
   void changeDepartment(int? value) {
     departmentId = value;
     emit(AddEmployerUpdateState());
   }
+
   Future<void> getShifts() async {
     print("Loading shifts...");
 
-    final response = await Supabase.instance.client
-        .from('shifts')
-        .select();
+    final response = await Supabase.instance.client.from('shifts').select();
 
     print("SHIFTS RESPONSE: $response");
 
-    shifts = (response as List)
-        .map((e) => Shift.fromJson(e))
-        .toList();
+    shifts = (response as List).map((e) => Shift.fromJson(e)).toList();
 
     emit(AddEmployerUpdateState());
   }
@@ -146,28 +141,13 @@ class AddEmployerCubit extends Cubit<AddEmployerState> {
               'user_id': Supabase.instance.client.auth.currentUser!.id,
             }).select();
 
-
-        print("USER ID = ${Supabase.instance.client.auth.currentUser?.id}");
-
-
-
-
         emit(AddEmployerSuccessState("تم إضافة الموظف بنجاح ✅"));
         goTo(HomePage(initialIndex: 0));
       } on PostgrestException catch (e) {
         print(e);
-    print("MESSAGE: ${e.message}");
-    print("DETAILS: ${e.details}");
-    print("CODE: ${e.code}");
-    print("HINT: ${e.hint}");
-    emit(AddEmployerErrorState(e.toString()));
 
-    }
-
-
-
-
-
+        emit(AddEmployerErrorState(e.toString()));
+      }
     }
   }
 }

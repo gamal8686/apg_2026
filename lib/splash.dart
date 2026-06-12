@@ -1,10 +1,7 @@
-import 'dart:async';
-
 import 'package:company_apg_2026/core/components/app_image.dart';
 import 'package:company_apg_2026/core/logic/helper_methods.dart';
 import 'package:company_apg_2026/core/logic/shared_preferences.dart';
 import 'package:company_apg_2026/views/auth/login/view.dart';
-import 'package:company_apg_2026/views/pages/employer/add/view.dart';
 import 'package:company_apg_2026/views/pages/home_page/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,15 +21,14 @@ class _SplashViewState extends State<SplashView> {
     super.initState();
     Widget startPage;
 
-    if (CashHelper.getIsNotFirst == true) {
+    if (CashHelper.getIsNotFirst) {
       startPage = OnBoardingView();
-    } else if (!CashHelper.isAuth) {
+    } else if (CashHelper.userId.isEmpty) {
       startPage = LoginView();
     } else {
       startPage = HomePage(initialIndex: 0);
     }
-
-    goTo(startPage, delayDuration: 3);
+    goTo(startPage, delayDuration: 2);
   }
 
   @override
