@@ -3,13 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppSearch extends StatelessWidget {
   final String? labelText;
+  final Function(String)? onChanged;
   final Function()?onPressed;
-  const AppSearch({super.key, this.onPressed, this.labelText});
+  const AppSearch({super.key, this.onPressed, this.labelText,this.onChanged});
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-
+onChanged: onChanged,
       onTap: () {},
       keyboardType: TextInputType.numberWithOptions(),
       decoration: InputDecoration(

@@ -11,8 +11,9 @@ class EmployerCubit extends Cubit<EmployerState> {
   List<DepartmentModel> departments = [];
   List<EmployeeModel> allEmployees = [];
   List<EmployeeModel> filteredEmployees = [];
-
-  int selectedIndex = 0;
+  int page = 0;
+  final int limit = 10;
+  int? selectedIndex ;
 
   Future<void> init() async {
     await getDepartments();
@@ -36,7 +37,8 @@ class EmployerCubit extends Cubit<EmployerState> {
 
     final response = await Supabase.instance.client
         .from('employees')
-        .select('*, departments(name)');
+        .select('*, departments(name)')
+        .range(page * limit, (page * limit) + limit - 1);
 
     allEmployees = (response as List)
         .map((e) => EmployeeModel.fromJson(e))
@@ -63,6 +65,28 @@ class EmployerCubit extends Cubit<EmployerState> {
   void reset() {
     selectedIndex = 0;
     filteredEmployees = List.from(allEmployees);
+    emit(EmployerSuccessState());
+  }
+  Future<void> searchEmployee(String value) async {
+    if (value.isEmpty) {
+      page = 0;
+      getEmployees();
+      return;
+    }
+
+    emit(EmployerLoadingState());
+
+    final response = await Supabase.instance.client
+        .from('employees')
+        .select('*, departments(name)')
+        .or(
+      'employee_number.ilike.%$value%,name.ilike.%$value%',
+    );
+
+    filteredEmployees = (response as List)
+        .map((e) => EmployeeModel.fromJson(e))
+        .toList();
+
     emit(EmployerSuccessState());
   }
 }

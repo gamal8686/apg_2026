@@ -143,7 +143,8 @@ class AddEmployerCubit extends Cubit<AddEmployerState> {
               'national_id': nationalIdController.text,
               'status': status,
               'role': role,
-              'user_id': Supabase.instance.client.auth.currentUser!.id,
+              //'user_id': Supabase.instance.client.auth.currentUser!.id,
+              'auth_user_id': Supabase.instance.client.auth.currentUser!.id,
             }).select();
 
         print("SUPABASE RESPONSE: $response");

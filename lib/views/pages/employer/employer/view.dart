@@ -6,14 +6,17 @@ import 'package:company_apg_2026/views/pages/employer/employer/state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../../../core/components/app_admin.dart';
 import '../../../../core/components/app_container_par.dart';
 import '../../../../core/components/app_light_dark.dart';
 import '../../../../core/components/app_search.dart';
+import '../../../../core/logic/shared_preferences.dart';
 import '../add/view.dart';
 import '../employer_details/view.dart';
 import 'cubit.dart';
+import 'model.dart';
 
 //todo
 class EmployerView extends StatefulWidget {
@@ -24,14 +27,13 @@ class EmployerView extends StatefulWidget {
 }
 
 class _EmployerViewState extends State<EmployerView> {
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => EmployerCubit(),
       child: Builder(
         builder: (context) {
-               return Scaffold(
+          return Scaffold(
             floatingActionButton:
                 //todo
                 // Admin.isAdmin?
@@ -70,7 +72,12 @@ class _EmployerViewState extends State<EmployerView> {
                       children: [
                         AppContainerPar(),
                         SizedBox(height: 10.h),
-                        AppSearch(),
+                        AppSearch(
+                          labelText: ' ابحث بالرقم الوظيفي أو الاسم',
+                          onChanged: (value) {
+                            context.read<EmployerCubit>().searchEmployee(value);
+                          },
+                        ),
                         SizedBox(height: 10.h),
 
                         SizedBox(
@@ -88,9 +95,7 @@ class _EmployerViewState extends State<EmployerView> {
                                 ),
                                 child: GestureDetector(
                                   onTap: () {
-
-                                      cubit.changeDepartment(index);
-
+                                    cubit.changeDepartment(index);
                                   },
                                   child: AnimatedScale(
                                     duration: Duration(milliseconds: 250),
@@ -166,25 +171,32 @@ class _EmployerViewState extends State<EmployerView> {
                         ),
                         SizedBox(height: 10.h),
                         Expanded(
-                          child: GestureDetector(
-                            onTap: () {
-                              goTo(
-                                EmployerDetailsView(
-                                  pass:
-                                      'https://thumbs.dreamstime.com/z/beautiful-autumn-beautiful-brunette-18465358.jpg',
-                                ),
-                              );
-                            },
-                            child: ListView.builder(
-                              physics: BouncingScrollPhysics(),
-                              itemCount: cubit.filteredEmployees.length,
-                              itemBuilder: (context, index) {
-                                final employee = cubit.filteredEmployees[index];
+                          child: ListView.builder(
+                            physics: BouncingScrollPhysics(),
+                            itemCount: cubit.filteredEmployees.length,
+                            itemBuilder: (context, index) {
+                              final employee = cubit.filteredEmployees[index];
 
-                                return Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                              return Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    final currentUserId = Supabase.instance.client.auth.currentUser?.id;
+
+                                    if (employee.authUserId == currentUserId){
+                                      goTo(
+                                        EmployerDetailsView(
+                                          pass: employee.image,
+                                        ),
+                                      );
+                                    } else {
+                                      showMessage(
+                                        'غير مسموح لك بعرض بيانات موظف آخر',
+                                      );
+                                    }
+                                  },
                                   child: Container(
-                                  //  height: 170.h,
+                                    // height: 170.h,
                                     decoration: BoxDecoration(
                                       color: Color(0xffFDF0E9),
                                       border: Border.all(
@@ -199,15 +211,14 @@ class _EmployerViewState extends State<EmployerView> {
                                             CrossAxisAlignment.center,
                                         children: [
                                           Expanded(
-
                                             child: ClipOval(
-
                                               child: Padding(
-                                                padding: const EdgeInsets.all(8.0),
+                                                padding: const EdgeInsets.all(
+                                                  8.0,
+                                                ),
                                                 child: AppImage(
                                                   path: employee.image,
                                                   height: 80.h,
-
                                                 ),
                                               ),
                                             ),
@@ -222,44 +233,37 @@ class _EmployerViewState extends State<EmployerView> {
                                                 SizedBox(height: 10.h),
                                                 Text(
                                                   employee.name,
+                                                  maxLines: 2,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  textAlign: TextAlign.center,
                                                   style: TextStyle(
                                                     fontWeight: FontWeight.w900,
                                                     fontSize: 20.sp,
                                                     fontFamily: 'Cairo',
-                                                    color: Color(0xff292D32),
+                                                    color: const Color(
+                                                      0xff292D32,
+                                                    ),
                                                   ),
                                                 ),
                                                 SizedBox(height: 5.h),
                                                 Text(
                                                   employee.jobTitle,
+                                                  maxLines: 2,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  textAlign: TextAlign.center,
                                                   style: TextStyle(
                                                     fontWeight: FontWeight.w700,
                                                     fontSize: 15.sp,
                                                     fontFamily: 'Cairo',
-                                                    color: Color(0xff292D32),
+                                                    color: const Color(
+                                                      0xff292D32,
+                                                    ),
                                                   ),
                                                 ),
                                                 SizedBox(height: 10.h),
-                                                // Row(
-                                                //   children: [
-                                                //     AppImage(
-                                                //       path: 'email.png',
-                                                //       height: 20.h,
-                                                //     ),
-                                                //     SizedBox(width: 10.w),
-                                                //     Text(
-                                                //       employee.email,
-                                                //       style: TextStyle(
-                                                //         fontWeight:
-                                                //             FontWeight.w700,
-                                                //         fontSize: 15.sp,
-                                                //         fontFamily: 'Cairo',
-                                                //         color: Color(0xff292D32),
-                                                //       ),
-                                                //     ),
-                                                //   ],
-                                                // ),
-                                                // SizedBox(height: 10.h),
+
                                                 Row(
                                                   children: [
                                                     AppImage(
@@ -267,14 +271,23 @@ class _EmployerViewState extends State<EmployerView> {
                                                       height: 20.h,
                                                     ),
                                                     SizedBox(width: 10.w),
-                                                    Text(
-                                                      employee.phone,
-                                                      style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.w700,
-                                                        fontSize: 15.sp,
-                                                        fontFamily: 'Cairo',
-                                                        color: Color(0xff292D32),
+                                                    Expanded(
+                                                      child: Text(
+                                                        employee.phone,
+                                                        maxLines: 2,
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w700,
+                                                          fontSize: 15.sp,
+                                                          fontFamily: 'Cairo',
+                                                          color: const Color(
+                                                            0xff292D32,
+                                                          ),
+                                                        ),
                                                       ),
                                                     ),
                                                   ],
@@ -286,9 +299,9 @@ class _EmployerViewState extends State<EmployerView> {
                                       ),
                                     ),
                                   ),
-                                );
-                              },
-                            ),
+                                ),
+                              );
+                            },
                           ),
                         ),
                       ],
