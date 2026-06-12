@@ -45,7 +45,7 @@ class EmployeeModel {
   final String jobTitle;
   final String department;
   final String email;
-  final String authUserId;
+  final String userId;
 
   EmployeeModel({
     required this.id,
@@ -55,7 +55,7 @@ class EmployeeModel {
     required this.jobTitle,
     required this.department,
     required this.email,
-    required this.authUserId,
+    required this.userId,
   });
 
   factory EmployeeModel.fromJson(Map<String, dynamic> json) {
@@ -69,7 +69,7 @@ class EmployeeModel {
       department: json['departments'] != null
           ? json['departments']['name']
           : '',
-      authUserId: json['auth_user_id'] ?? '',
+      userId: json['user_id'] ?? '',
 
     );
   }}

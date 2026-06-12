@@ -2,7 +2,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class CashHelper {
   static final CashHelper _instance = CashHelper._internal();
+
   factory CashHelper() => _instance;
+
   CashHelper._internal();
 
   static late SharedPreferences _preferences;
@@ -11,27 +13,27 @@ class CashHelper {
     _preferences = await SharedPreferences.getInstance();
   }
 
-  // ===================== AUTH =====================
-
   static Future<void> saveLoginData({
-    required String token,
-    required int id,
+    required String userId,
+    String? token,
+    int? id,
     String? email,
     String? phone,
   }) async {
-    await _preferences.setString('token', token);
-    await _preferences.setInt('id', id);
+
+
+    await _preferences.setString('user_id', userId);
+    if (id != null) await _preferences.setInt('id', id);
+    if (token != null) await _preferences.setString('token', token);
     if (email != null) await _preferences.setString('email', email);
     if (phone != null) await _preferences.setString('phone', phone);
   }
 
-  static int get userId => _preferences.getInt('id') ?? -1;
+  static String get userId => _preferences.getString('user_id') ?? '';
 
   static String get token => _preferences.getString('token') ?? '';
 
   static bool get isAuth => token.isNotEmpty;
-
-  // ===================== FIRST TIME =====================
 
   static void setIsNotFirst() {
     _preferences.setBool('isFirst', false);
@@ -41,16 +43,13 @@ class CashHelper {
     return _preferences.getBool('isFirst') ?? true;
   }
 
-  // ===================== LOGOUT =====================
-
-  static Future<void >logeOut() async {
-    await _preferences.remove('id');
+  static Future<void> logeOut() async {
+    await _preferences.remove('user_id');
     await _preferences.remove('token');
     await _preferences.remove('email');
     await _preferences.remove('phone');
+    await _preferences.remove('isFirst');
   }
-
-  // ===================== THEME =====================
 
   static Future<void> saveThemeMode(String key, dynamic value) async {
     if (value is bool) {

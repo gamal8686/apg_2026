@@ -1,3 +1,4 @@
+import 'package:company_apg_2026/core/logic/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -29,20 +30,29 @@ class CreateLoginCubit extends Cubit<StateCreateLogin> {
     emit(StateCreateLoginLoading());
 
     try {
-      await supabase.auth.signUp(
+      final response = await supabase.auth.signUp(
         email: email.text.trim(),
         password: password.text.trim(),
       );
 
-      print('Gadea++++++++++++++++++++++++++++');
+      final user = response.user ?? response.session?.user;
+
+      if (user == null) {
+        emit(StateCreateLoginError('فشل إنشاء الحساب'));
+        return;
+      }
+
+      await CashHelper.saveLoginData(userId: user.id);
 
       emit(StateCreateLoginSuccess());
     } on AuthException catch (e) {
       emit(StateCreateLoginError(e.message));
     } catch (e) {
       emit(StateCreateLoginError(e.toString()));
+    }finally {
+      isLoading = false;
     }
 
-    isLoading = false;
+
   }
 }

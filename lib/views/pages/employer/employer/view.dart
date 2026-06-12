@@ -181,18 +181,16 @@ class _EmployerViewState extends State<EmployerView> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: GestureDetector(
                                   onTap: () {
-                                    final currentUserId = Supabase.instance.client.auth.currentUser?.id;
+                                    final currentUserId = CashHelper.userId;
 
-                                    if (employee.authUserId == currentUserId){
+                                    if (Admin.isAdmin || employee.userId == currentUserId) {
                                       goTo(
                                         EmployerDetailsView(
                                           pass: employee.image,
                                         ),
                                       );
                                     } else {
-                                      showMessage(
-                                        'غير مسموح لك بعرض بيانات موظف آخر',
-                                      );
+                                      showMessage('غير مسموح لك بعرض بيانات موظف آخر');
                                     }
                                   },
                                   child: Container(
