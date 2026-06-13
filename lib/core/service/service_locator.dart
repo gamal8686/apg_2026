@@ -36,7 +36,7 @@ void initGetIt() {
   box.registerFactory(() => AddCarCubit());
   box.registerFactory(() => DetailsCarCubit()..getData());
   box.registerFactory(() => AddEmployerCubit());
-  box.registerFactory(() => EditEmployerCubit());
+
   box.registerFactory(() => EmployerCubit());
   box.registerFactory(() => EmployerDetailsCubit());
   box.registerFactory(() => HolidayAddCubit());

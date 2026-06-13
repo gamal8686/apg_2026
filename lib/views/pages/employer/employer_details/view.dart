@@ -481,7 +481,7 @@ class _EmployerDetailsViewState extends State<EmployerDetailsView> {
                 AppButton(
                   text: 'تعديل بيانات الموظف',
                   onPressed: () {
-                    goTo(EditeEmployerView());
+                   // goTo(EditeEmployerView(employeeId: userData!['id'],));
                   },
                   width: 122.w,
                 ),

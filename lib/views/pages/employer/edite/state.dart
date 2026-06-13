@@ -1,8 +1,12 @@
-abstract class EditeState {}
-class EditeInitialState extends EditeState {}
-class EditeLoadingState extends EditeState {}
-class EditeSuccessState extends EditeState {}
-class EditeErrorState extends EditeState {
+abstract class EditEmployerState {}
+class EditEmployerInitialState extends EditEmployerState {}
+class EditEmployerUpdateState extends EditEmployerState {}
+class EditEmployerLoadingState extends EditEmployerState {}
+class EditEmployerSuccessState extends EditEmployerState {
+  final String message;
+  EditEmployerSuccessState(this.message);
+}
+class EditEmployerErrorState extends EditEmployerState {
   final String error;
-  EditeErrorState(this.error);
+  EditEmployerErrorState(this.error);
 }

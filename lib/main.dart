@@ -15,6 +15,7 @@ import 'package:company_apg_2026/views/pages/employer/add/view.dart';
 import 'package:company_apg_2026/views/pages/employer/edite/cubit.dart';
 import 'package:company_apg_2026/views/pages/employer/employer/cubit.dart';
 import 'package:company_apg_2026/views/pages/employer/employer_details/cubit.dart';
+import 'package:company_apg_2026/views/pages/employer/employer_details/view.dart';
 import 'package:company_apg_2026/views/pages/employer/holidays/add/cubit.dart';
 import 'package:company_apg_2026/views/pages/employer/holidays/holiday/cubit.dart';
 import 'package:company_apg_2026/views/pages/home_page/cubit.dart';

@@ -1,9 +1,7 @@
 
+
 import 'dart:io';
 
-import 'package:company_apg_2026/core/components/app_button.dart';
-import 'package:company_apg_2026/views/pages/employer/edite/cubit.dart';
-import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,16 +9,20 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../../core/components/app_back.dart';
+import '../../../../core/components/app_button.dart';
 import '../../../../core/components/app_container_par.dart';
 import '../../../../core/components/app_image.dart';
 import '../../../../core/components/app_input.dart';
 import '../../../../core/components/app_validator.dart';
 import '../../../../core/logic/helper_methods.dart';
-import '../../home_page/view.dart';
 import '../employer_details/view.dart';
+import 'cubit.dart';
+import 'model.dart';
+
 
 class EditeEmployerView extends StatefulWidget {
-  const EditeEmployerView({super.key});
+  const EditeEmployerView({super.key,  this.employeeId});
+  final int? employeeId;
 
   @override
   State<EditeEmployerView> createState() => _EditeEmployerViewState();
@@ -32,7 +34,7 @@ class _EditeEmployerViewState extends State<EditeEmployerView> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => EditEmployerCubit(),
+      create: (context) => EditEmployerCubit( widget.employeeId!),
       child: Builder(
         builder: (context) {
           final cubit = BlocProvider.of<EditEmployerCubit>(context);
@@ -128,21 +130,7 @@ class _EditeEmployerViewState extends State<EditeEmployerView> {
                     ),
                     SizedBox(height: 5.h),
 
-                    Text(
-                      'البريد الإلكتروني  ',
-                      style: TextStyle(
-                        fontSize: 18.sp,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: 'Cairo',
-                        color: Theme.of(context).primaryColor,
-                      ),
-                    ),
-                    SizedBox(height: 5.h),
-                    AppInput(
-                      label: 'ادخل البريد الإلكتروني',
-                      controller: cubit.emailController,
-                      validator: InputValidator.phoneValidator,
-                    ),
+
                     SizedBox(height: 5.h),
                     Text(
                       'رقم الهاتف ',
@@ -177,6 +165,174 @@ class _EditeEmployerViewState extends State<EditeEmployerView> {
                       validator: InputValidator.phoneValidator,
                     ),
                     SizedBox(height: 5.h),
+
+                    Text(
+                      'المسمى الوظيفي',
+                      style: TextStyle(
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Cairo',
+                        color: Theme.of(context).primaryColor,
+                      ),
+                    ),
+                    SizedBox(height: 5.h),
+                    AppInput(
+                      label: 'ادخل المسمى الوظيفي',
+                      controller: cubit.jobTitleController,
+                    ),
+
+                    SizedBox(height: 5.h),
+
+
+                    Text(
+                      'الراتب',
+                      style: TextStyle(
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Cairo',
+                        color: Theme.of(context).primaryColor,
+                      ),
+                    ),
+                    SizedBox(height: 5.h),
+                    AppInput(
+                      isKeyboardType: true,
+                      label: 'ادخل الراتب',
+                      controller: cubit.salaryController,
+                    ),
+
+                    SizedBox(height: 5.h),
+
+                    Text(
+                      'الرقم القومي',
+                      style: TextStyle(
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Cairo',
+                        color: Theme.of(context).primaryColor,
+                      ),
+                    ),
+                    SizedBox(height: 5.h),
+                    AppInput(
+                      isKeyboardType: true,
+                      label: 'ادخل الرقم القومي',
+                      controller: cubit.nationalIdController,
+                    ),
+
+                    SizedBox(height: 5.h),
+                    Text(
+                      'الوردية',
+                      style: TextStyle(
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Cairo',
+                        color: Theme.of(context).primaryColor,
+                      ),
+                    ),
+
+                    SizedBox(height: 5.h),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(color: Colors.grey.shade400),
+                      ),
+                      child: DropdownButton<int>(
+                          value: cubit.shiftId,
+                          isExpanded: true,
+                          hint: const Text("اختر الوردية"),
+                          underline: const SizedBox(),
+
+                          items: cubit.shifts.map((shift) {
+                            return DropdownMenuItem<int>(
+                              value: shift.id,
+                              child: Text(shift.name),
+                            );
+                          }).toList(),
+
+                          onChanged: (value) {
+                            cubit.changeShift(value);
+                          }
+                      ),
+                    ),
+
+
+
+                    SizedBox(height: 5.h),
+
+
+                    Text(
+                      'الحالة الوظيفية',
+                      style: TextStyle(
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Cairo',
+                        color: Theme.of(context).primaryColor,
+                      ),
+                    ),
+                    SizedBox(height: 5.h),
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(color: Colors.grey.shade400),
+                      ),
+                      child: DropdownButton<String>(
+                        value: cubit.status,
+                        isExpanded: true,
+                        underline: SizedBox(),
+                        items: const [
+                          DropdownMenuItem(value: 'active', child: Text('نشط')),
+                          DropdownMenuItem(value: 'inactive', child: Text('غير نشط')),
+                          DropdownMenuItem(value: 'resigned', child: Text('مستقيل')),
+                        ],
+                        onChanged: (value) {
+                          setState(() {
+                            cubit.status = value!;
+                          });
+                        },
+                      ),
+                    ),
+
+                    SizedBox(height: 5.h),
+
+
+                    Text(
+                      'الصلاحية',
+                      style: TextStyle(
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Cairo',
+                        color: Theme.of(context).primaryColor,
+                      ),
+                    ),
+                    SizedBox(height: 5.h),
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(color: Colors.grey.shade400),
+                      ),
+                      child: DropdownButton<String>(
+                        value: cubit.role,
+                        isExpanded: true,
+                        underline: SizedBox(),
+                        items: const [
+                          DropdownMenuItem(value: 'employee', child: Text('موظف')),
+                          DropdownMenuItem(value: 'manager', child: Text('مشرف')),
+                          DropdownMenuItem(value: 'admin', child: Text('مدير')),
+                        ],
+                        onChanged: (value) {
+                          setState(() {
+                            cubit.role = value!;
+                          });
+                        },
+                      ),
+                    ),
+
+                    SizedBox(height: 20.h),
                     Text(
                       'القسم',
                       style: TextStyle(
@@ -187,65 +343,39 @@ class _EditeEmployerViewState extends State<EditeEmployerView> {
                       ),
                     ),
                     SizedBox(height: 5.h),
+
                     Container(
+                      padding: EdgeInsets.symmetric(horizontal: 10),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(12),
                         border: Border.all(color: Colors.grey.shade400),
                       ),
-                      child: ExpansionTileCard(
-                        key: cubit.tileKey,
-
-                        elevation: 0,
-                        baseColor: Colors.transparent,
-                        expandedColor: Colors.white,
-                        shadowColor: Colors.transparent,
-
-                        onExpansionChanged: (isExpanded) {
-                          if (isExpanded) {
-                            Future.delayed(Duration(milliseconds: 300), () {
-                              Scrollable.ensureVisible(
-                                cubit.tileKey.currentContext!,
-                                duration: Duration(milliseconds: 500),
-                                curve: Curves.easeInOut,
-                              );
-                            });
+                      child: DropdownButton<int>(
+                          hint: const Text("اختر القسم "),
+                          value: cubit.departmentId,
+                          isExpanded: true,
+                          underline: SizedBox(),
+                          items: cubit.departments.map((department) {
+                            return DropdownMenuItem<int>(
+                              value: department.id,
+                              child: Text(department.name),
+                            );
+                          }).toList(),
+                          onChanged: (value) {
+                            cubit.changeDepartment(value);
                           }
-                        },
-
-                        title: Text(
-                          cubit.selectedDepartment ?? 'اختار القسم',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: cubit.selectedDepartment == null
-                                ? Colors.grey
-                                : Colors.black,
-                          ),
-                        ),
-
-                        trailing: Icon(Icons.arrow_drop_down),
-
-                        children: [
-                          Column(
-                            children: cubit.departments.map((dept) {
-                              return ListTile(
-                                onTap: () {
-                                  setState(() {
-                                    cubit.selectedDepartment = dept;
-                                  });
-
-                                  cubit.tileKey.currentState?.collapse();
-                                },
-                                leading: Icon(Icons.apartment),
-                                title: Text(dept),
-                              );
-                            }).toList(),
-                          ),
-                        ],
                       ),
                     ),
                     SizedBox(height: 20.h),
-                    AppButton(width: 390.w, text: 'حفظ', onPressed: () {cubit.sentData() ;}),
+                    AppButton(
+                      width: 390.w,
+                      text: 'حفظ',
+                      onPressed: () {
+                        cubit.sentData();
+                      },
+
+                    ),
                   ],
                 ),
               ),

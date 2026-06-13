@@ -8,6 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../../core/components/app_admin_card.dart';
+import '../employer/edite/view.dart';
 
 class CategoryPage extends StatefulWidget {
   const CategoryPage({super.key});
@@ -72,29 +73,40 @@ class _CategoryPageState extends State<CategoryPage> {
             Row(
               children: [
                 ClipOval(
-                  child: AppImage(
-                    path:
-                    userData?['image'] ?? '',
-                    height: 50.h, width: 50.w,
+                  child: GestureDetector(
+                    onTap: () {
+                      goTo(EditeEmployerView(employeeId:  userData!['id']));
+                    },
+                    child: AppImage(
+                      path:
+                      userData?['image'] ?? '',
+                      height: 70.h, width: 70.w,
+                    ),
                   ),
                 ),
                 SizedBox(width: 10.w),
                 Column(
                   children: [
 
-                Text(userData?['name'] ?? 'موظف جديد', style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 16.sp,
-                  fontFamily: 'Cairo',
-                  color: Color(0xff292D32),
-                ),),
-
+                    Text(
+                      userData?['name'] ?? 'موظف جديد',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 20.sp,
+                        fontFamily: 'Cairo',
+                        color: Color(0xff292D32),
+                      ),
+                      maxLines: 2,
+                      overflow: TextOverflow.clip,
+                    ),
+                    SizedBox(width: 15.h),
 
                     Text(
                       userData?['job_title'] ?? '',
                       style: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 15.sp,
                         fontFamily: 'Cairo',
                         color: Color(0xff292D32),
                       ),
