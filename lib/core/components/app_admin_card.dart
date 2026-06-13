@@ -20,7 +20,7 @@ class _AppAdminCardState extends State<AppAdminCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 220.h,
+      height: 200.h,
       width: 190.w,
       decoration: BoxDecoration(
         color: Color(0xffFDF0E9),
@@ -32,7 +32,7 @@ class _AppAdminCardState extends State<AppAdminCard> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
-          SizedBox(height: 20.h),
+          SizedBox(height: 10.h),
           AppBack(
             pass: widget.path,
             radius: 40,

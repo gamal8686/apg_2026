@@ -9,6 +9,8 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../../core/components/app_admin_card.dart';
 import '../employer/edite/view.dart';
+import '../employer/employer/model.dart';
+import '../employer/employer/state.dart';
 
 class CategoryPage extends StatefulWidget {
   const CategoryPage({super.key});
@@ -23,6 +25,18 @@ class _CategoryPageState extends State<CategoryPage> {
     super.initState();
     createEmployeeIfNotExists();
     getUserData();
+    getEmployeesCount();
+  }
+
+  int employeesCount = 0;
+  Future<void> getEmployeesCount() async {
+    final response = await Supabase.instance.client
+        .from('employees')
+        .select('id');
+    print(response);
+    setState(() {
+      employeesCount = (response as List).length;
+    });
   }
 
   Future<void> createEmployeeIfNotExists() async {
@@ -91,7 +105,9 @@ class _CategoryPageState extends State<CategoryPage> {
                     Text(
                       userData?['name'] ?? 'موظف جديد',
                       textAlign: TextAlign.center,
+
                       style: TextStyle(
+
                         fontWeight: FontWeight.w900,
                         fontSize: 20.sp,
                         fontFamily: 'Cairo',
@@ -139,8 +155,9 @@ class _CategoryPageState extends State<CategoryPage> {
             SizedBox(height: 15.h),
             Text(
               'اداره الانتاج والمخزون بكفاءه',
+              textAlign:  TextAlign.center,
               style: TextStyle(
-                fontWeight: FontWeight.w500,
+                fontWeight: FontWeight.w900,
                 fontSize: 16.sp,
                 fontFamily: 'Cairo',
                 color: Color(0xff7F8B8B),
@@ -170,9 +187,9 @@ class _CategoryPageState extends State<CategoryPage> {
                     },
                     child: AppAdminCard(
                       title: 'العاملين',
-                      subtitle: 'تحديث كميات اليوم\n لكل صنف',
+                      subtitle: 'تحديث عدد العاملين:\n        لهذا اليوم',
                       path: 'under_ review.png',
-                      count: 'تحديث الان',
+                      count: ' $employeesCount',
                     ),
                   ),
                 ),

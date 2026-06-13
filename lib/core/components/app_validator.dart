@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -11,19 +10,18 @@ class InputValidator {
   );
 
   // RegExp if need regex if not need not problem
-  static String?  phoneValidator(String? value) {
-    if (value == null || value.isEmpty ) {
-    return   'Please enter your Email';
+  static String? phoneValidator(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter your Email';
     }
-
-
+    return null;
   }
 
   static String? passwordValidator(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Field is empty';
-    } else if (value.length < 2) {
-      return 'Password must be at least 5 characters';
+      return 'كلمة  يجب أن تكون اكثر من 10 حرفًا';
+    } else if (value.length > 20) {
+      return 'كلمة  يجب أن تكون أقل من 15 حرفًا';
     }
     return null;
   }

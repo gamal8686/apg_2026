@@ -1,7 +1,7 @@
-
-
 import 'dart:io';
 
+import 'package:company_apg_2026/views/pages/employer/edite/state.dart';
+import 'package:company_apg_2026/views/pages/home_page/view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,9 +19,9 @@ import '../employer_details/view.dart';
 import 'cubit.dart';
 import 'model.dart';
 
-
 class EditeEmployerView extends StatefulWidget {
-  const EditeEmployerView({super.key,  this.employeeId});
+  const EditeEmployerView({super.key, this.employeeId});
+
   final int? employeeId;
 
   @override
@@ -29,22 +29,23 @@ class EditeEmployerView extends StatefulWidget {
 }
 
 class _EditeEmployerViewState extends State<EditeEmployerView> {
-
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => EditEmployerCubit( widget.employeeId!),
-      child: Builder(
-        builder: (context) {
-          final cubit = BlocProvider.of<EditEmployerCubit>(context);
+      create: (context) => EditEmployerCubit(widget.employeeId!),
+      child: BlocBuilder<EditEmployerCubit, EditEmployerState>(
+        builder: (context, cubit) {
+          final cubit = context.read<EditEmployerCubit>();
           return Scaffold(
             appBar: AppBar(
               leading: Padding(
                 padding: const EdgeInsets.all(15.0),
-                child: AppBack(pass: 'arrow-left.svg',onTap: () {
-                  goTo(EmployerDetailsView());
-                },),
+                child: AppBack(
+                  pass: 'arrow-left.svg',
+                  onTap: () {
+                    goTo(HomePage(initialIndex: 0));
+                  },
+                ),
               ),
               centerTitle: true,
               backgroundColor: Colors.transparent,
@@ -74,26 +75,24 @@ class _EditeEmployerViewState extends State<EditeEmployerView> {
                             source: ImageSource.gallery,
                           );
                           if (resp != null) {
-                            setState(() {
-                              cubit.imageFile = File(resp.path);
-                            });
+                            cubit.imageFile = File(resp.path);
                           }
                         },
                         child: cubit.imageFile != null
                             ? ClipRRect(
-                          borderRadius: BorderRadius.circular(100),
-                          child: Image.file(
-                            cubit.imageFile!,
-                            width: 150,
-                            height: 150,
-                            fit: BoxFit.cover,
-                          ),
-                        )
+                                borderRadius: BorderRadius.circular(100),
+                                child: Image.file(
+                                  cubit.imageFile!,
+                                  width: 150,
+                                  height: 150,
+                                  fit: BoxFit.cover,
+                                ),
+                              )
                             : AppImage(
-                          path: 'edite_image.png',
-                          height: 200.h,
-                          width: 200.w,
-                        ),
+                                path: 'edite_image.png',
+                                height: 200.h,
+                                width: 200.w,
+                              ),
                       ),
                     ),
                     Text(
@@ -126,10 +125,9 @@ class _EditeEmployerViewState extends State<EditeEmployerView> {
                     AppInput(
                       label: 'ادخل الاسم الكامل',
                       controller: cubit.nameController,
-                      validator: InputValidator.phoneValidator,
+                      validator: InputValidator.passwordValidator,
                     ),
                     SizedBox(height: 5.h),
-
 
                     SizedBox(height: 5.h),
                     Text(
@@ -145,8 +143,8 @@ class _EditeEmployerViewState extends State<EditeEmployerView> {
                     AppInput(
                       label: '01xxxxxxxxx',
                       controller: cubit.phoneController,
-                      validator: InputValidator.phoneValidator,
                       isKeyboardType: true,
+                      validator: InputValidator.phoneValidator,
                     ),
                     SizedBox(height: 5.h),
                     Text(
@@ -182,7 +180,6 @@ class _EditeEmployerViewState extends State<EditeEmployerView> {
                     ),
 
                     SizedBox(height: 5.h),
-
 
                     Text(
                       'الراتب',
@@ -238,28 +235,26 @@ class _EditeEmployerViewState extends State<EditeEmployerView> {
                         border: Border.all(color: Colors.grey.shade400),
                       ),
                       child: DropdownButton<int>(
-                          value: cubit.shiftId,
-                          isExpanded: true,
-                          hint: const Text("اختر الوردية"),
-                          underline: const SizedBox(),
-
-                          items: cubit.shifts.map((shift) {
-                            return DropdownMenuItem<int>(
-                              value: shift.id,
-                              child: Text(shift.name),
-                            );
-                          }).toList(),
-
-                          onChanged: (value) {
-                            cubit.changeShift(value);
-                          }
+                        value: cubit.shifts.any((e) => e.id == cubit.shiftId)
+                            ? cubit.shiftId
+                            : null,
+                        isExpanded: true,
+                        underline: const SizedBox(),
+                        hint: const Text("اختر الوردية"),
+                        items: cubit.shifts.map((shift) {
+                          return DropdownMenuItem<int>(
+                            value: shift.id,
+                            child: Text(shift.name),
+                          );
+                        }).toList(),
+                        onChanged: (value) {
+                          if (value == null) return;
+                          cubit.changeShift(value);
+                        },
                       ),
                     ),
 
-
-
                     SizedBox(height: 5.h),
-
 
                     Text(
                       'الحالة الوظيفية',
@@ -284,19 +279,22 @@ class _EditeEmployerViewState extends State<EditeEmployerView> {
                         underline: SizedBox(),
                         items: const [
                           DropdownMenuItem(value: 'active', child: Text('نشط')),
-                          DropdownMenuItem(value: 'inactive', child: Text('غير نشط')),
-                          DropdownMenuItem(value: 'resigned', child: Text('مستقيل')),
+                          DropdownMenuItem(
+                            value: 'inactive',
+                            child: Text('غير نشط'),
+                          ),
+                          DropdownMenuItem(
+                            value: 'resigned',
+                            child: Text('مستقيل'),
+                          ),
                         ],
                         onChanged: (value) {
-                          setState(() {
-                            cubit.status = value!;
-                          });
+                          cubit.status = value!;
                         },
                       ),
                     ),
 
                     SizedBox(height: 5.h),
-
 
                     Text(
                       'الصلاحية',
@@ -320,14 +318,18 @@ class _EditeEmployerViewState extends State<EditeEmployerView> {
                         isExpanded: true,
                         underline: SizedBox(),
                         items: const [
-                          DropdownMenuItem(value: 'employee', child: Text('موظف')),
-                          DropdownMenuItem(value: 'manager', child: Text('مشرف')),
+                          DropdownMenuItem(
+                            value: 'employee',
+                            child: Text('موظف'),
+                          ),
+                          DropdownMenuItem(
+                            value: 'manager',
+                            child: Text('مشرف'),
+                          ),
                           DropdownMenuItem(value: 'admin', child: Text('مدير')),
                         ],
                         onChanged: (value) {
-                          setState(() {
-                            cubit.role = value!;
-                          });
+                          cubit.role = value!;
                         },
                       ),
                     ),
@@ -352,36 +354,35 @@ class _EditeEmployerViewState extends State<EditeEmployerView> {
                         border: Border.all(color: Colors.grey.shade400),
                       ),
                       child: DropdownButton<int>(
-                          hint: const Text("اختر القسم "),
-                          value: cubit.departmentId,
-                          isExpanded: true,
-                          underline: SizedBox(),
-                          items: cubit.departments.map((department) {
-                            return DropdownMenuItem<int>(
-                              value: department.id,
-                              child: Text(department.name),
-                            );
-                          }).toList(),
-                          onChanged: (value) {
-                            cubit.changeDepartment(value);
-                          }
+                        hint: const Text("اختر القسم "),
+                        value: cubit.departmentId,
+                        isExpanded: true,
+                        underline: SizedBox(),
+                        items: cubit.departments.map((department) {
+                          return DropdownMenuItem<int>(
+                            value: department.id,
+                            child: Text(department.name),
+                          );
+                        }).toList(),
+                        onChanged: (value) {
+                          cubit.changeDepartment(value);
+                        },
                       ),
                     ),
                     SizedBox(height: 20.h),
                     AppButton(
                       width: 390.w,
-                      text: 'حفظ',
+                      text: 'تعديل',
                       onPressed: () {
                         cubit.sentData();
                       },
-
                     ),
                   ],
                 ),
               ),
             ),
           );
-        }
+        },
       ),
     );
   }

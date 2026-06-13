@@ -16,7 +16,7 @@ import 'model.dart';
 class EditEmployerCubit extends Cubit<EditEmployerState> {
   final int employeeId;
   EditEmployerCubit(this.employeeId) : super(EditEmployerLoadingState()) {
-    Future.delayed(Duration.zero, () {
+    Future.delayed(Duration.zero, () async{
       getDepartments();
       getShifts();
       getEmployeeData();
@@ -84,12 +84,10 @@ class EditEmployerCubit extends Cubit<EditEmployerState> {
 
     status = response['status']?? 'active';
     role = response['role']??'employee';
-    departmentId = response['department_id'] != null
-        ? int.tryParse(response['department_id'].toString())
-        : null;
-    shiftId = response['shift_id'] != null
-        ? int.tryParse(response['shift_id'].toString())
-        : null;
+    departmentId = response['department_id'];
+    shiftId = response['shift_id'];
+    departmentId = response['department_id'];
+    shiftId = response['shift_id'];
 
     emit(EditEmployerUpdateState());
   }
@@ -112,6 +110,7 @@ class EditEmployerCubit extends Cubit<EditEmployerState> {
   void changeShift(int? value) {
     shiftId = value;
     emit(EditEmployerUpdateState());
+
   }
 
   void changeDepartment(int? value) {
